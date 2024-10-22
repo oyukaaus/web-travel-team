@@ -10,7 +10,7 @@
   --button-border-radius: 1rem;
   --button-padding: 1rem 2rem;
   --button-box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
-  --background-image: url("assets/news_pics.jpg");
+  --background-image: url("assets/medeeback.jpg");
   --text-color: #fff;
 }
 
@@ -204,6 +204,7 @@ main {
   & img {
     max-width: 100%;
     height: auto;
+    border-radius: 5%;
   }
 
   & h2 {

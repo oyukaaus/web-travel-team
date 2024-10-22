@@ -15,6 +15,10 @@
   --input-border-radius: 20px;
   --input-border: 1px solid grey;
 }
+.small-image {
+    width: 30%; 
+    height: auto; 
+}
 
 body {
   font-family: var(--primary-font);

@@ -15,6 +15,10 @@
     --background-image: url("assets/im.jpg");
     --primary-border: 1px solid #333;
 }
+.small-image {
+    width: 30%; 
+    height: auto; 
+}
 
 * {
     margin: 0;

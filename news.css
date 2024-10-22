@@ -13,6 +13,10 @@
   --background-image: url("assets/medeeback.jpg");
   --text-color: #fff;
 }
+.small-image {
+  width: 30%; 
+  height: auto; 
+}
 
 * {
   margin: 0;

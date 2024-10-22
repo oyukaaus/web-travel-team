@@ -5,8 +5,8 @@
   --primary-text-color: #333;
   --background-color: #fff;
   --link-color: #333;
-  --button-background: transparent;
-  --button-border: 1px solid #333;
+  --button-background: #35424a; /* Consistent button color */
+  --button-border: none; /* Removed border to simplify button styles */
   --button-border-radius: 1rem;
   --button-padding: 1rem 2rem;
   --background-image: url("assets/city_pics.jpg");
@@ -28,15 +28,14 @@ header {
     background: #35424a;
     padding: 10px 20px;
 }
+
 .header-background {
   background-image: var(--background-image);
   background-size: cover; /* Ensures the image covers the area */
-  background-position: center; /* Centers the image */
-  height: 600px; /* Doubled height */
+  background-position: center;
+  height: 600px; /* Consistent height */
   width: 100%; /* Full width */
 }
-
-
 
 nav {
   display: flex;
@@ -104,7 +103,7 @@ nav a {
     padding: 10px;
     border: var(--button-border);
     border-radius: var(--button-border-radius);
-    background: #35424a;
+    background: var(--button-background);
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -185,7 +184,7 @@ nav a {
 
 .formButton {
     padding: 10px 20px;
-    background: #35424a;
+    background: var(--button-background);
     color: white;
     border: none;
     border-radius: 5px;
@@ -218,6 +217,38 @@ footer {
 .footer-columns a {
     color: #ffffff;
     text-decoration: none;
+}
+
+.details-section {
+    display: none;
+    margin-top: 10px;
+}
+
+.details-section.show {
+    display: block;
+}
+
+.details-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.details-table th, .details-table td {
+    padding: 10px;
+    border: 1px solid black;
+}
+.detail-content {
+    display: none; /* Initially hidden */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+    margin-top: 10px;
+}
+
+.detail-content.show {
+    display: block; /* Show content when 'show' class is added */
 }
 
 /* Responsive Design */

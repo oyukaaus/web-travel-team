@@ -28,14 +28,13 @@
             </form>
         </nav>
     </header>
-    
 
     <main>
         <section class="city-info">
             <h2>Khuvsgul Lake</h2>
             <p class="location">Mongolia</p>
             <p class="description">Khuvsgul Lake is a stunning natural wonder, known for its crystal-clear waters and breathtaking landscapes.</p>
-            
+
             <!-- Average Rating Section -->
             <div class="rating-section">
                 <h4>Average Rating</h4>
@@ -54,35 +53,35 @@
         <h3>Travel Itinerary</h3>
         <section class="itinerary">
             <article>
-                <button class="itinerary-button" onclick="toggleDay('day1')">Day 1 - Arrival at Khuvsgul</button>
+                <button class="itinerary-button" onclick="toggleDetails('day1')">Day 1 - Arrival at Khuvsgul</button>
                 <div id="day1" class="day-details">
                     <img src="assets/huwsgul.jpg" alt="Day 1 - Arrival">
                     <p>Arrival at Khuvsgul Lake, check-in at the lodge, and leisure time.</p>
                 </div>
             </article>
             <article>
-                <button class="itinerary-button" onclick="toggleDay('day2')">Day 2 - Lake Tour</button>
+                <button class="itinerary-button" onclick="toggleDetails('day2')">Day 2 - Lake Tour</button>
                 <div id="day2" class="day-details">
                     <img src="assets/huwsgul.jpg" alt="Day 2 - Lake Tour">
                     <p>Explore Khuvsgul Lake on a guided tour, including boating and sightseeing.</p>
                 </div>
             </article>
             <article>
-                <button class="itinerary-button" onclick="toggleDay('day3')">Day 3 - Hiking Adventure</button>
+                <button class="itinerary-button" onclick="toggleDetails('day3')">Day 3 - Hiking Adventure</button>
                 <div id="day3" class="day-details">
                     <img src="assets/hiking.jpg" alt="Day 3 - Hiking Adventure">
                     <p>Hike through the beautiful surrounding landscapes and enjoy the views.</p>
                 </div>
             </article>
             <article>
-                <button class="itinerary-button" onclick="toggleDay('day4')">Day 4 - Cultural Experience</button>
+                <button class="itinerary-button" onclick="toggleDetails('day4')">Day 4 - Cultural Experience</button>
                 <div id="day4" class="day-details">
                     <img src="assets/culture.jpg" alt="Day 4 - Cultural Experience">
                     <p>Immerse yourself in the local culture with traditional meals and experiences.</p>
                 </div>
             </article>
             <article>
-                <button class="itinerary-button" onclick="toggleDay('day5')">Day 5 - Relaxation</button>
+                <button class="itinerary-button" onclick="toggleDetails('day5')">Day 5 - Relaxation</button>
                 <div id="day5" class="day-details">
                     <img src="assets/relaxation.jpg" alt="Day 5 - Relaxation">
                     <p>Enjoy a day of relaxation by the lake or participate in optional activities.</p>
@@ -92,25 +91,85 @@
 
         <!-- Trip Details Section -->
         <h3>Trip Details</h3>
-        <div class="trip-details">
-            <div class="included">
-                <h4>Included</h4>
-                <ul>
-                    <li>Hotel Accommodation</li>
-                    <li>Guided Lake Tours</li>
-                    <li>Meals</li>
-                    <li>Airport Transfers</li>
-                </ul>
-            </div>
-            <div class="not-included">
-                <h4>Not Included</h4>
-                <ul>
-                    <li>Flight Tickets</li>
-                    <li>Visa Fees</li>
-                    <li>Personal Expenses</li>
-                </ul>
-            </div>
-        </div>
+        <section class="trip-details">
+            <!-- Included Table -->
+            <table class="details-table">
+                <thead>
+                    <tr>
+                        <th>Included</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button class="itinerary-button" onclick="toggleDetails('included-hotel')">Hotel Accommodation</button>
+                            <div id="included-hotel" class="details-section">
+                                <p>Stay in a comfortable lakeside lodge with scenic views of Khuvsgul Lake.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="itinerary-button" onclick="toggleDetails('included-tours')">Guided Lake Tours</button>
+                            <div id="included-tours" class="details-section">
+                                <p>Daily boat tours around the lake with expert guides explaining the region’s history and ecology.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="itinerary-button" onclick="toggleDetails('included-meals')">Meals</button>
+                            <div id="included-meals" class="details-section">
+                                <p>Three meals a day, featuring both Mongolian and international cuisine.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="itinerary-button" onclick="toggleDetails('included-transfers')">Airport Transfers</button>
+                            <div id="included-transfers" class="details-section">
+                                <p>Complimentary airport transfers to and from the lodge.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Not Included Table -->
+            <table class="details-table">
+                <thead>
+                    <tr>
+                        <th>Not Included</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button class="itinerary-button" onclick="toggleDetails('not-included-flights')">Flight Tickets</button>
+                            <div id="not-included-flights" class="details-section">
+                                <p>International and domestic flights are not included in the package.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="itinerary-button" onclick="toggleDetails('not-included-visa')">Visa Fees</button>
+                            <div id="not-included-visa" class="details-section">
+                                <p>Travelers are responsible for acquiring their Mongolian visa.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="itinerary-button" onclick="toggleDetails('not-included-personal')">Personal Expenses</button>
+                            <div id="not-included-personal" class="details-section">
+                                <p>Costs such as souvenirs, drinks, and other personal items are not covered.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
         <!-- Attractions Section -->
         <section class="container">
@@ -126,6 +185,7 @@
             </article>
         </section>
 
+        <!-- Reviews Section -->
         <h4>Reviews</h4>
         <article class="reviews">
             <div class="comment">
@@ -138,6 +198,7 @@
             </div>
         </article>
 
+        <!-- Comment Form -->
         <form action="/action_page.php" method="get" id="com">
             <input class="formInput" type="text" id="comment" name="comment" placeholder="Share your experience">
             <input class="formButton" type="button" value="Post" onclick="submitForm();">
@@ -173,10 +234,10 @@
     </footer>
 
     <script>
-        // Toggle Itinerary Days
-        function toggleDay(dayId) {
-            const day = document.getElementById(dayId);
-            day.classList.toggle("show");
+        // Toggle details sections
+        function toggleDetails(id) {
+            const section = document.getElementById(id);
+            section.classList.toggle("show");
         }
 
         // Add Comment Functionality

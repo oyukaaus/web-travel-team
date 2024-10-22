@@ -9,7 +9,7 @@
   --button-border: 1px solid #333;
   --button-border-radius: 1rem;
   --button-padding: 1rem 2rem;
-  --background-image: url("assets/city_pics.jpg");
+  --background-image: url("assets/im.jpg");
   --text-color: #fff;
   --input-background-color: #f6f6f6;
   --input-border-radius: 20px;
@@ -21,7 +21,7 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Background for the rest of the page */
+  background-color: #ffffff; 
 }
 
 header {

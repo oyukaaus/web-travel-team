@@ -21,12 +21,12 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #ffffff; 
+  background-color: var(--background-color); 
 }
 
 header {
-    background: #35424a;
-    padding: 10px 20px;
+  background: #35424a;
+  padding: 10px 20px;
 }
 
 .header-background {
@@ -48,233 +48,268 @@ nav {
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 nav ul {
-    display: flex;
+  display: flex;
 }
 
 nav ul li {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 nav a {
-    color: #ffffff;
-    text-decoration: none;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .search-form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search-form input {
-    padding: 5px;
-    margin-left: 10px;
-    border-radius: 4px;
-    border: none;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: none;
 }
 
 .city-info {
-    text-align: center;
-    padding: 20px;
-    background: var(--background-color);
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  background: var(--background-color);
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .rating-section {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .stars {
-    color: gold;
+  color: gold;
 }
 
 .itinerary {
-    margin: 20px;
+  display: flex; /* Use flexbox for layout */
+  margin: 20px;
+}
+
+.itinerary-buttons {
+  width: 40%; /* Set width for itinerary details */
+  margin-right: 20px; /* Add some space between itinerary and image */
 }
 
 .itinerary-button {
-    width: 100%;
-    padding: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-border-radius);
-    background: var(--button-background);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: background 0.3s;
+  width: 100%;
+  padding: 10px;
+  border: var(--button-border);
+  border-radius: var(--button-border-radius);
+  background: var(--button-background);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.3s;
 }
 
 .itinerary-button:hover {
-    background: #3b434a;
+  background: #3b434a;
 }
 
 .day-details {
-    display: none;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #f9f9f9;
+  display: none;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
 }
 
 .day-details.show {
-    display: block;
+  display: block;
+}
+
+.image-container {
+  width: 60%; /* Set width for the image container */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center image in container */
+  background-color: #f0f0f0; /* Optional background for contrast */
+  padding: 20px; /* Optional padding */
+}
+
+.image-container img {
+  max-width: 100%; /* Scale image to fit container */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .trip-details {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
 }
 
 .trip-details div {
-    width: 45%;
+  width: 45%;
 }
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  flex-wrap: wrap;
 }
 
 .container article {
-    width: 30%;
-    margin: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: var(--background-color);
+  width: 30%;
+  margin: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: var(--background-color);
 }
 
 .container img {
-    width: 100%;
-    border-radius: 8px 8px 0 0;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
 }
 
 .reviews {
-    margin: 20px;
+  margin: 20px;
 }
 
 .comment {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .picture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .formInput {
-    width: 80%;
-    padding: 10px;
-    border: var(--input-border);
-    border-radius: var(--input-border-radius);
+  width: 80%;
+  padding: 10px;
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
 }
 
 .formButton {
-    padding: 10px 20px;
-    background: var(--button-background);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+  padding: 10px 20px;
+  background: var(--button-background);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 .formButton:hover {
-    background: #3b434a;
+  background: #3b434a;
 }
 
 footer {
-    background: #35424a;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
+  background: #35424a;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
 }
 
 .footer-columns {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .footer-columns .column {
-    width: 30%;
-    margin-bottom: 20px;
+  width: 30%;
+  margin-bottom: 20px;
 }
 
 .footer-columns a {
-    color: #ffffff;
-    text-decoration: none;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .details-section {
-    display: none;
-    margin-top: 10px;
+  display: none;
+  margin-top: 10px;
 }
 
 .details-section.show {
-    display: block;
+  display: block;
 }
 
 .details-table {
-    width: 100%;
-    margin-bottom: 20px;
-    border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
 }
 
-.details-table th, .details-table td {
-    padding: 10px;
-    border: 1px solid black;
+.details-table th,
+.details-table td {
+  padding: 10px;
+  border: 1px solid black;
 }
+
 .detail-content {
-    display: none; /* Initially hidden */
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #f9f9f9;
-    margin-top: 10px;
+  display: none; /* Initially hidden */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+  margin-top: 10px;
 }
 
 .detail-content.show {
-    display: block; /* Show content when 'show' class is added */
+  display: block; /* Show content when 'show' class is added */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .trip-details {
-        flex-direction: column;
-        align-items: center;
-    }
+  .trip-details {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .trip-details div {
-        width: 90%;
-        margin-bottom: 20px;
-    }
+  .trip-details div {
+    width: 90%;
+    margin-bottom: 20px;
+  }
 
-    .container article {
-        width: 100%;
-        margin: 10px 0;
-    }
+  .itinerary {
+    flex-direction: column; /* Stack vertically on smaller screens */
+  }
 
-    .footer-columns {
-        flex-direction: column;
-        align-items: center;
-    }
+  .itinerary-buttons {
+    width: 100%; /* Full width on mobile */
+  }
 
-    .footer-columns .column {
-        width: 100%;
-        text-align: center;
-    }
+  .image-container {
+    width: 100%; /* Full width for images on mobile */
+    margin-top: 20px; /* Space between itinerary and image */
+  }
+
+  .container article {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-columns .column {
+    width: 100%;
+    text-align: center;
+  }
 }

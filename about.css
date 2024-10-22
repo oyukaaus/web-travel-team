@@ -1,4 +1,38 @@
 @import url("https://fonts.googleapis.com/css?family=Lemon:400|Inter:500,400,700,600");
+header.home-main {
+    position: relative;
+    height: 400px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+header.home-main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/aboutus.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) opacity(0.7); /* Apply blur and reduce opacity to 70% */
+    z-index: -1; /* Place behind the content */
+}
+
+header.home-main nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    z-index: 1; /* Ensure navigation is above the blurred background */
+}
 
 :root {
     --primary-font: 'Inter', sans-serif;
@@ -19,8 +53,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-.small-image {
-    width: 30%; 
+.big-image {
+    width:0 ; 
     height: auto; 
 }
 

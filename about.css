@@ -33,7 +33,10 @@ header.home-main nav {
     padding: 1rem 2rem;
     z-index: 1; /* Ensure navigation is above the blurred background */
 }
-
+.small-image {
+    width: 30%; 
+    height: auto; 
+}
 :root {
     --primary-font: 'Inter', sans-serif;
     --primary-text-color: #333;

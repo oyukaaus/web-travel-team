@@ -13,9 +13,48 @@
   --background-image: url("assets/medeeback.jpg");
   --text-color: #fff;
 }
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+  margin-top: 2cm; /* Add top margin */
+  margin-right: 2cm; /* Add right margin */
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+}
+
+nav a img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+}
+
+nav ul li {
+  margin-left: 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: bold;
+}
 .small-image {
-  width: 30%; 
-  height: auto; 
+  width: 10%; /* Adjust this percentage as needed for a smaller logo */
+  height: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 * {

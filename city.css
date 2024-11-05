@@ -153,13 +153,17 @@ nav a {
 
 .trip-details {
   display: flex;
-  justify-content: space-between;
-  margin: 20px;
+  justify-content: space-around;
+  margin: 10px; /* Reduced margin */
+  margin-right:500px;
 }
 
 .trip-details div {
-  width: 45%;
+  width: 10%; /* Reduced width to bring the sections closer */
+  padding: 10px; /* Added padding for consistency */
+  padding-right: 100px;
 }
+
 
 .container {
   display: flex;
@@ -317,3 +321,4 @@ footer {
     text-align: center;
   }
 }
+

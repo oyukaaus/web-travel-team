@@ -33,9 +33,60 @@ header.home-main nav {
     padding: 1rem 2rem;
     z-index: 1; /* Ensure navigation is above the blurred background */
 }
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+    margin-top: 2cm; /* Add top margin */
+    margin-right: 2cm; /* Add right margin */
+}
+
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+    margin-top: 10%;
+}
+
+nav a img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+nav ul li {
+    margin-left: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
 .small-image {
-    width: 30%; 
-    height: auto; 
+    width: 10%; /* Adjust this percentage as needed for a smaller logo */
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 :root {
     --primary-font: 'Inter', sans-serif;

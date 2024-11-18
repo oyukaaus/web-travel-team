@@ -11,13 +11,33 @@
             --accent-color: #F6AD55;
             --background-color: #F7FAFC;
         }
+        .background-style-2 {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            background-image: 
+                linear-gradient(transparent 50%, rgba(255,255,255,0.1) 50%),
+                linear-gradient(45deg, transparent 49%, #ffffff1a 50%, transparent 51%);
+            background-size: 50px 50px, 50px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes moveBackground {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+        .booking-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
         }
 
         .booking-container {

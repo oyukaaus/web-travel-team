@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Хяргас Нуур</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C5282;
+            --secondary-color: #4299E1;
+            --accent-color: #F6AD55;
+            --text-color: #2D3748;
+            --light-text: #FFFFFF;
+            --background-light: #F7FAFC;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        .travel-nav {
+            background: rgba(44, 82, 130, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero-section {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/hyrgas.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .destination-overview {
+            background: white;
+            padding: 2rem;
+            margin-top: -4rem;
+            border-radius: 1rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--card-shadow);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform var(--transition-speed);
+            box-shadow: var(--card-shadow);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .itinerary-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .day-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .day-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .day-details {
+            padding: 1rem;
+        }
+
+        .reviews-section {
+            background-color: #f4f4f4;
+            padding: 2rem 0;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .highlights-grid,
+            .day-cards,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+        <ul>
+            <li><a href="./index.html">Нүүр</a></li>
+            <li><a href="./about.html">Бидний тухай</a></li>
+            <li><a href="./destinations.html">Аялал</a></li>
+            <li><a href="./news.html">Мэдээ</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <h1>Хяргас Нуур</h1>
+        <p>Монголын байгалийн өв</p>
+        <a href="./zahialga.html" class="cta-button">Аяллаа эхлэх</a>
+    </section>
+
+    <section class="destination-overview">
+        <h2>Хяргас Нуур</h2>
+        <p>Хяргас нуур нь Монголын өвөрмөц байгалийн цоо цэвэр ус бүхий нуур юм. Энд та гайхамшигт байгаль, уламжлалт соёл, өвөрмөц аялал аждаг.</p>
+    </section>
+
+    <section class="highlights-grid">
+        <div class="highlight-card">
+            <h3>Байгаль</h3>
+            <p>Цэнгэг усан дахь гайхамшигт байгаль</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Соёл</h3>
+            <p>Өвөрмөц өрхийн аж төрөл</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Адал явдал</h3>
+            <p>Хайлах боломжтой олон төрлийн үйл ажиллагаа</p>
+        </div>
+    </section>
+
+    <section class="itinerary-section">
+        <h2>Аяллын Хөтөлбөр</h2>
+        <div class="day-cards">
+            <div class="day-card">
+                <img src="assets/hyrgas.jpg" alt="1-р өдөр">
+                <div class="day-details">
+                    <h3>1-р өдөр - Хүрэлцэн ирэх</h3>
+                    <p>Хяргас нуурт хүрэлцэн ирж, амрах байранд буудаллана.</p>
+                </div>
+            </div>
+            <div class="day-card">
+                <img src="assets/lake-tour.jpg" alt="2-р өдөр">
+                <div class="day-details">
+                    <h3>2-р өдөр - Нуурын аялал</h3>
+                    <p>Нуурын тойрон аялал, хөтөч гидтэй танилцах.</p>
+                </div>
+            </div>
+            <div class="day-card">
+                <img src="assets/local-culture.jpg" alt="3-р өдөр">
+                <div class="day-details">
+                    <h3>3-р өдөр - Соёлын танилцуулга</h3>
+                    <p>Өрхийн уламжлалт амьдралтай танилцах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <h2>Аяллын Сэтгэгдэл</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <blockquote>"Хяргас нуур бидний амьдралд мөнхөд үлдэх гайхамшиг болж өглөө."</blockquote>
+                <cite>- Б.Алтай</cite>
+            </div>
+            <div class="review-card">
+                <blockquote>"Байгалийн үзэсгэлэн, соёлын өв гайхалтай байлаа."</blockquote>
+                <cite>- С.Мөнх</cite>
+            </div>
+            <div class="review-card">
+                <blockquote>"Адал явдалт, сонирхолтой аялал байсан."</blockquote>
+                <cite>- Д.Эрдэнэ</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Хяргас Нуур Аялал. Бүх эрх хамгаалагдсан.</p>
+        <nav>
+            <a href="#">Нүүр</a>
+            <a href="#">Холбоо</a>
+            <a href="#">Бидний тухай</a>
+        </nav>
+    </footer>
+</body>
+</html>

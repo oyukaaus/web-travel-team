@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Захиалга</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C5282;
+            --secondary-color: #4299E1;
+            --accent-color: #F6AD55;
+            --background-color: #F7FAFC;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .booking-section {
+            margin-bottom: 20px;
+        }
+
+        .booking-section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .option-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .option-card.selected {
+            border-color: var(--secondary-color);
+            background-color: #e6f2ff;
+        }
+
+        .total-price {
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .booking-button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .booking-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        @media (max-width: 600px) {
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <div class="booking-section">
+            <h2>📅 Аяллын Хугацаа</h2>
+            <div class="option-grid">
+                <div class="option-card" data-type="duration" data-price="150000">
+                    <h3>3 өдөр 2 шөнө</h3>
+                    <p>Үндсэн хөтөлбөр</p>
+                    <p>Үнэ: 150,000₮</p>
+                </div>
+                <div class="option-card" data-type="duration" data-price="250000">
+                    <h3>5 өдөр 4 шөнө</h3>
+                    <p>Өргөтгөсөн хөтөлбөр</p>
+                    <p>Үнэ: 250,000₮</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-section">
+            <h2>🏨 Байрны Сонголт</h2>
+            <div class="option-grid">
+                <div class="option-card" data-type="hotel" data-price="50000">
+                    <h3>Стандарт Байр</h3>
+                    <p>Хамгийн бага өртөгтэй</p>
+                    <p>Үнэ: 50,000₮/шөнө</p>
+                </div>
+                <div class="option-card" data-type="hotel" data-price="100000">
+                    <h3>Делюкс Байр</h3>
+                    <p>Тав тухтай өрөө</p>
+                    <p>Үнэ: 100,000₮/шөнө</p>
+                </div>
+                <div class="option-card" data-type="hotel" data-price="150000">
+                    <h3>VIP Байр</h3>
+                    <p>Бүх төрлийн үйлчилгээтэй</p>
+                    <p>Үнэ: 150,000₮/шөнө</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-section">
+            <h2>🍽️ Хоолны Сонголт</h2>
+            <div class="option-grid">
+                <div class="option-card" data-type="meal" data-price="25000">
+                    <h3>Стандарт Хоол</h3>
+                    <p>Өдөрт 3 удаа</p>
+                    <p>Үнэ: 25,000₮/өдөр</p>
+                </div>
+                <div class="option-card" data-type="meal" data-price="50000">
+                    <h3>VIP Хоол</h3>
+                    <p>Тусгай цэс</p>
+                    <p>Үнэ: 50,000₮/өдөр</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-section">
+            <h2>🚌 Тээврийн Хэрэгсэл</h2>
+            <div class="option-grid">
+                <div class="option-card" data-type="transport" data-price="50000">
+                    <h3>Автобус</h3>
+                    <p>Хамгийн бага өртөгтэй</p>
+                    <p>Үнэ: 50,000₮</p>
+                </div>
+                <div class="option-card" data-type="transport" data-price="100000">
+                    <h3>Хувийн Тээвэр</h3>
+                    <p>Тав тухтай</p>
+                    <p>Үнэ: 100,000₮</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-price" id="totalPrice">
+            Нийт үнэ: 0₮
+        </div>
+
+        <button class="booking-button" onclick="processBooking()">
+            Захиалах
+        </button>
+    </div>
+
+    <script>
+        let selectedOptions = {};
+
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const type = this.getAttribute('data-type');
+                const price = parseInt(this.getAttribute('data-price'));
+
+                // Unhighlight previous selection
+                document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
+                    otherCard.classList.remove('selected');
+                });
+
+                // Highlight current selection
+                this.classList.add('selected');
+                selectedOptions[type] = price;
+
+                calculateTotalPrice();
+            });
+        });
+
+        function calculateTotalPrice() {
+            const totalPrice = Object.values(selectedOptions).reduce((a, b) => a + b, 0);
+            document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
+        }
+
+        function processBooking() {
+            if (Object.keys(selectedOptions).length < 4) {
+                alert('Бүх сонголтоо хийнэ үү!');
+                return;
+            }
+
+            const bookingDetails = {
+                duration: document.querySelector('.option-card[data-type="duration"].selected').textContent,
+                hotel: document.querySelector('.option-card[data-type="hotel"].selected').textContent,
+                meal: document.querySelector('.option-card[data-type="meal"].selected').textContent,
+                transport: document.querySelector('.option-card[data-type="transport"].selected').textContent,
+                totalPrice: Object.values(selectedOptions).reduce((a, b) => a + b, 0)
+            };
+
+            localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+            window.location.href = 'payment.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,269 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="mn">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City - Adventure</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="city.css">
-</head>
+    <title>Аялал</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C5282;
+            --secondary-color: #4299E1;
+            --accent-color: #F6AD55;
+            --text-color: #2D3748;
+            --light-text: #FFFFFF;
+            --background-light: #F7FAFC;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        .travel-nav {
+            background: rgba(44, 82, 130, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero-section {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/huwsgul.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .destination-overview {
+            background: white;
+            padding: 2rem;
+            margin-top: -4rem;
+            border-radius: 1rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--card-shadow);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform var(--transition-speed);
+            box-shadow: var(--card-shadow);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .itinerary-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .day-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .day-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .day-details {
+            padding: 1rem;
+        }
+
+        .reviews-section {
+            background-color: #f4f4f4;
+            padding: 2rem 0;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .highlights-grid,
+            .day-cards,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 <body>
-    <header class="home-main header-background">
-        <nav>
-            <a href="./">
-                <img src="assets/advent.png" alt="Adventure Image" class="small-image">
-            </a>
-            <ul>
+    <nav class="travel-nav">
+        <div class="nav-container">
+            <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+            <ul class="nav-links">
                 <li><a href="./index.html">Home</a></li>
-                <li><a href="./about">About us</a></li>
-                <li><a href="./destinations">Destinations</a></li>
-                <li><a href="./news">News</a></li>
+                <li><a href="./about.html">About us</a></li>
+                <li><a href="./destinations.html">Destinations</a></li>
+                <li><a href="./news.html">News</a></li>
             </ul>
-            <form class="search-form">
-                <i class="fa fa-search"></i>
-                <input type="text" id="searchMain" placeholder="Search...">
-            </form>
-        </nav>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1>Хөвсгөл Нуур</h1>
+        <p class="hero-subtitle">Монголын байгалийн өв </p>
+
+        <li> <a class="cta-button" href="./zahialga.html">Аяллаа эхлэх </a></li>
     </header>
 
-    <main>
-        <section class="city-info">
-            <h2>Khuvsgul Lake</h2>
-            <p class="location">Mongolia</p>
-            <p class="description">Khuvsgul Lake is a stunning natural wonder, known for its crystal-clear waters and breathtaking landscapes.</p>
+    <section class="destination-overview">
+        <h2>Хөвсгөл Нуур</h2>
+        <p>Хөвсгөл нуур нь Монголын хамгийн том, цэвэр ус бүхий нуур юм. Энд та гайхамшигт байгаль, уламжлалт соёл, өвөрмөц аялал аждаг.</p>
+    </section>
 
-            <!-- Average Rating Section -->
-            <div class="rating-section">
-                <h4>Average Rating</h4>
-                <span class="stars">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                </span>
-                <p>(Rated by 1200 people)</p>
+    <section>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <h3>Байгаль</h3>
+                <p>Цэнгэг усан дахь гайхамшигт байгаль</p>
             </div>
-        </section>
-
-        <!-- Itinerary Section -->
-        <h3>Travel Itinerary</h3>
-        <section class="itinerary">
-            <article>
-                <button class="itinerary-button" onclick="toggleDetails('day1')">Day 1 - Arrival at Khuvsgul</button>
-                <div id="day1" class="day-details">
-                    <img src="assets/huwsgul.jpg" alt="Day 1 - Arrival">
-                    <p>Arrival at Khuvsgul Lake, check-in at the lodge, and leisure time.</p>
-                </div>
-            </article>
-            <article>
-                <button class="itinerary-button" onclick="toggleDetails('day2')">Day 2 - Lake Tour</button>
-                <div id="day2" class="day-details">
-                    <img src="assets/huwsgul.jpg" alt="Day 2 - Lake Tour">
-                    <p>Explore Khuvsgul Lake on a guided tour, including boating and sightseeing.</p>
-                </div>
-            </article>
-            <article>
-                <button class="itinerary-button" onclick="toggleDetails('day3')">Day 3 - Hiking Adventure</button>
-                <div id="day3" class="day-details">
-                    <img src="assets/hikHuwsgul.jpg" alt="Day 3 - Hiking Adventure">
-                    <p>Hike through the beautiful surrounding landscapes and enjoy the views.</p>
-                </div>
-            </article>
-            <article>
-                <button class="itinerary-button" onclick="toggleDetails('day4')">Day 4 - Cultural Experience</button>
-                <div id="day4" class="day-details">
-                    <img src="assets/culture.jpg" alt="Day 4 - Cultural Experience">
-                    <p>Immerse yourself in the local culture with traditional meals and experiences.</p>
-                </div>
-            </article>
-            <article>
-                <button class="itinerary-button" onclick="toggleDetails('day5')">Day 5 - Relaxation</button>
-                <div id="day5" class="day-details">
-                    <img src="assets/relaxation.jpg" alt="Day 5 - Relaxation">
-                    <p>Enjoy a day of relaxation by the lake or participate in optional activities.</p>
-                </div>
-            </article>
-            <div class="image-container">
-                <img src="assets/hikHuwsgul.jpg" alt="Your Image" />
+            <div class="highlight-card">
+                <h3>Соёл</h3>
+                <p>Өвөрмөц өрхийн аж төрөл</p>
             </div>
-        </section>
-
-        <!-- Trip Details Section -->
-        <h3>Trip Details</h3>
-        <section class="trip-details">
-            <!-- Included Table -->
-            <table class="details-table">
-                <thead>
-                    <tr>
-                        <th>Included</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <button class="itinerary-button" onclick="toggleDetails('included-hotel')">Hotel Accommodation</button>
-                            <div id="included-hotel" class="details-section">
-                                <p>Stay in a comfortable lakeside lodge with scenic views of Khuvsgul Lake.</p>
-                                <button class="itinerary-button" onclick="toggleHotelOptions()">Select Hotel</button>
-                                <div id="hotelOptions" class="hotel-options" style="display: none;">
-                                    <h4>Available Hotels</h4>
-                                    <ul>
-                                        <li>Hotel 1 - $100/night</li>
-                                        <li>Hotel 2 - $150/night</li>
-                                        <li>Hotel 3 - $200/night</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="itinerary-button" onclick="toggleDetails('included-tours')">Guided Lake Tours</button>
-                            <div id="included-tours" class="details-section">
-                                <p>Daily boat tours around the lake with expert guides explaining the region’s history and ecology.</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="itinerary-button" onclick="toggleDetails('included-meals')">Meals</button>
-                            <div id="included-meals" class="details-section">
-                                <p>Three meals a day, featuring both Mongolian and international cuisine.</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="itinerary-button" onclick="toggleDetails('included-transfers')">Airport Transfers</button>
-                            <div id="included-transfers" class="details-section">
-                                <p>Complimentary airport transfers to and from the lodge.</p>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <!-- Not Included Table -->
-            <table class="details-table">
-                <thead>
-                    <tr>
-                        <th>Not Included</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <button class="itinerary-button" onclick="toggleDetails('not-included-flights')">Flight Tickets</button>
-                            <div id="not-included-flights" class="details-section">
-                                <p>International and domestic flights are not included in the package.</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="itinerary-button" onclick="toggleDetails('not-included-visa')">Visa Fees</button>
-                            <div id="not-included-visa" class="details-section">
-                                <p>Travelers are responsible for acquiring their Mongolian visa.</p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="itinerary-button" onclick="toggleDetails('not-included-personal')">Personal Expenses</button>
-                            <div id="not-included-personal" class="details-section">
-                                <p>Costs such as souvenirs, drinks, and other personal items are not covered.</p>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Attractions Section -->
-        <section class="container">
-            <article>
-                <img src="assets/huwsgul.jpg" alt="Khuvsgul Lake">
-                <h3>Khuvsgul Lake</h3>
-                <p class="pTag">Khuvsgul Lake, known as the "Blue Pearl," is a stunning body of water surrounded by mountains.</p>
-            </article>
-            <article>
-                <img src="assets/tsaatan.jpg" alt="Nomadic Culture">
-                <h3>Nomadic Culture</h3>
-                <p class="pTag">Experience the unique nomadic lifestyle of the local people.</p>
-            </article>
-        </section>
-
-        <!-- Reviews Section -->
-        <h4>Reviews</h4>
-        <article class="reviews">
-            <div class="comment">
-                <img class="picture" src="assets/review1.jpg" alt="ReviewUser1">
-                <p class="commentP">Khuvsgul Lake is one of the most beautiful places I've visited. A must-see!</p>
+            <div class="highlight-card">
+                <h3>Адал явдал</h3>
+                <p>Хайлах боломжтой олон төрлийн үйл ажиллагаа</p>
             </div>
-            <div class="comment">
-                <img class="picture" src="assets/review2.jpg" alt="ReviewUser2">
-                <p class="commentP">The hiking trails around the lake are incredible! I loved every moment.</p>
+        </div>
+    </section>
+
+    <section class="itinerary-section">
+        <h2>Аяллын Хөтөлбөр</h2>
+        <div class="day-cards">
+            <div class="day-card">
+                <img src="assets/huwsgul.jpg" alt="1-р өдөр">
+                <div class="day-details">
+                    <h3>1-р өдөр - Хүрэлцэн ирэх</h3>
+                    <p>Хөвсгөл нуурт хүрэлцэн ирж, амрах байранд буудаллана.</p>
+                </div>
             </div>
-        </article>
+            <div class="day-card">
+                <img src="assets/hikHuwsgul.jpg" alt="2-р өдөр">
+                <div class="day-details">
+                    <h3>2-р өдөр - Нуурын аялал</h3>
+                    <p>Нуурын тойрон аялал, хөтөч гидтэй танилцах.</p>
+                </div>
+            </div>
+            <div class="day-card">
+                <img src="assets/culture.jpg" alt="3-р өдөр">
+                <div class="day-details">
+                    <h3>3-р өдөр - Соёлын танилцуулга</h3>
+                    <p>Өрхийн уламжлалт амьдралтай танилцах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Comment Form -->
-        <form action="/action_page.php" method="get" id="com">
-            <input class="formInput" type="text" id="comment" name="comment" placeholder="Share your experience">
-            <input class="formButton" type="button" value="Post" onclick="submitForm();">
-        </form>
-    </main>
+    <section class="reviews-section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Аяллын Сэтгэгдэл</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p>"Хөвсгөл нуур бидний амьдралд мөнхөд үлдэх гайхамшиг болж өглөө."</p>
+                <p>- Б.Батхүү</p>
+            </div>
+            <div class="review-card">
+                <p>"Байгалийн үзэсгэлэн, соёлын өв гайхалтай байлаа."</p>
+                <p>- С.Болд</p>
+            </div>
+            <div class="review-card">
+                <p>"Адал явдалт, сонирхолтой аялал байсан."</p>
+                <p>- Д.Оюун</p>
+            </div>
+        </div>
+    </section>
 
-    <hr>
     <footer>
-        <ul class="footer-columns">
-            <li class="column">
-                <ul class="links">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Contact Us</a></li>
-                    <li><a href="">Privacy Policy</a></li>
-                    <li><a href="">Terms and Conditions</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li><a href="">FAQs</a></li>
-                    <li><a href="">Help</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li><a href="">Follow Us</a></li>
-                    <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="assets/twitter.png" alt="Twitter"></a>
-                </ul>
-            </li>
-        </ul>
+        <p>© 2024 Хөвсгөл Нуур Аялал. Бүх эрх хамгаалагдсан.</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: white; margin: 0 1rem;">Нүүр</a>
+            <a href="#" style="color: white; margin: 0 1rem;">Холбоо</a>
+            <a href="#" style="color: white; margin: 0 1rem;">Бидний тухай</a>
+        </div>
     </footer>
-    <script src="city.js" type="module"></script>
-
-    <script>
-        // Toggle details sections
-        function toggleDetails(id) {
-            const section = document.getElementById(id);
-            section.classList.toggle("show");
-        }
-
-        // Add Comment Functionality
-        function submitForm() {
-            let comment = document.getElementById('comment').value;
-            const commentSection = document.querySelector(".reviews");
-            const newComment = document.createElement('div');
-            newComment.classList.add('comment');
-            newComment.innerHTML = `<img class="picture" src="assets/review1.jpg" alt="NewReviewUser"><p class="commentP">${comment}</p>`;
-            commentSection.appendChild(newComment);
-            document.getElementById("com").reset();
-        }
-    </script>
 </body>
-
 </html>

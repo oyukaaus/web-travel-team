@@ -42,24 +42,3 @@ class CityInfoCard extends HTMLElement {
 }
 
 customElements.define('city-info-card', CityInfoCard);
-
-//     connectedCallback(){
-//         this.querySelectorAll .addeventlistener
-//     }
-
-//     ondayclick(e){
-//         e.target.value * this.food
-//     }
-//     set cityname(value) {
-//         this.citynameelement.textcontent = value;
-//     }
-
-//     set budget(value) {
-//         this.budgetelement.textcontent = `estimated budget: ($${value})`;
-//     }
-
-//     render(city) {
-//         this.cityname = city.name;
-//         this.budget = city.budget;
-//     }
-// }

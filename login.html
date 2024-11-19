@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up - Adventure</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Login Form -->
+        <div class="auth-box login-box">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="username" required>
+                
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+                
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleSignup()">Sign up</a></p>
+            </form>
+        </div>
+
+        <!-- Sign Up Form (Initially hidden) -->
+        <div class="auth-box signup-box" id="signup-box">
+            <h2>Sign Up</h2>
+            <form action="signup.html" method="post">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+                
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" required>
+                
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+                
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="javascript:void(0);" onclick="toggleSignup()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle between Login and Sign Up forms
+        function toggleSignup() {
+            var loginBox = document.querySelector('.login-box');
+            var signupBox = document.querySelector('.signup-box');
+
+            // Toggle visibility
+            if (loginBox.style.display === 'none') {
+                loginBox.style.display = 'block';
+                signupBox.style.display = 'none';
+            } else {
+                loginBox.style.display = 'none';
+                signupBox.style.display = 'block';
+            }
+        }
+
+        // Handle Login Form submission
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent form submission
+
+            // Get username from input
+            var username = document.getElementById("login-username").value;
+            
+            // Store username in sessionStorage (this keeps the data during the session)
+            sessionStorage.setItem("username", username);
+
+            // Redirect to home page after successful login
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>

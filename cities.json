@@ -56,7 +56,7 @@
     {
         "name": "Baku",
         "id": 7,
-        "img" : "/assets/baku.jpg",
+        "img" : "/assets/.jpg",
         "budget": 218,
         "foodCost": 65,
         "accomodationCost": 76,

@@ -1,74 +1,43 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var radioButtons = document.querySelectorAll('input[name="sort"]');
-    var articlesContainer = document.querySelector('.city-grid');
-    var searchInput = document.getElementById('searchPlaces');
-    var cities = []; // Store loaded cities
+document.addEventListener('DOMContentLoaded', function() {
+    // Array of background images
+    const backgroundImages = [
+        'assets/back.jpg',
+        'assets/huwsgul.jpg',
+        'assets/AltaiTavanBogd.jpg',
+        'assets/hyrgas.jpg'
+    ];
 
-    // Load JSON data
-    fetch('index.json')
-        .then(response => response.json())
-        .then(data => {
-            cities = data; // Save the loaded data
-            filterArticles(); // Initial filter with loaded data
-        })
-        .catch(error => console.error('Error loading JSON:', error));
+    const backgroundSlider = document.querySelector('.background-slider');
+    let currentImageIndex = 0;
 
-    // Update URL parameters based on sorting and search
-    function updateUrlParams() {
-        var selectedSort = document.querySelector('input[name="sort"]:checked').value;
-        var searchQuery = searchInput.value;
-        var url = new URL(window.location.href);
-        url.searchParams.set('sort', selectedSort);
-        url.searchParams.set('search', searchQuery);
-        history.pushState({}, '', url);
-    }
-
-    // Filter articles by region and search term
-    function filterArticles() {
-        var selectedRegion = document.querySelector('input[name="sort"]:checked').value;
-        var searchTerm = searchInput.value.toLowerCase();
-        articlesContainer.innerHTML = ''; // Clear existing articles
-
-        cities.forEach(function (city) {
-            var isRegionMatch = (selectedRegion === 'All' || city.region === selectedRegion);
-            var isSearchMatch = (!searchTerm || city.name.toLowerCase().includes(searchTerm));
-
-            if (isRegionMatch && isSearchMatch) {
-                var article = document.createElement('article');
-                article.dataset.region = city.region;
-
-                var title = document.createElement('h4');
-                title.textContent = city.name;
-                article.appendChild(title);
-
-                var image = document.createElement('img');
-                image.src = city.image;
-                image.alt = city.name;
-                article.appendChild(image);
-
-                var description = document.createElement('p');
-                description.textContent = city.description;
-                article.appendChild(description);
-
-                var price = document.createElement('p');
-                price.textContent = `Price per day: $${city.pricePerDay}`;
-                article.appendChild(price);
-
-                articlesContainer.appendChild(article);
-            }
-        });
-    }
-
-    // Event listeners for sorting and search input
-    radioButtons.forEach(function (radioButton) {
-        radioButton.addEventListener('change', function () {
-            updateUrlParams();
-            filterArticles(); // Filter with loaded data
-        });
+    // Create initial slides
+    backgroundImages.forEach((image, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'background-slide' + (index === 0 ? ' active' : '');
+        slide.style.backgroundImage = `url(${image})`;
+        backgroundSlider.appendChild(slide);
     });
 
-    searchInput.addEventListener('input', function () {
-        updateUrlParams();
-        filterArticles(); // Filter with loaded data
+    const slides = document.querySelectorAll('.background-slide');
+
+    // Function to change slide
+    function changeSlide() {
+        // Remove active class from current slide
+        slides[currentImageIndex].classList.remove('active');
+        
+        // Update index
+        currentImageIndex = (currentImageIndex + 1) % slides.length;
+        
+        // Add active class to new slide
+        slides[currentImageIndex].classList.add('active');
+    }
+
+    // Set interval to change slides every 3 seconds (3000 milliseconds)
+    setInterval(changeSlide, 3000);
+
+    // Optional: Preload images for smoother transitions
+    backgroundImages.forEach(imagePath => {
+        const img = new Image();
+        img.src = imagePath;
     });
 });

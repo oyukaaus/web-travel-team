@@ -61,10 +61,11 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            
         }
 
         .nav-links a {
-            color: var(--light-text);
+            color: black;
             text-decoration: none;
             font-weight: 500;
             transition: color var(--transition-speed);
@@ -294,9 +295,14 @@
             left: 0;
         }
         .map{
-            position: center;
-            padding-left: 500px;
-            padding-top: 50px;
+            margin-top: 50px;
+            /* max-width: 400px; */
+            /* margin: 0 auto; */
+            background: white;
+            /* padding: 30px; */
+            border-radius: 10px;
+            /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+            max-height: 100%;
         }
         /* Reviews Section */
         .reviews-section {
@@ -387,7 +393,7 @@
             color: white;
             text-decoration: none
         }
-        .booking-container {
+        /* .booking-container {
             background: white;
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
@@ -396,10 +402,10 @@
             max-width: 900px;
             position: relative;
             z-index: 10;
-        }
+            margin-top: 20px;
+        } */
 
         .booking-container {
-            margin-top: 50px;
             max-width: 600px;
             margin: 0 auto;
             background: white;
@@ -408,6 +414,8 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             max-height: 80vh; /* Set the maximum height to 80% of the viewport */
             overflow-y: auto; /* Enable vertical scrolling */
+            margin-top: 20px;
+            width:100%;
         }
 
         .booking-section {
@@ -611,6 +619,11 @@
             </div>
         </div>
     </section>
+    <section class="package-details">
+        <div class="package-columns">
+            <div class="map ">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2213678.5450399895!2d100.74254077752268!3d51.30968531930048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d0e5d1ba6b92eab%3A0xd9305b7b011f9111!2sKhuvsgul%20Lake!5e0!3m2!1sen!2smn!4v1732012981500!5m2!1sen!2smn" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
     <div class="booking-container">
         <div class="booking-section">
             <h2>📅 Аяллын Хугацаа</h2>
@@ -703,9 +716,8 @@
             Захиалах
         </button>
     </div>
-    <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2213678.5450399895!2d100.74254077752268!3d51.30968531930048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d0e5d1ba6b92eab%3A0xd9305b7b011f9111!2sKhuvsgul%20Lake!5e0!3m2!1sen!2smn!4v1732012981500!5m2!1sen!2smn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+</section>
 
     <section class="reviews-section">
         <h2 style="text-align: center; margin-bottom: 2rem;">Аяллын Сэтгэгдэл</h2>

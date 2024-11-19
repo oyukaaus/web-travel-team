@@ -232,12 +232,10 @@ document.querySelectorAll('.option-card').forEach(card => {
        const type = this.getAttribute('data-type');
        const price = parseInt(this.getAttribute('data-price'));
 
-       // Unhighlight previous selection
        document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
            otherCard.classList.remove('selected');
        });
 
-       // Highlight current selection
        this.classList.add('selected');
        selectedOptions[type] = price;
 

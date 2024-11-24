@@ -23,6 +23,7 @@
         </nav>
         <h1>Destinations</h1>
     </header>
+
     <main>
         <form class="search-places">
             <i class="fa fa-search"></i>
@@ -39,8 +40,12 @@
             <label for="sort-Gobi">Gobi</label>
             <input type="radio" id="sort-Steppe" name="sort" value="Steppe">
             <label for="sort-Steppe">Steppe</label>
-        </div>        
-        <section class="city-grid">
+        </div>   
+        <main>
+            <section class="city-grid"></section>
+    
+        </main>     
+        <!-- <section class="city-grid">
             <article data-region="Lake">
                 <a href="huvsgul.html">
                     <img src="assets/huwsgul.jpg" alt="Huwsgul">
@@ -94,7 +99,7 @@
                     <img src="assets/berlin.jpg" alt="Berlin">
                     <h4>jishee</h4>
                 </a>
-            </article data-region="Europe">
+            </article data-region="Europe"> -->
     </main>
     <hr>
     <footer>
@@ -186,7 +191,61 @@
     </script>
      
 
-        
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cityGrid = document.querySelector('.city-grid');
+            const radioButtons = document.querySelectorAll('input[name="sort"]');
+            const searchInput = document.getElementById('searchPlaces');
+    
+            // Fetch JSON data
+            fetch('destinations.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Function to render articles
+                    function renderArticles(filterRegion = 'All', searchTerm = '') {
+                        cityGrid.innerHTML = ''; // Clear previous content
+    
+                        const filteredData = data.filter(item => {
+                            const matchesRegion = filterRegion === 'All' || item.region === filterRegion;
+                            const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+                            return matchesRegion && matchesSearch;
+                        });
+    
+                        // Populate city-grid with filtered articles
+                        filteredData.forEach(item => {
+                            const article = document.createElement('article');
+                            article.setAttribute('data-region', item.region);
+                            article.innerHTML = `
+                                <a href="${item.link}">
+                                    <img src="${item.image}" alt="${item.name}">
+                                    <h4>${item.name}</h4>
+                                </a>
+                            `;
+                            cityGrid.appendChild(article);
+                        });
+                    }
+    
+                    // Initialize with default filters
+                    const initialRegion = document.querySelector('input[name="sort"]:checked').value;
+                    renderArticles(initialRegion);
+    
+                    // Event listeners for region filtering
+                    radioButtons.forEach(radioButton => {
+                        radioButton.addEventListener('change', () => {
+                            renderArticles(radioButton.value, searchInput.value);
+                        });
+                    });
+    
+                    // Event listener for search
+                    searchInput.addEventListener('input', () => {
+                        const selectedRegion = document.querySelector('input[name="sort"]:checked').value;
+                        renderArticles(selectedRegion, searchInput.value);
+                    });
+                })
+                .catch(error => console.error('Error fetching JSON data:', error));
+        });
+    </script>
+    
 
 </body>
 </html>

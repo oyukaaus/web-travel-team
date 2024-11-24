@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Төлбөрийн Хуудас</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #f4f4f4;
+        }
+
+        .edit-button {
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .edit-button:hover {
+            background-color: #0056b3;
+        }
+
+        .payment-button {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .payment-button:hover {
+            background-color: black;
+        }
+
+        .back-button {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            margin-left: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #0069d9;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Захиалга баталгаажуулах</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Сонголт</th>
+                    <th>Мэдээлэл</th>
+                    <th>Үйлдэл</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Аяллын Хугацаа:</td>
+                    <td id="duration"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Байрны Сонголт:</td>
+                    <td id="hotel"></td>
+                    <td><button class="edit-button" onclick="editItem('hotel')">Өөрчлөх</button></td>
+                </tr>
+                <tr>
+                    <td>Хоолны Сонголт:</td>
+                    <td id="meal"></td>
+                    <td><button class="edit-button" onclick="editItem('meal')">Өөрчлөх</button></td>
+                </tr>
+                <tr>
+                    <td>Тээврийн Хэрэгсэл:</td>
+                    <td id="transport"></td>
+                    <td><button class="edit-button" onclick="editItem('transport')">Өөрчлөх</button></td>
+                </tr>
+                <tr>
+                    <td>Хүмүүсийн Тоо:</td>
+                    <td id="people-count"></td>
+                    <td>
+                        <div>
+                            <label for="adult-count">Насанд Хүрэгчид:</label>
+                            <input type="number" id="adult-count" min="0" onchange="updatePeopleCount()">
+                            <label for="child-count">Хүүхэд:</label>
+                            <input type="number" id="child-count" min="0" onchange="updatePeopleCount()">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total-price" id="totalPrice"></div>
+        <div class="button-container">
+            <button class="payment-button" onclick="processPayment()">Баталгаажуулах</button>
+            <button class="back-button" onclick="window.history.back()">Буцах</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+            if (!bookingDetails) {
+                alert('Захиалгын мэдээлэл олдсонгүй!');
+                return;
+            }
+
+            // Display booking details
+            document.getElementById('duration').textContent = bookingDetails.duration;
+            document.getElementById('hotel').textContent = bookingDetails.hotel;
+            document.getElementById('meal').textContent = bookingDetails.meal;
+            document.getElementById('transport').textContent = bookingDetails.transport;
+            document.getElementById('people-count').textContent = `Насанд Хүрэгчид: ${bookingDetails.adults}, Хүүхэд: ${bookingDetails.children}`;
+
+            // Display total price
+            document.getElementById('totalPrice').textContent = `Нийт үнэ: ${bookingDetails.totalPrice.toLocaleString()}₮`;
+
+            // Set initial values for counts
+            document.getElementById('adult-count').value = bookingDetails.adults;
+            document.getElementById('child-count').value = bookingDetails.children;
+        });
+
+        function updatePeopleCount() {
+            const adults = parseInt(document.getElementById('adult-count').value) || 0;
+            const children = parseInt(document.getElementById('child-count').value) || 0;
+
+            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+            bookingDetails.adults = adults;
+            bookingDetails.children = children;
+
+            // Recalculate the total price
+            bookingDetails.totalPrice = (adults * 100000) + (children * 50000);
+
+            // Update localStorage and the displayed price
+            localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+            document.getElementById('totalPrice').textContent = `Нийт үнэ: ${bookingDetails.totalPrice.toLocaleString()}₮`;
+        }
+
+        function editItem(itemType) {
+            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+
+            // Edit the selected item
+            if (bookingDetails) {
+                let newValue = prompt(`Сонголтыг шинэчлэх: ${itemType}`, bookingDetails[itemType]);
+
+                if (newValue !== null && newValue.trim() !== '') {
+                    bookingDetails[itemType] = newValue;
+                    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+
+                    // Update the UI
+                    document.getElementById(itemType).textContent = newValue;
+                    updateTotalPrice();
+                }
+            }
+        }
+
+        function updateTotalPrice() {
+            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+            if (bookingDetails) {
+                bookingDetails.totalPrice = (bookingDetails.adults * 100000) + (bookingDetails.children * 50000);
+                localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+                document.getElementById('totalPrice').textContent = `Нийт үнэ: ${bookingDetails.totalPrice.toLocaleString()}₮`;
+            }
+        }
+
+        function processPayment() {
+            alert('Төлбөр амжилттай хийгдлээ!');
+            // Clear booking details after payment
+            localStorage.removeItem('bookingDetails');
+            window.location.href = 'index.html'; // Redirect to home or another page
+        }
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="mn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,20 +32,26 @@
         }
 
         .travel-nav {
-    background: rgba(44, 82, 130, 0.95); /* Semi-transparent background */
-    position: fixed; /* Ensures it stays at the top */
-    top: 0; /* Aligns it to the top of the page */
-    width: 100%; /* Spans the full width */
-    z-index: 1000; /* Higher than the slider */
-    backdrop-filter: blur(8px); /* Adds a modern blur effect */
-}
+            background: rgba(44, 82, 130, 0.95);
+            /* Semi-transparent background */
+            position: fixed;
+            /* Ensures it stays at the top */
+            top: 0;
+            /* Aligns it to the top of the page */
+            width: 100%;
+            /* Spans the full width */
+            z-index: 1000;
+            /* Higher than the slider */
+            backdrop-filter: blur(8px);
+            /* Adds a modern blur effect */
+        }
 
 
         .nav-container {
             position: fixed;
             top: 0;
             width: 100%;
-            
+
             padding: 1rem;
             display: flex;
             justify-content: space-between;
@@ -61,7 +68,7 @@
             display: flex;
             gap: 2rem;
             list-style: none;
-            
+
         }
 
         .nav-links a {
@@ -74,48 +81,86 @@
         .nav-links a:hover {
             color: var(--accent-color);
         }
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-        
+
         nav a {
             text-decoration: none;
             color: #333;
             font-weight: bold;
         }
 
+        /* .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            animation: slide-bg 0.5s ease-in-out;
+        } */
         .hero-section {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 2rem;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    animation: slide-bg 0.5s ease-in-out;
-}
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
 
-@keyframes slide-bg {
-    0% {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    50% {
-        opacity: 1;
-        transform: translateX(0%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-}
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        /* Ensure main content remains visible */
+        .hero-section h1,
+        .hero-section .cta-button {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slide-bg {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+        }
 
 
         .hero-section h1 {
@@ -134,11 +179,11 @@
             margin-top: 2rem;
             transition: background-color 0.3s;
         }
-        
+
         .cta-button:hover {
             background-color: #ff6b81;
         }
-        
+
         /* Destination Overview */
         .destination-overview {
             padding: 4rem 2rem;
@@ -146,7 +191,7 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         /* Highlights Section */
         .highlights-grid {
             display: grid;
@@ -156,12 +201,12 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .highlight-card {
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -208,6 +253,7 @@
             background-color: #f4f4f4;
             padding: 2rem 0;
         }
+
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -215,17 +261,19 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .slider-container {
             margin-top: 80px;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-}
+        }
 
         .day-cards {
             display: flex;
-            overflow-x: auto; /* Enables horizontal scrolling */
+            overflow-x: auto;
+            /* Enables horizontal scrolling */
             scroll-behavior: smooth;
             gap: 20px;
         }
@@ -263,38 +311,39 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .package-column {
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .package-list {
             list-style: none;
         }
-        
+
         .package-list li {
             margin-bottom: 1rem;
             padding-left: 2rem;
             position: relative;
         }
-        
+
         .included-list li::before {
             content: "✓";
             color: #4CAF50;
             position: absolute;
             left: 0;
         }
-        
+
         .not-included-list li::before {
             content: "×";
             color: #F44336;
             position: absolute;
             left: 0;
         }
-        .map{
+
+        .map {
             margin-top: 50px;
             /* max-width: 400px; */
             /* margin: 0 auto; */
@@ -304,12 +353,13 @@
             /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
             max-height: 100%;
         }
+
         /* Reviews Section */
         .reviews-section {
             padding: 4rem 2rem;
             text-align: center;
         }
-        
+
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -318,19 +368,19 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .review-card {
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .reviewer {
             margin-top: 1rem;
             font-weight: bold;
         }
-        
+
         /* Save Tour Button */
         .save-tour {
             position: fixed;
@@ -345,18 +395,19 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
+
         .save-tour:hover {
             transform: scale(1.1);
         }
-        
+
         .save-tour.saved svg {
             fill: #ff4757;
             stroke: #ff4757;
         }
-        
+
         /* Toast Notification */
         .toast {
             position: fixed;
@@ -371,12 +422,12 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
-        
+
         .toast.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-        
+
         /* Footer */
         footer {
             background-color: #333;
@@ -384,15 +435,16 @@
             padding: 2rem;
             text-align: center;
         }
-        
+
         .footer-links {
             margin-top: 1rem;
         }
-        
+
         .footer-links a {
             color: white;
             text-decoration: none
         }
+
         /* .booking-container {
             background: white;
             border-radius: 15px;
@@ -411,24 +463,32 @@
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-height: 80vh; /* Set the maximum height to 80% of the viewport */
-            overflow-y: auto; /* Enable vertical scrolling */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 80vh;
+            /* Set the maximum height to 80% of the viewport */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
             margin-top: 20px;
-            width:100%;
+            width: 100%;
         }
 
         .booking-section {
-            margin-bottom: 15px; /* Reduce bottom margin for a more compact layout */
-        padding: 10px; /* Add padding for better spacing */
-        background: #fff; /* Ensure background contrasts nicely */
-        border: 1px solid #e0e0e0; /* Add subtle border for separation */
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin-bottom: 15px;
+            /* Reduce bottom margin for a more compact layout */
+            padding: 10px;
+            /* Add padding for better spacing */
+            background: #fff;
+            /* Ensure background contrasts nicely */
+            border: 1px solid #e0e0e0;
+            /* Add subtle border for separation */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
         }
 
         .booking-section h2 {
-            font-size: 1.1rem; /* Make section titles smaller */
+            font-size: 1.1rem;
+            /* Make section titles smaller */
             margin-bottom: 10px;
         }
 
@@ -445,7 +505,7 @@
         }
 
         .option-card:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transform: translateY(-5px);
         }
 
@@ -453,6 +513,7 @@
             border-color: var(--secondary-color);
             background-color: #e6f2ff;
         }
+
         .option-cd {
             border: 1px solid #e0e0e0;
             border-radius: 8px;
@@ -462,7 +523,7 @@
         }
 
         .option-cd:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transform: translateY(-5px);
         }
 
@@ -493,13 +554,38 @@
         .booking-button:hover {
             background-color: var(--primary-color);
         }
+
         @media (max-width: 600px) {
-        .booking-container {
-            max-height: 60vh;
+            .booking-container {
+                max-height: 60vh;
             }
+        }
+
+        .cart-icon {
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* Cart modal styling */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
         }
     </style>
 </head>
+
 <body>
     <nav class="travel-nav">
         <div class="nav-container">
@@ -510,17 +596,29 @@
                 <li><a href="./destinations.html">Destinations</a></li>
                 <li><a href="./news.html">News</a></li>
             </ul>
+            <div class="cart-icon" id="cartIcon">
+                🛒 <span id="cartItemCount">0</span> items
+            </div>
         </div>
     </nav>
-    <div class="hero-section" id="hero-section" data-bg-images="assets/huwsgul.jpg,assets/tsaatan.jpg,assets/hyrgas.jpg">
+    <div id="cartModal" class="cart-modal">
+        <h2>Таны Сонголтууд</h2>
+        <div id="cartItemsList"></div>
+        <div class="total-price" id="cartTotalPrice">Нийт үнэ: 0₮</div>
+        <button onclick="proceedToPayment()">Төлбөр Хийгдэх</button>
+        <button onclick="closeCart()">Хаах</button>
+    </div>
+    <div class="hero-section" id="hero-section"
+        data-bg-images="assets/huwsgul.jpg,assets/tsaatan.jpg,assets/hyrgas.jpg">
         <h1>Хөвсгөл Нуур</h1>
 
-         <a class="cta-button" href="./zahialga.html">Аяллаа эхлэх </a>
+        <a class="cta-button" href="./zahialga.html">Аяллаа эхлэх </a>
     </div>
 
     <section class="destination-overview">
         <h2>Хөвсгөл Нуур</h2>
-        <p>Хөвсгөл нуур нь Монголын хамгийн том, цэвэр ус бүхий нуур юм. Энд та гайхамшигт байгаль, уламжлалт соёл, өвөрмөц аялал аждаг.</p>
+        <p>Хөвсгөл нуур нь Монголын хамгийн том, цэвэр ус бүхий нуур юм. Энд та гайхамшигт байгаль, уламжлалт соёл,
+            өвөрмөц аялал аждаг.</p>
     </section>
 
     <section>
@@ -534,13 +632,10 @@
                 <p>Өвөрмөц өрхийн аж төрөл</p>
             </div>
             <div class="highlight-cd">
-                <iframe 
-                    width="100%" 
-                    height="150" 
-                    src="https://www.youtube.com/embed/ttT8EoyUe6U?si=03EAYluxwuw8H1UD" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                <iframe width="100%" height="150"
+                    src="https://www.youtube.com/embed/ttT8EoyUe6U?controls=0&modestbranding=1&rel=0&autoplay=1"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
             </div>
@@ -588,7 +683,7 @@
                 </div>
 
             </div>
-            
+
             <button class="slider-btn next">→</button>
         </div>
     </section>
@@ -614,7 +709,7 @@
                     <li>Хувийн зардал</li>
                     <li>Нэмэлт үйл ажиллагааны төлбөр</li>
                     <li>Согтууруулах ундаа</li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -622,102 +717,117 @@
     <section class="package-details">
         <div class="package-columns">
             <div class="map ">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2213678.5450399895!2d100.74254077752268!3d51.30968531930048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d0e5d1ba6b92eab%3A0xd9305b7b011f9111!2sKhuvsgul%20Lake!5e0!3m2!1sen!2smn!4v1732012981500!5m2!1sen!2smn" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2213678.5450399895!2d100.74254077752268!3d51.30968531930048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d0e5d1ba6b92eab%3A0xd9305b7b011f9111!2sKhuvsgul%20Lake!5e0!3m2!1sen!2smn!4v1732012981500!5m2!1sen!2smn"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-    <div class="booking-container">
-        <div class="booking-section">
-            <h2>📅 Аяллын Хугацаа</h2>
-            <div class="option-grid">
-                <div class="option-card" data-type="duration" data-price="150000">
-                    <h3>3 өдөр 2 шөнө</h3>
-                    <p>Үндсэн хөтөлбөр</p>
-                    <p>Үнэ: 150,000₮</p>
+            <div class="booking-container">
+                <div class="booking-section">
+                    <h2>📅 Аяллын Хугацаа</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="duration" data-price="150000">
+                            <h3>3 өдөр 2 шөнө</h3>
+                            <p>Үндсэн хөтөлбөр</p>
+                            <p>Үнэ: 150,000₮</p>
+                        </div>
+                        <div class="option-card" data-type="duration" data-price="250000">
+                            <h3>5 өдөр 4 шөнө</h3>
+                            <p>Өргөтгөсөн хөтөлбөр</p>
+                            <p>Үнэ: 250,000₮</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="option-card" data-type="duration" data-price="250000">
-                    <h3>5 өдөр 4 шөнө</h3>
-                    <p>Өргөтгөсөн хөтөлбөр</p>
-                    <p>Үнэ: 250,000₮</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="booking-section">
-            <h2>🏨 Байрны Сонголт</h2>
-            <div class="option-grid">
-                <div class="option-card" data-type="hotel" data-price="50000">
-                    <h3>Стандарт Байр</h3>
-                    <p>Хамгийн бага өртөгтэй</p>
-                    <p>Үнэ: 50,000₮/шөнө</p>
+                <div class="booking-section">
+                    <h2>🏨 Байрны Сонголт</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="hotel" data-price="50000">
+                            <h3>Стандарт Байр</h3>
+                            <p>Хамгийн бага өртөгтэй</p>
+                            <p>Үнэ: 50,000₮/шөнө</p>
+                            <div class="apart-select" style="display: none;">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="hotel" data-price="100000">
+                            <h3>Делюкс Байр</h3>
+                            <p>Тав тухтай өрөө</p>
+                            <p>Үнэ: 100,000₮/шөнө</p>
+                            <div class="apart-select" style="display: none;">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="hotel" data-price="150000">
+                            <h3>VIP Байр</h3>
+                            <p>Бүх төрлийн үйлчилгээтэй</p>
+                            <p>Үнэ: 150,000₮/шөнө</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="option-card" data-type="hotel" data-price="100000">
-                    <h3>Делюкс Байр</h3>
-                    <p>Тав тухтай өрөө</p>
-                    <p>Үнэ: 100,000₮/шөнө</p>
-                </div>
-                <div class="option-card" data-type="hotel" data-price="150000">
-                    <h3>VIP Байр</h3>
-                    <p>Бүх төрлийн үйлчилгээтэй</p>
-                    <p>Үнэ: 150,000₮/шөнө</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="booking-section">
-            <h2>🍽️ Хоолны Сонголт</h2>
-            <div class="option-grid">
-                <div class="option-card" data-type="meal" data-price="25000">
-                    <h3>Стандарт Хоол</h3>
-                    <p>Өдөрт 3 удаа</p>
-                    <p>Үнэ: 25,000₮/өдөр</p>
+                <div class="booking-section">
+                    <h2>🍽️ Хоолны Сонголт</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="meal" data-price="25000">
+                            <h3>Стандарт Хоол</h3>
+                            <p>Өдөрт 3 удаа</p>
+                            <p>Үнэ: 25,000₮/өдөр</p>
+                        </div>
+                        <div class="option-card" data-type="meal" data-price="50000">
+                            <h3>VIP Хоол</h3>
+                            <p>Тусгай цэс</p>
+                            <p>Үнэ: 50,000₮/өдөр</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="option-card" data-type="meal" data-price="50000">
-                    <h3>VIP Хоол</h3>
-                    <p>Тусгай цэс</p>
-                    <p>Үнэ: 50,000₮/өдөр</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="booking-section">
-            <h2>🚌 Тээврийн Хэрэгсэл</h2>
-            <div class="option-grid">
-                <div class="option-card" data-type="transport" data-price="50000">
-                    <h3>Автобус</h3>
-                    <p>Хамгийн бага өртөгтэй</p>
-                    <p>Үнэ: 50,000₮</p>
+                <div class="booking-section">
+                    <h2>🚌 Тээврийн Хэрэгсэл</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="transport" data-price="50000">
+                            <h3>Автобус</h3>
+                            <p>Хамгийн бага өртөгтэй</p>
+                            <p>Үнэ: 50,000₮</p>
+                        </div>
+                        <div class="option-card" data-type="transport" data-price="100000">
+                            <h3>Хувийн Тээвэр</h3>
+                            <p>Тав тухтай</p>
+                            <p>Үнэ: 100,000₮</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="option-card" data-type="transport" data-price="100000">
-                    <h3>Хувийн Тээвэр</h3>
-                    <p>Тав тухтай</p>
-                    <p>Үнэ: 100,000₮</p>
+                <div class="booking-section">
+                    <h2>👨‍👩‍👧‍👦 Хүмүүсийн Тоо</h2>
+                    <div class="option-grid">
+                        <div class="option-cd" data-type="slot" data-price="100000">
+                            <h3>Насанд Хүрэгчид</h3>
+                            <input type="number" id="adult-count" value="0" min="0"
+                                style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"
+                                onchange="updatePeopleCount()">
+                            <p>Үнэ: 100,000₮</p>
+                        </div>
+                        <div class="option-cd" data-type="slot" data-price="50000">
+                            <h3>Хүүхэд</h3>
+                            <input type="number" id="child-count" value="0" min="0"
+                                style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"
+                                onchange="updatePeopleCount()">
+                            <p>Үнэ: 50,000₮</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="booking-section">
-            <h2>👨‍👩‍👧‍👦 Хүмүүсийн Тоо</h2>
-            <div class="option-grid">
-                <div class="option-cd" data-type="slot" data-price="100000">
-                    <h3>Насанд Хүрэгчид</h3>
-                    <input type="number" id="adult-count" value="0" min="0" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;" onchange="updatePeopleCount()">
-                    <p>Үнэ: 100,000₮</p>
+                <div class="total-price" id="totalPrice">
+                    Нийт үнэ: 0₮
                 </div>
-                <div class="option-cd" data-type="slot" data-price="50000">
-                    <h3>Хүүхэд</h3>
-                    <input type="number" id="child-count" value="0" min="0" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;" onchange="updatePeopleCount()">
-                    <p>Үнэ: 50,000₮</p>
-                </div>
-            </div>
-        </div>
-        <div class="total-price" id="totalPrice">
-            Нийт үнэ: 0₮
-        </div>
 
-        <button class="booking-button" onclick="processBooking()">
-            Захиалах
-        </button>
-    </div>
-    </div>
-</section>
+                <button class="booking-button" onclick="processBooking()">
+                    Захиалах
+                </button>
+            </div>
+        </div>
+    </section>
 
     <section class="reviews-section">
         <h2 style="text-align: center; margin-bottom: 2rem;">Аяллын Сэтгэгдэл</h2>
@@ -738,11 +848,15 @@
         <div class="comment-section">
             <h3 style="text-align: center; margin-top: 2rem;">Сэтгэгдэл үлдээх</h3>
             <form id="comment-form" style="max-width: 600px; margin: 0 auto;">
-                <input type="text" id="name-box" placeholder="Таны нэр" required style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;">
-                <textarea id="comment-box" rows="4" placeholder="Сэтгэгдэлээ энд бичнэ үү..." required style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;"></textarea>
-                <button type="submit" style="background-color: var(--accent-color); color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 8px; cursor: pointer;">Илгээх</button>
+                <input type="text" id="name-box" placeholder="Таны нэр" required
+                    style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;">
+                <textarea id="comment-box" rows="4" placeholder="Сэтгэгдэлээ энд бичнэ үү..." required
+                    style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;"></textarea>
+                <button type="submit"
+                    style="background-color: var(--accent-color); color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 8px; cursor: pointer;">Илгээх</button>
             </form>
-            <div id="comment-error" style="color: red; text-align: center; margin-top: 1rem; display: none;">Нэр болон сэтгэгдэл бичих шаардлагатай!</div>
+            <div id="comment-error" style="color: red; text-align: center; margin-top: 1rem; display: none;">Нэр болон
+                сэтгэгдэл бичих шаардлагатай!</div>
         </div>
     </section>
 
@@ -766,43 +880,43 @@
         prevBtn.addEventListener('click', () => {
             cardsContainer.scrollBy({ left: -300, behavior: 'smooth' });
         });
-        
+
     </script>
     <script>
-       const commentForm = document.getElementById('comment-form');
-const nameBox = document.getElementById('name-box'); // New name input field
-const commentBox = document.getElementById('comment-box');
-const commentError = document.getElementById('comment-error');
-const reviewsGrid = document.querySelector('.reviews-grid');
+        const commentForm = document.getElementById('comment-form');
+        const nameBox = document.getElementById('name-box'); // New name input field
+        const commentBox = document.getElementById('comment-box');
+        const commentError = document.getElementById('comment-error');
+        const reviewsGrid = document.querySelector('.reviews-grid');
 
-commentForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent page reload
+        commentForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page reload
 
-    const nameText = nameBox.value.trim(); // Get name value
-    const commentText = commentBox.value.trim();
+            const nameText = nameBox.value.trim(); // Get name value
+            const commentText = commentBox.value.trim();
 
-    // Check if both name and comment are filled out
-    if (nameText === '' || commentText === '') {
-        commentError.style.display = 'block'; // Show error message
-    } else {
-        commentError.style.display = 'none';
+            // Check if both name and comment are filled out
+            if (nameText === '' || commentText === '') {
+                commentError.style.display = 'block'; // Show error message
+            } else {
+                commentError.style.display = 'none';
 
-        // Create a new review card
-        const newReview = document.createElement('div');
-        newReview.classList.add('review-card');
-        newReview.innerHTML = `
+                // Create a new review card
+                const newReview = document.createElement('div');
+                newReview.classList.add('review-card');
+                newReview.innerHTML = `
             <p>"${commentText}"</p>
             <p>- ${nameText}</p> <!-- Display the name of the guest -->
         `;
 
-        // Append the new comment
-        reviewsGrid.appendChild(newReview);
+                // Append the new comment
+                reviewsGrid.appendChild(newReview);
 
-        // Clear the input fields
-        nameBox.value = '';
-        commentBox.value = '';
-    }
-});
+                // Clear the input fields
+                nameBox.value = '';
+                commentBox.value = '';
+            }
+        });
 
 
     </script>
@@ -811,81 +925,202 @@ commentForm.addEventListener('submit', (e) => {
             const heroSection = document.getElementById('hero-section');
             const bgImages = heroSection.getAttribute('data-bg-images').split(',');
             let currentIndex = 0;
-    
+
+            // Apply the first image immediately
+            heroSection.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+
+            // Preload all images
+            bgImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+
+            // Change background image periodically
             setInterval(() => {
-                // Update the background image
+                currentIndex = (currentIndex + 1) % bgImages.length;
                 heroSection.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+
+                // Optional: Add and remove animation class
                 heroSection.classList.add('animate-bg');
-    
-                // Remove animation after it's completed
                 setTimeout(() => {
                     heroSection.classList.remove('animate-bg');
-                }, 500);
-    
-                // Update index
-                currentIndex = (currentIndex + 1) % bgImages.length;
+                }, 500); // Match your CSS animation duration
             }, 5000); // Change every 5 seconds
         });
     </script>
-     <script>
-        let selectedOptions = {};
 
-document.querySelectorAll('.option-card').forEach(card => {
-   card.addEventListener('click', function() {
-       const type = this.getAttribute('data-type');
-       const price = parseInt(this.getAttribute('data-price'));
+    <script>
+     
+     let selectedOptions = {
+            adults: 0,
+            children: 0,
+            duration: 0,
+            hotel: 0,
+            meal: 0,
+            transport: 0
+        };
 
-       document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
-           otherCard.classList.remove('selected');
-       });
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function () {
+                const type = this.getAttribute('data-type');
+                const price = parseInt(this.getAttribute('data-price'));
 
-       this.classList.add('selected');
-       selectedOptions[type] = price;
+                document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
+                    otherCard.classList.remove('selected');
+                });
 
-       calculateTotalPrice();
-   });
-});
-function updatePeopleCount() {
-   const adultCount = Math.max(parseInt(document.getElementById('adult-count').value), 0) || 0;
-   const childCount = Math.max(parseInt(document.getElementById('child-count').value), 0) || 0;
-   
-           // Prices for adults and children
-           const adultPrice = 100000;
-           const childPrice = 50000;
-                       // Calculate total price based on the number of people
-                       const totalAdultPrice = adultCount * adultPrice;
-           const totalChildPrice = childCount * childPrice;
-   
-           // Update selected options
-           selectedOptions.adults = totalAdultPrice;
-           selectedOptions.children = totalChildPrice;
-   
-           calculateTotalPrice();
-}
-function calculateTotalPrice() {
-   const totalPrice = Object.values(selectedOptions).reduce((a, b) => a + b, 0);
-   document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
-}
+                this.classList.add('selected');
+                selectedOptions[type] = price;
 
-function processBooking() {
-   if (Object.keys(selectedOptions).length < 5) {
-       alert('Бүх сонголтоо хийнэ үү!');
-       return;
-   }
+                calculateTotalPrice();
+            });
+        });
+        function updatePeopleCount() {
+            const adultCount = Math.max(parseInt(document.getElementById('adult-count').value), 0) || 0;
+            const childCount = Math.max(parseInt(document.getElementById('child-count').value), 0) || 0;
 
-   const bookingDetails = {
-       duration: document.querySelector('.option-card[data-type="duration"].selected').textContent,
-       hotel: document.querySelector('.option-card[data-type="hotel"].selected').textContent,
-       meal: document.querySelector('.option-card[data-type="meal"].selected').textContent,
-       transport: document.querySelector('.option-card[data-type="transport"].selected').textContent,
-       adults: selectedOptions.adults || 0,
-       children: selectedOptions.children || 0,
-       totalPrice: Object.values(selectedOptions).reduce((a, b) => a + b, 0)
-   };
+            // Prices for adults and children
+            const adultPrice = 100000;
+            const childPrice = 50000;
+            // Calculate total price based on the number of people
+            const totalAdultPrice = adultCount * adultPrice;
+            const totalChildPrice = childCount * childPrice;
 
-   localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
-   window.location.href = 'payment.html';
-}
-   </script>
+            // Update selected options
+            selectedOptions.adults = totalAdultPrice;
+            selectedOptions.children = totalChildPrice;
+
+            calculateTotalPrice();
+        }
+        function calculateTotalPrice() {
+            const totalPrice = Object.values(selectedOptions).reduce((a, b) => a + b, 0);
+            document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
+        }
+
+        // function processBooking() {
+        //     if (Object.keys(selectedOptions).length < 5) {
+        //         alert('Бүх сонголтоо хийнэ үү!');
+        //         return;
+        //     }
+
+        //     const bookingDetails = {
+        //         duration: document.querySelector('.option-card[data-type="duration"].selected').textContent.trim(),
+        //         hotel: document.querySelector('.option-card[data-type="hotel"].selected').textContent.trim(),
+        //         meal: document.querySelector('.option-card[data-type="meal"].selected').textContent.trim(),
+        //         transport: document.querySelector('.option-card[data-type="transport"].selected').textContent.trim(),
+        //         adults: selectedOptions.adults / 100000 || 0, // Calculate based on price
+        //         children: selectedOptions.children / 50000 || 0, // Calculate based on price
+        //         totalPrice: Object.values(selectedOptions).reduce((a, b) => a + b, 0)
+        //     };
+
+        //     // Store booking details in localStorage
+        //     localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+
+        //     // Redirect to payment page
+        //     window.location.href = 'payment.html';
+        // }
+
+        function processBooking() {
+            if (Object.keys(selectedOptions).length < 5) {
+                alert('Бүх сонголтоо хийнэ үү!');
+                return;
+            }
+
+            const bookingDetails = {
+                duration: document.querySelector('.option-card[data-type="duration"].selected').textContent.trim(),
+                hotel: document.querySelector('.option-card[data-type="hotel"].selected').textContent.trim(),
+                meal: document.querySelector('.option-card[data-type="meal"].selected').textContent.trim(),
+                transport: document.querySelector('.option-card[data-type="transport"].selected').textContent.trim(),
+                adults: selectedOptions.adults || 0, // Calculate based on selection
+                children: selectedOptions.children || 0, // Calculate based on selection
+                totalPrice: Object.values(selectedOptions).reduce((a, b) => a + b, 0)
+            };
+
+            // Store booking details in localStorage
+            localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+
+            // Add items to cart and show the cart
+            addToCart(bookingDetails);
+        }
+
+        function addToCart(bookingDetails) {
+            // Get cart data from localStorage
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Add the new booking details to the cart
+            cartItems.push(bookingDetails);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Update cart icon
+            updateCartIcon();
+
+            // Update cart modal
+            updateCartModal();
+        }
+
+        function updateCartIcon() {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            document.getElementById('cartItemCount').textContent = cartItems.length;
+        }
+
+        function updateCartModal() {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+            cartItemsList.innerHTML = '';
+            let totalPrice = 0;
+
+            cartItems.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+            <p><strong>Хугацаа:</strong> ${item.duration}</p>
+            <p><strong>Байр:</strong> ${item.hotel}</p>
+            <p><strong>Хоол:</strong> ${item.meal}</p>
+            <p><strong>Тээвэр:</strong> ${item.transport}</p>
+            <p><strong>Нийт үнэ:</strong> ${item.totalPrice.toLocaleString()}₮</p>
+            <hr>
+        `;
+                cartItemsList.appendChild(itemElement);
+                totalPrice += item.totalPrice;
+            });
+
+            cartTotalPrice.textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
+        }
+
+        function openCart() {
+              window.location.href = 'payment.html';
+            // document.getElementById('cartModal').style.display = 'block';
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function proceedToPayment() {
+            alert('Төлбөр амжилттай хийгдлээ!');
+            // Redirect to payment page or process payment here.
+        }
+
+        document.getElementById('cartIcon').addEventListener('click', openCart);
+
+        // Initial cart icon update
+        // updateCartIcon();
+    </script>
+
+    <script>
+        // Select all option cards
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Toggle the visibility of the associated .apart-select
+                const imgSection = card.querySelector('.apart-select');
+                if (imgSection) {
+                    const isVisible = imgSection.style.display === 'block';
+                    imgSection.style.display = isVisible ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

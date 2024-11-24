@@ -1,0 +1,57 @@
+[
+    {
+        "region": "Lake",
+        "name": "Huwsgul",
+        "image": "assets/huwsgul.jpg",
+        "link": "huvsgul.html"
+    },
+    {
+        "region": "Khangai",
+        "name": "Khustain Nuruu",
+        "image": "assets/hustai.jpg",
+        "link": "khustai.html"
+    },
+    {
+        "region": "Lake",
+        "name": "Hyrgas",
+        "image": "assets/hyrgas.jpg",
+        "link": "hyrgas.html"
+    },
+    {
+        "region": "Gobi",
+        "name": "Hongoriin els",
+        "image": "assets/hongor_els.jpg",
+        "link": "hongoriinels.html"
+    },
+    {
+        "region": "Steppe",
+        "name": "Erdene zuu hiid",
+        "image": "assets/Erdenzuu.jpg",
+        "link": "hiid.html"
+    },
+    {
+        "region": "Europe",
+        "name": "Jishee",
+        "image": "assets/berlin.jpg",
+        "link": "city.html"
+    },
+    {
+        "region": " Khangai",
+        "name": "Orkhon",
+        "image": "assets/Orhonii-hundii-940x520.jpg",
+        "link": "orkhon.html"
+    },
+    {
+        "region": " Khangai",
+        "name": "Saikhanii hutul",
+        "image": "assets/saihaniiHotol.jpg",
+        "link": "saikhan.html"
+    },
+    {
+        "region": " Khangai",
+        "name": "Altai tavan bogd",
+        "image": "assets/AltaiTavanBogd.jpg",
+        "link": "Altai.html"
+    }
+]
+

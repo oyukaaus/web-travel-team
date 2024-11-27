@@ -807,14 +807,12 @@
                             <input type="number" id="adult-count" value="0" min="0"
                                 style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"
                                 onchange="updatePeopleCount()">
-                            <p>Үнэ: 100,000₮</p>
                         </div>
                         <div class="option-cd" data-type="slot" data-price="50000">
                             <h3>Хүүхэд</h3>
                             <input type="number" id="child-count" value="0" min="0"
                                 style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"
                                 onchange="updatePeopleCount()">
-                            <p>Үнэ: 50,000₮</p>
                         </div>
                     </div>
                 </div>
@@ -949,164 +947,118 @@
         });
     </script>
 
-    <script>
-     
-     let selectedOptions = {
-            adults: 0,
-            children: 0,
-            duration: 0,
-            hotel: 0,
-            meal: 0,
-            transport: 0
-        };
+<script>
+    let selectedOptions = {
+        duration: 0,
+        hotel: 0,
+        meal: 0,
+        transport: 0
+    };
 
-        document.querySelectorAll('.option-card').forEach(card => {
-            card.addEventListener('click', function () {
-                const type = this.getAttribute('data-type');
-                const price = parseInt(this.getAttribute('data-price'));
+    let peopleCount = {
+        adults: 0,
+        children: 0
+    };
 
-                document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
-                    otherCard.classList.remove('selected');
-                });
+    // Handle option card selections
+    document.querySelectorAll('.option-card').forEach(card => {
+        card.addEventListener('click', function () {
+            const type = this.getAttribute('data-type');
+            const price = parseInt(this.getAttribute('data-price')) || 0;
 
-                this.classList.add('selected');
-                selectedOptions[type] = price;
-
-                calculateTotalPrice();
+            // Deselect other cards of the same type
+            document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
+                otherCard.classList.remove('selected');
             });
-        });
-        function updatePeopleCount() {
-            const adultCount = Math.max(parseInt(document.getElementById('adult-count').value), 0) || 0;
-            const childCount = Math.max(parseInt(document.getElementById('child-count').value), 0) || 0;
 
-            // Prices for adults and children
-            const adultPrice = 100000;
-            const childPrice = 50000;
-            // Calculate total price based on the number of people
-            const totalAdultPrice = adultCount * adultPrice;
-            const totalChildPrice = childCount * childPrice;
-
-            // Update selected options
-            selectedOptions.adults = totalAdultPrice;
-            selectedOptions.children = totalChildPrice;
+            // Select this card
+            this.classList.add('selected');
+            selectedOptions[type] = price;
 
             calculateTotalPrice();
-        }
-        function calculateTotalPrice() {
-            const totalPrice = Object.values(selectedOptions).reduce((a, b) => a + b, 0);
-            document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
-        }
+        });
+    });
 
-        // function processBooking() {
-        //     if (Object.keys(selectedOptions).length < 5) {
-        //         alert('Бүх сонголтоо хийнэ үү!');
-        //         return;
-        //     }
+    // Update the people count
+    function updatePeopleCount() {
+        const adultCount = Math.max(parseInt(document.getElementById('adult-count').value) || 0, 0);
+        const childCount = Math.max(parseInt(document.getElementById('child-count').value) || 0, 0);
 
-        //     const bookingDetails = {
-        //         duration: document.querySelector('.option-card[data-type="duration"].selected').textContent.trim(),
-        //         hotel: document.querySelector('.option-card[data-type="hotel"].selected').textContent.trim(),
-        //         meal: document.querySelector('.option-card[data-type="meal"].selected').textContent.trim(),
-        //         transport: document.querySelector('.option-card[data-type="transport"].selected').textContent.trim(),
-        //         adults: selectedOptions.adults / 100000 || 0, // Calculate based on price
-        //         children: selectedOptions.children / 50000 || 0, // Calculate based on price
-        //         totalPrice: Object.values(selectedOptions).reduce((a, b) => a + b, 0)
-        //     };
+        peopleCount.adults = adultCount;
+        peopleCount.children = childCount;
 
-        //     // Store booking details in localStorage
-        //     localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+        calculateTotalPrice();
+    }
 
-        //     // Redirect to payment page
-        //     window.location.href = 'payment.html';
-        // }
+    // Calculate the total price
+    function calculateTotalPrice() {
+        const basePrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0);
 
-        function processBooking() {
-            if (Object.keys(selectedOptions).length < 5) {
-                alert('Бүх сонголтоо хийнэ үү!');
-                return;
-            }
+        // Compute total people count
+        const totalPeople = (peopleCount.adults || 0) + (peopleCount.children || 0);
 
-            const bookingDetails = {
-                duration: document.querySelector('.option-card[data-type="duration"].selected').textContent.trim(),
-                hotel: document.querySelector('.option-card[data-type="hotel"].selected').textContent.trim(),
-                meal: document.querySelector('.option-card[data-type="meal"].selected').textContent.trim(),
-                transport: document.querySelector('.option-card[data-type="transport"].selected').textContent.trim(),
-                adults: selectedOptions.adults || 0, // Calculate based on selection
-                children: selectedOptions.children || 0, // Calculate based on selection
-                totalPrice: Object.values(selectedOptions).reduce((a, b) => a + b, 0)
-            };
+        // Multiply base price by the number of people
+        const totalPrice = basePrice * (totalPeople > 0 ? totalPeople : 1);
 
-            // Store booking details in localStorage
-            localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+        // Display total price
+        document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
+    }
 
-            // Add items to cart and show the cart
-            addToCart(bookingDetails);
-        }
+    // Add event listeners for people count inputs
+    document.getElementById('adult-count').addEventListener('input', updatePeopleCount);
+    document.getElementById('child-count').addEventListener('input', updatePeopleCount);
 
-        function addToCart(bookingDetails) {
-            // Get cart data from localStorage
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    // Process booking
+   
+    function processBooking() {
+    // Ensure all required selections are made
+    if (!Object.values(selectedOptions).every(value => value > 0)) {
+        alert('Бүх сонголтоо хийнэ үү!');
+        return;
+    }
 
-            // Add the new booking details to the cart
-            cartItems.push(bookingDetails);
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    // Calculate total price
+    const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
+                       ((peopleCount.adults || 0) + (peopleCount.children || 0));
 
-            // Update cart icon
-            updateCartIcon();
+    // Collect booking details
+    const bookingDetails = {
+        duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
+        hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
+        meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
+        transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
+        adults: peopleCount.adults || 0,
+        children: peopleCount.children || 0,
+        totalPrice
+    };
 
-            // Update cart modal
-            updateCartModal();
-        }
+    // Store booking details in localStorage
+    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
 
-        function updateCartIcon() {
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            document.getElementById('cartItemCount').textContent = cartItems.length;
-        }
+    // Redirect to payment.html
+    window.location.href = 'payment.html';
+}
 
-        function updateCartModal() {
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            const cartItemsList = document.getElementById('cartItemsList');
-            const cartTotalPrice = document.getElementById('cartTotalPrice');
 
-            cartItemsList.innerHTML = '';
-            let totalPrice = 0;
+    // Add to cart logic
+    function addToCart(bookingDetails) {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        cartItems.push(bookingDetails);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-            cartItems.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.innerHTML = `
-            <p><strong>Хугацаа:</strong> ${item.duration}</p>
-            <p><strong>Байр:</strong> ${item.hotel}</p>
-            <p><strong>Хоол:</strong> ${item.meal}</p>
-            <p><strong>Тээвэр:</strong> ${item.transport}</p>
-            <p><strong>Нийт үнэ:</strong> ${item.totalPrice.toLocaleString()}₮</p>
-            <hr>
-        `;
-                cartItemsList.appendChild(itemElement);
-                totalPrice += item.totalPrice;
-            });
+        updateCartIcon();
+    }
 
-            cartTotalPrice.textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
-        }
+    // Update cart icon
+    function updateCartIcon() {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        document.getElementById('cartItemCount').textContent = cartItems.length;
+    }
 
-        function openCart() {
-              window.location.href = 'payment.html';
-            // document.getElementById('cartModal').style.display = 'block';
-        }
+    // Initialize
+    updateCartIcon();
+</script>
 
-        function closeCart() {
-            document.getElementById('cartModal').style.display = 'none';
-        }
-
-        function proceedToPayment() {
-            alert('Төлбөр амжилттай хийгдлээ!');
-            // Redirect to payment page or process payment here.
-        }
-
-        document.getElementById('cartIcon').addEventListener('click', openCart);
-
-        // Initial cart icon update
-        // updateCartIcon();
-    </script>
 
     <script>
         // Select all option cards

@@ -2,21 +2,18 @@
     {
         "name": "Huvsgul Lake",
         "region": "Lake",
-        "pricePerDay": 147,
         "image": "assets/huwsgul.jpg",
         "description": "A pristine lake located in northern Mongolia, ideal for outdoor activities."
     },
     {
         "name": "Altai Tavan Bogd",
         "region": "Khangai",
-        "pricePerDay": 120,
         "image": "assets/AltaiTavanBogd.jpg",
         "description": "A beautiful mountain range with stunning landscapes and cultural significance."
     },
     {
         "name": "Hyrgas Lake",
         "region": "Lake",
-        "pricePerDay": 100,
         "image": "assets/hyrgas.jpg",
         "description": "A scenic lake with unique flora and fauna, perfect for relaxation and fishing."
     }

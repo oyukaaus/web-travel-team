@@ -3,55 +3,73 @@
         "region": "Lake",
         "name": "Huwsgul",
         "image": "assets/huwsgul.jpg",
-        "link": "huvsgul.html"
+        "link": "huvsgul.html",
+        "rating": 5,
+        "description": "Хөвсгөл нуур буюу Хөвсгөл далай нь Монгол улсын хойд хэсэгт Хөвсгөл аймагт далайн түвшнээс 1645 метр өндөрт оршдог цэнгэг устай нуур. Энэ нуур нь Монголын хамгийн их эзлэхүүнтэй, хамгийн гүн нуур юм."
     },
     {
         "region": "Khangai",
         "name": "Khustain Nuruu",
         "image": "assets/hustai.jpg",
-        "link": "khustai.html"
+        "link": "khustai.html",
+        "rating": 4,
+        "description": "Төв аймгийн Алтанбулаг, Аргалант, Баянхангай сумдын зааг нутагт Улаанбаатараас баруун тийш 80 километрт оршдог. Баруун өмнөөс зүүн хойшоо чиглэлтэй сунаж тогтсон. Дунджаар 1500-1700 метр өндөр. Хамгийн өндөр цэг нь Хөшөөт уул бөгөөд 1842 метр"
     },
     {
         "region": "Lake",
         "name": "Hyrgas",
         "image": "assets/hyrgas.jpg",
-        "link": "hyrgas.html"
+        "link": "hyrgas.html",
+        "rating": 3,
+        "description": "Хяргас нуур нь Увс аймагт байрлах, Их нууруудын хотгор дахь эрдэст нуур юм.Хяргас нуурын ус нь үнэргүй, шорвог амттай, өнгө, булингардалт нь цаг, агаар, улирлын онцлогоос шалтгаалж өөрчлөгдөнө. "
     },
     {
         "region": "Gobi",
         "name": "Hongoriin els",
         "image": "assets/hongor_els.jpg",
-        "link": "hongoriinels.html"
+        "link": "hongoriinels.html",
+        "rating": 2,
+        "description": "Хонгорын элс нь Өмнөговь аймгийн Сэврэй.[2], Баяндалай сумдын.[3] нутагт орших бөгөөд Сэврэй, Зөөлөнгийн нурууны.[4] араар 180 орчим км үргэлжилдэг элсэн манхан юм."
     },
     {
         "region": "Steppe",
         "name": "Erdene zuu hiid",
         "image": "assets/Erdenzuu.jpg",
-        "link": "hiid.html"
+        "link": "hiid.html",
+        "rating": 1,
+        "description": "Эрдэнэ зуу хийд нь Монгол Улс дахь хамгийн эртний Бурханы шашны хийд юм. Тус хийд нь Өвөрхангай аймгийн Хархорин сумын төвийн ойролцоо, эртний хот Хархорумын туурийн хажууд байрладаг."
     },
     {
         "region": "Europe",
         "name": "Jishee",
         "image": "assets/berlin.jpg",
-        "link": "city.html"
+        "link": "city.html",
+        "rating": 2,
+        "description": "A European city known for its history, culture, and architecture."
     },
     {
         "region": " Khangai",
         "name": "Orkhon",
         "image": "assets/Orhonii-hundii-940x520.jpg",
-        "link": "orkhon.html"
+        "link": "orkhon.html",
+        "rating": 2.5,
+        "description": "Орхоны хөндий бол Орхон гол, Монгол улсын төв хэсэгт, нийслэл Улаанбаатар хотоос баруун тийш 320 км зайд оршдог. Хоёр мянга гаруй жилийн турш үргэлжилсэн нүүдлийн мал аж ахуйн уламжлалын хөгжлийг илэрхийлдэг газар юм."
     },
     {
         "region": " Khangai",
         "name": "Saikhanii hutul",
         "image": "assets/saihaniiHotol.jpg",
-        "link": "saikhan.html"
+        "link": "saikhan.html",
+        "rating": 4,
+        "description": "Сэлэнгэ аймгийн төвөөс 10 хүрэхгүй км-ийн зайтай, Монгол-Оросын хил орчимд байгалийн үзэсгэлэн бүрдсэн Сайханы хөтөл хэмээх сайхан газар бий. "
     },
     {
         "region": " Khangai",
         "name": "Altai tavan bogd",
         "image": "assets/AltaiTavanBogd.jpg",
-        "link": "Altai.html"
+        "link": "Altai.html",
+        "rating": 3.5,
+        "description": "Монгол Алтайн нурууны Алтай Таван Богд уул нь Монгол улсын хамгийн өндөр уулс юм. Энэ ч утгаараа Монгол орны дээвэр хэмээгддэг. Таван Богд уул нь Баян-Өлгий аймгийн Улаанхус сумд оршдог."
     }
 ]
 

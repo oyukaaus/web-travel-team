@@ -203,7 +203,7 @@
                 .then(data => {
                     // Function to render articles
                     function renderArticles(filterRegion = 'All', searchTerm = '') {
-                        cityGrid.innerHTML = ''; // Clear previous content
+                        cityGrid.innerHTML = '';
     
                         const filteredData = data.filter(item => {
                             const matchesRegion = filterRegion === 'All' || item.region === filterRegion;
@@ -211,15 +211,28 @@
                             return matchesRegion && matchesSearch;
                         });
     
-                        // Populate city-grid with filtered articles
                         filteredData.forEach(item => {
                             const article = document.createElement('article');
                             article.setAttribute('data-region', item.region);
+                            
+                            const stars = '★'.repeat(item.rating) + '☆'.repeat(5 - item.rating);
+                            
                             article.innerHTML = `
-                                <a href="${item.link}">
-                                    <img src="${item.image}" alt="${item.name}">
-                                    <h4>${item.name}</h4>
-                                </a>
+                                <div class="flip-card">
+                                    <div class="flip-card-front">
+                                        <img src="${item.image}" alt="${item.name}">
+                                        <h4>${item.name}</h4>
+                                        <div class="rating" title="${item.rating} out of 5 stars">
+                                            <span class="stars">${stars}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>${item.name}</h4>
+                                        <p>${item.description}</p>
+                                        <p>Region: ${item.region}</p>
+                                        <a href="${item.link}" class="learn-more">Learn More</a>
+                                    </div>
+                                </div>
                             `;
                             cityGrid.appendChild(article);
                         });

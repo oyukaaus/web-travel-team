@@ -227,13 +227,56 @@ main {
     }
     
     .city-grid article {
-        text-align: center;
-        margin: 1rem;
+        position: relative;
+        perspective: 1000px;
+        height: 250px; /* Fixed height for consistent flipping */
+    }
     
-        & a {
-            text-decoration: none;
-            color: var(--primary-text-color);
-        }
+    .city-grid .flip-card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+    
+    .city-grid article:hover .flip-card {
+        transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .flip-card-front {
+        background-color: #fff;
+    }
+    
+    .flip-card-back {
+        background-color: #3c9d53;
+        color: white;
+        transform: rotateY(180deg);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .flip-card-back h4 {
+        margin-bottom: 10px;
+    }
+    
+    .flip-card-back p {
+        font-size: 0.9em;
+        line-height: 1.4;
     }
     
     @media (max-width: 48rem) {
@@ -361,4 +404,13 @@ footer {
     .links .social a {
         margin-right: 0.3125rem;
     }
+}
+
+.rating {
+    margin-top: 5px;
+}
+
+.stars {
+    color: #51504c;  /* Golden color for stars */
+    font-size: 1.2em;
 }

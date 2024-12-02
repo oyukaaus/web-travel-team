@@ -217,7 +217,6 @@
         function updateTotalPrice() {
             const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
             if (bookingDetails) {
-                bookingDetails.totalPrice = (bookingDetails.adults * 100000) + (bookingDetails.children * 50000);
                 localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
                 document.getElementById('totalPrice').textContent = `Нийт үнэ: ${bookingDetails.totalPrice.toLocaleString()}₮`;
             }

@@ -348,6 +348,27 @@ footer {
     opacity: 0.9; /* Optional: зөөлөн эффект нэмэх */
 }
 
+.rating {
+    margin: 5px 0;
+}
+
+.stars {
+    color: #5a5a57;  /* Golden color for stars */
+    font-size: 1.2em;
+}
+
+.destination-grid article a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.destination-grid article h4 {
+    margin: 10px 0 5px 0;
+}
+
 
 
 

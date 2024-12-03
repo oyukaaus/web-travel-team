@@ -82,6 +82,18 @@
             color: var(--accent-color);
         }
 
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
         /* .hero-section {
             position: relative;
             height: 100vh;
@@ -133,33 +145,23 @@
             z-index: 1;
         }
 
-        /* Давхардсан animation class хасах */
-        .animate-bg {
-            animation: slide-bg 0.5s ease-in-out;
-        }
-
-        /* Ашиглагдаагүй animation хасах */
         @keyframes slide-bg {
             0% {
                 opacity: 0;
                 transform: translateX(100%);
             }
+
             50% {
                 opacity: 1;
                 transform: translateX(0%);
             }
+
             100% {
                 opacity: 0;
                 transform: translateX(-100%);
             }
         }
 
-        /* Ашиглагдаагүй JavaScript код хасах 
-         heroSection.classList.add('animate-bg');
-        setTimeout(() => {
-            heroSection.classList.remove('animate-bg');
-        }, 500);
-*/
 
         .hero-section h1 {
             font-size: 3.5rem;
@@ -354,77 +356,81 @@
 
         /* Reviews Section */
         .reviews-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
+    padding: 4rem 2rem;
+    text-align: center;
+}
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.reviews-section h2,
+.reviews-section h3 {
+    margin-bottom: 2rem;
+}
 
-        .review-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .reviewer {
-            margin-top: 1rem;
-            font-weight: bold;
-        }
+.review-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-        /* Save Tour Button */
-        .save-tour {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+.reviewer {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: black;
+}
+.reviewer.new {
+    font-weight: bold;
+    color: black;
+}
+.comment-section {
+    margin-top: 3rem;
+}
 
-        .save-tour:hover {
-            transform: scale(1.1);
-        }
+#comment-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
 
-        .save-tour.saved svg {
-            fill: #ff4757;
-            stroke: #ff4757;
-        }
+#comment-form input,
+#comment-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
 
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background-color: #333;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
+#comment-form button {
+    background-color: var(--accent-color, #007BFF);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
+#comment-form button:hover {
+    background-color: var(--accent-hover-color, #0056b3);
+}
+
+#comment-error {
+    color: orange;
+    text-align: center;
+    margin-top: 1rem;
+    display: none;
+}
+
 
         /* Footer */
         footer {
@@ -617,6 +623,7 @@
     </style>
 </head>
 
+
 <body>
     <nav class="travel-nav">
         <div class="nav-container">
@@ -642,13 +649,14 @@
         <button onclick="closeCart()">Хаах</button>
     </div>
     <div class="hero-section" id="hero-section"
-        data-bg-images="assets/hongor1.jpg,assets/hongor2.jpg,assets/hongor3.jpg">
+        data-bg-images="assets/huwsgul.jpg,assets/tsaatan.jpg,assets/hyrgas.jpg">
         <h1>Хонгорын Элс</h1>
     </div>
 
     <section class="destination-overview">
         <h2>Хонгорын Элс</h2>
         <p>Хонгорын Элс нь Говийн гурван сайхны нэг бөгөөд "Дуут манхан" хэмээн алдаршсан. 180 км урт, 3-15 км өргөн, 80-300 метр өндөр элсэн манхан юм. Салхины нөлөөгөөр элс хөдлөх үед дуу гарах онцлогтой.</p>
+    </section</p>
     </section>
 
     <section>
@@ -658,18 +666,17 @@
                 <p>Дэлхийн хамгийн том элсэн манхны нэг</p>
             </div>
             <div class="highlight-card">
-                <h3>Адал явдал</h3>
+                <h3>Соёл</h3>
                 <p>Элсэн дээгүүр явган болон тэмээгээр аялах</p>
             </div>
             <div class="highlight-cd">
                 <iframe width="100%" height="150"
-                    src="https://www.youtube.com/embed/YOUR_KHONGOR_VIDEO_ID?controls=0&modestbranding=1&rel=0&autoplay=1"
+                    src="https://www.youtube.com/embed/ttT8EoyUe6U?controls=0&modestbranding=1&rel=0&autoplay=1"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
             </div>
-        </div>
     </section>
 
     <section class="itinerary-section">
@@ -712,7 +719,9 @@
                         <p>Даланзадгад хот руу буцах.</p>
                     </div>
                 </div>
+
             </div>
+
             <button class="slider-btn next">→</button>
         </div>
     </section>
@@ -734,10 +743,11 @@
                 <h3>Аяллын үнэд багтаагүй</h3>
                 <ul class="package-list not-included-list">
                     <li>Онгоцны тийз</li>
-                    <li>Нэмэлт спорт төрлүүд</li>
+                    <li>Нэмэлт эмчилгээ</li>
                     <li>Хувийн зардал</li>
                     <li>Нэмэлт үйл ажиллагааны төлбөр</li>
                     <li>Согтууруулах ундаа</li>
+
                 </ul>
             </div>
         </div>
@@ -887,21 +897,32 @@
         <div class="reviews-grid">
             <div class="review-card">
                 <p>"Элсэн манхан дээрээс харсан нар жаргалт үнэхээр гайхалтай байлаа."</p>
-                <p>- Д.Болормаа</p>
+                <p class="reviewer">- Д.Болормаа</p>
             </div>
             <div class="review-card">
-                <p>"Тэмээн аялал, говийн байгаль үзэсгэлэнтэй."</p>
-                <p>- Б.Ганбаатар</p>
+                <p>"Тэмээн аялал, говийн байгаль үзэсгэлэнтэй.</p>
+                <p class="reviewer">- Б.Ганбаатар</p>
             </div>
             <div class="review-card">
                 <p>"Дуут манханы дуу чимээ бүр үнэхээр сонсогддог юм байна."</p>
-                <p>- С.Энхжаргал</p>
+                <p class="reviewer">- С.Энхжаргал</p>
             </div>
         </div>
+        <div class="comment-section">
+            <h3>Сэтгэгдэл үлдээх</h3>
+            <form id="comment-form">
+                <input type="text" id="name-box" placeholder="Таны нэр" required>
+                <textarea id="comment-box" rows="4" placeholder="Сэтгэгдэлээ энд бичнэ үү..." required></textarea>
+                <button type="submit">Илгээх</button>
+            </form>
+            <div id="comment-error">Нэр болон сэтгэгдэл бичих шаардлагатай!</div>
+        </div>
     </section>
+    
+    
 
     <footer>
-        <p>© 2024 Хөвсгөл Нуур Аялал. Бүх эрх хамгаалагдсан.</p>
+        <p>© 2024 Хонгорын Элс Аялал. Бүх эрх хамгаалагдсан.</p>
         <div style="margin-top: 1rem;">
             <a href="#" style="color: rgb(252, 249, 249); margin: 0 1rem;">Нүүр</a>
             <a href="#" style="color: rgb(249, 250, 252); margin: 0 1rem;">Холбоо</a>
@@ -924,40 +945,71 @@
     </script>
     <script>
         const commentForm = document.getElementById('comment-form');
-        const nameBox = document.getElementById('name-box'); // New name input field
-        const commentBox = document.getElementById('comment-box');
-        const commentError = document.getElementById('comment-error');
-        const reviewsGrid = document.querySelector('.reviews-grid');
+const nameBox = document.getElementById('name-box');
+const commentBox = document.getElementById('comment-box');
+const commentError = document.getElementById('comment-error');
+const reviewsGrid = document.querySelector('.reviews-grid');
 
-        commentForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent page reload
+// Load comments from localStorage
+function loadComments() {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.forEach(comment => addCommentToGrid(comment.name, comment.text));
+}
 
-            const nameText = nameBox.value.trim(); // Get name value
-            const commentText = commentBox.value.trim();
+// Save comments to localStorage
+function saveComment(name, text) {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.push({ name, text });
+    localStorage.setItem('comments', JSON.stringify(comments));
+}
 
-            // Check if both name and comment are filled out
-            if (nameText === '' || commentText === '') {
-                commentError.style.display = 'block'; // Show error message
-            } else {
-                commentError.style.display = 'none';
+// Remove a comment from localStorage
+function removeComment(name, text) {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    const updatedComments = comments.filter(comment => comment.name !== name || comment.text !== text);
+    localStorage.setItem('comments', JSON.stringify(updatedComments));
+}
 
-                // Create a new review card
-                const newReview = document.createElement('div');
-                newReview.classList.add('review-card');
-                newReview.innerHTML = `
-            <p>"${commentText}"</p>
-            <p>- ${nameText}</p> <!-- Display the name of the guest -->
-        `;
+// Add a comment to the grid
+function addCommentToGrid(name, text) {
+    const newReview = document.createElement('div');
+    newReview.classList.add('review-card');
+    newReview.innerHTML = `
+        <p>"${text}"</p>
+        <p class="reviewer new">- ${name}</p>
+        <button class="remove-btn" style="background-color: orange; color: white; border: none; padding: 0.5rem; cursor: pointer; border-radius: 4px;">Устгах</button>
+    `;
 
-                // Append the new comment
-                reviewsGrid.appendChild(newReview);
+    const removeBtn = newReview.querySelector('.remove-btn');
+    removeBtn.addEventListener('click', () => {
+        reviewsGrid.removeChild(newReview);
+        removeComment(name, text);
+    });
 
-                // Clear the input fields
-                nameBox.value = '';
-                commentBox.value = '';
-            }
-        });
+    reviewsGrid.appendChild(newReview);
+}
 
+// Handle form submission
+commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nameText = nameBox.value.trim();
+    const commentText = commentBox.value.trim();
+
+    if (nameText === '' || commentText === '') {
+        commentError.style.display = 'block';
+    } else {
+        commentError.style.display = 'none';
+        addCommentToGrid(nameText, commentText);
+        saveComment(nameText, commentText);
+
+        nameBox.value = '';
+        commentBox.value = '';
+    }
+});
+
+// Load comments when the page loads
+document.addEventListener('DOMContentLoaded', loadComments);
 
     </script>
     <script>

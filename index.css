@@ -185,29 +185,61 @@ main article {
     }
 }
 
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container for the icon items */
 .icon-container {
-    text-align: center;
-    margin-top: 0;
-
-    & article {
-        display: inline-block;
-        margin: 2.5%;
-        text-align: center;
-
-        & img {
-            max-width: 100%;
-            height: auto;
-        }
-    }
+    display: flex;
+    margin-left: 400px;
+    gap: 10px; /* Distribute evenly, no extra space between items */
+    align-items: center; /* Align items vertically in the center */
+    padding: 10px; /* Less padding around the container */
 }
-.icon-container article span {
-    display: block;
-    font-size: 40px;
+
+/* Styling for each article */
+.icon-container article {
+    text-align: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px; /* Less padding in each article */
+    width: 100px; /* Adjust width to reduce the space between icons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.icon-container article:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styling */
+.icon-container img {
+    width: 40px; /* Smaller icon size */
+    height: 40px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+/* Header styling */
+.icon-container h4 {
+    font-size: 1rem; /* Smaller text size */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Span styling for the numbers */
+.icon-container span {
+    font-size: 2rem;
     font-weight: bold;
-    color: #000;
-    text-align: center;
-    margin-top: 5px;
+    color: black;
 }
+
 
 
 section {

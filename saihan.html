@@ -694,27 +694,118 @@
 
     <section class="package-details">
         <div class="package-columns">
-            <div class="package-column">
-                <h3>Аяллын үнэд багтсан</h3>
-                <ul class="package-list included-list">
-                    <li>Зочид буудалд байрлах</li>
-                    <li>Өглөө, өдөр, оройн хоол</li>
-                    <li>Мэргэжлийн хөтөч</li>
-                    <li>Тээврийн үйлчилгээ</li>
-                    <li>Спортын хэрэгслийн түрээс</li>
-                    <li>Морин аялал</li>
-                    <li>Аяллын даатгал</li>
-                </ul>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21334.157874499092!2d106.91376671789392!3d47.91776010839727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d96925374514c49%3A0x6c9b67e3b13b7a47!2sSaikhan%20Pass!5e0!3m2!1sen!2smn!4v1710861547789!5m2!1sen!2smn"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="package-column">
-                <h3>Аяллын үнэд багтаагүй</h3>
-                <ul class="package-list not-included-list">
-                    <li>Хувийн зардал</li>
-                    <li>Нэмэлт спорт төрлүүд</li>
-                    <li>Гэрэл зургийн төлбөр</li>
-                    <li>Нэмэлт үйл ажиллагааны төлбөр</li>
-                    <li>Согтууруулах ундаа</li>
-                </ul>
+            <div class="booking-container">
+                <div class="booking-section">
+                    <h2>📅 Аяллын Хугацаа</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="duration" data-price="150000">
+                            <h3>3 өдөр 2 шөнө</h3>
+                            <p>Үндсэн хөтөлбөр</p>
+                            <p>Үнэ: 150,000₮</p>
+                        </div>
+                        <div class="option-card" data-type="duration" data-price="250000">
+                            <h3>5 өдөр 4 шөнө</h3>
+                            <p>Өргөтгөсөн хөтөлбөр</p>
+                            <p>Үнэ: 250,000₮</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h2>🏨 Байрны Сонголт</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="hotel" data-price="50000">
+                            <h3>Стандарт Байр</h3>
+                            <p>Хамгийн бага өртөгтэй</p>
+                            <p>Үнэ: 50,000₮/шөнө</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/saihan1.jpg" alt="" class="booking image">
+                                <img src="assets/saihan2.jpg" alt="" class="booking image">
+                                <img src="assets/saihan3.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="hotel" data-price="100000">
+                            <h3>Делюкс Байр</h3>
+                            <p>Тав тухтай өрөө</p>
+                            <p>Үнэ: 100,000₮/шөнө</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/saihan4.jpg" alt="" class="booking image">
+                                <img src="assets/saihan5.jpg" alt="" class="booking image">
+                                <img src="assets/saihan6.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="hotel" data-price="150000">
+                            <h3>VIP Байр</h3>
+                            <p>Бүх төрлийн үйлчилгээтэй</p>
+                            <p>Үнэ: 150,000₮/шөнө</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/huvsgul1.jpg" alt="" class="booking image">
+                                <img src="assets/huvsgul2.jpeg" alt="" class="booking image">
+                                <img src="assets/huvsgul3.jpeg" alt="" class="booking image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h2>🍽️ Хоолны Сонголт</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="meal" data-price="25000">
+                            <h3>Энгийн Хоол</h3>
+                            <p>Өдөрт 3 удаа</p>
+                            <p>Үнэ: 25,000₮/хүн</p>
+                        </div>
+                        <div class="option-card" data-type="meal" data-price="45000">
+                            <h3>Тансаг Хоол</h3>
+                            <p>Өдөрт 3 удаа + Амттан</p>
+                            <p>Үнэ: 45,000₮/хүн</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h2>🚗 Тээврийн Хэрэгсэл</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="transport" data-price="30000">
+                            <h3>Энгийн Автобус</h3>
+                            <p>Том оврын автобус</p>
+                            <p>Үнэ: 30,000₮/хүн</p>
+                        </div>
+                        <div class="option-card" data-type="transport" data-price="50000">
+                            <h3>VIP Автобус</h3>
+                            <p>Тав тухтай автобус</p>
+                            <p>Үнэ: 50,000₮/хүн</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h2>👥 Хүний Тоо</h2>
+                    <div class="people-counter">
+                        <div class="counter-group">
+                            <label for="adult-count">Том хүн:</label>
+                            <input type="number" id="adult-count" min="0" value="0" onchange="updatePeopleCount()">
+                        </div>
+                        <div class="counter-group">
+                            <label for="child-count">Хүүхэд:</label>
+                            <input type="number" id="child-count" min="0" value="0" onchange="updatePeopleCount()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="total-price" id="totalPrice">
+                    Нийт үнэ: 0₮
+                </div>
+
+                <button class="booking-button" onclick="processBooking()">
+                    Захиалах
+                </button>
             </div>
         </div>
     </section>
@@ -803,16 +894,14 @@
 
     // Handle option card selections
     document.querySelectorAll('.option-card').forEach(card => {
-        card.addEventListener('click', function () {
+        card.addEventListener('click', function() {
             const type = this.getAttribute('data-type');
             const price = parseInt(this.getAttribute('data-price')) || 0;
 
-            // Deselect other cards of the same type
             document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
                 otherCard.classList.remove('selected');
             });
 
-            // Select this card
             this.classList.add('selected');
             selectedOptions[type] = price;
 
@@ -820,7 +909,6 @@
         });
     });
 
-    // Update the people count
     function updatePeopleCount() {
         const adultCount = Math.max(parseInt(document.getElementById('adult-count').value) || 0, 0);
         const childCount = Math.max(parseInt(document.getElementById('child-count').value) || 0, 0);
@@ -831,73 +919,35 @@
         calculateTotalPrice();
     }
 
-    // Calculate the total price
     function calculateTotalPrice() {
         const basePrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0);
-
-        // Compute total people count
         const totalPeople = (peopleCount.adults || 0) + (peopleCount.children || 0);
-
-        // Multiply base price by the number of people
         const totalPrice = basePrice * (totalPeople > 0 ? totalPeople : 1);
-
-        // Display total price
         document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
     }
 
-    // Add event listeners for people count inputs
-    document.getElementById('adult-count').addEventListener('input', updatePeopleCount);
-    document.getElementById('child-count').addEventListener('input', updatePeopleCount);
-
-    // Process booking
-   
     function processBooking() {
-    // Ensure all required selections are made
-    if (!Object.values(selectedOptions).every(value => value > 0)) {
-        alert('Бүх сонголтоо хийнэ үү!');
-        return;
+        if (!Object.values(selectedOptions).every(value => value > 0)) {
+            alert('Бүх сонголтоо хийнэ үү!');
+            return;
+        }
+
+        const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
+                          ((peopleCount.adults || 0) + (peopleCount.children || 0));
+
+        const bookingDetails = {
+            duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
+            hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
+            meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
+            transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
+            adults: peopleCount.adults || 0,
+            children: peopleCount.children || 0,
+            totalPrice
+        };
+
+        localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+        window.location.href = 'payment.html';
     }
-
-    // Calculate total price
-    const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
-                       ((peopleCount.adults || 0) + (peopleCount.children || 0));
-
-    // Collect booking details
-    const bookingDetails = {
-        duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
-        hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
-        meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
-        transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
-        adults: peopleCount.adults || 0,
-        children: peopleCount.children || 0,
-        totalPrice
-    };
-
-    // Store booking details in localStorage
-    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
-
-    // Redirect to payment.html
-    window.location.href = 'payment.html';
-}
-
-
-    // Add to cart logic
-    function addToCart(bookingDetails) {
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        cartItems.push(bookingDetails);
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-        updateCartIcon();
-    }
-
-    // Update cart icon
-    function updateCartIcon() {
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        document.getElementById('cartItemCount').textContent = cartItems.length;
-    }
-
-    // Initialize
-    updateCartIcon();
 </script>
 
 

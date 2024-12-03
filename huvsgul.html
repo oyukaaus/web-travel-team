@@ -724,7 +724,11 @@
                 <ul class="package-list included-list">
                     <li>Зочид буудлын байрлах</li>
                     <li>Өглөө, өдөр, оройн хоол</li>
+<<<<<<< HEAD
                     <li>Мэргэжлийн хөтөч үйлчилгээ</li>
+=======
+                    <li>Мэргэжлийн хөөч үйлчилгээ</li>
+>>>>>>> 9687e9ef617857f66abf6126a6586f037a24de6a
                     <li>Тээврийн үйлчилгээ</li>
                     <li>Нуур дээрх завин аялал</li>
                     <li>Орон нутгийн соёлын хөтөлбөр</li>
@@ -896,8 +900,13 @@
                 <p class="reviewer">- С.Болд</p>
             </div>
             <div class="review-card">
+<<<<<<< HEAD
                 <p>"Адал явдалт, сонирхолтой аялал байсан."</p>
                 <p class="reviewer">- Д.Оюун</p>
+=======
+                <p>"Адал явдалт, сонирхолто аялал байсан."</p>
+                <p>- Д.Оюун</p>
+>>>>>>> 9687e9ef617857f66abf6126a6586f037a24de6a
             </div>
         </div>
         <div class="comment-section">
@@ -1095,54 +1104,34 @@ document.addEventListener('DOMContentLoaded', loadComments);
     document.getElementById('child-count').addEventListener('input', updatePeopleCount);
 
     // Process booking
-   
     function processBooking() {
-    // Ensure all required selections are made
-    if (!Object.values(selectedOptions).every(value => value > 0)) {
-        alert('Бүх сонголтоо хийнэ үү!');
-        return;
+        // Ensure all required selections are made
+        if (!Object.values(selectedOptions).every(value => value > 0)) {
+            alert('Бүх сонголтоо хийнэ үү!');
+            return;
+        }
+
+        // Calculate total price
+        const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
+                          ((peopleCount.adults || 0) + (peopleCount.children || 0));
+
+        // Collect booking details
+        const bookingDetails = {
+            duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
+            hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
+            meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
+            transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
+            adults: peopleCount.adults || 0,
+            children: peopleCount.children || 0,
+            totalPrice
+        };
+
+        // Store booking details in localStorage
+        localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+
+        // Redirect to payment.html
+        window.location.href = 'payment.html';
     }
-
-    // Calculate total price
-    const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
-                       ((peopleCount.adults || 0) + (peopleCount.children || 0));
-
-    // Collect booking details
-    const bookingDetails = {
-        duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
-        hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
-        meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
-        transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
-        adults: peopleCount.adults || 0,
-        children: peopleCount.children || 0,
-        totalPrice
-    };
-
-    // Store booking details in localStorage
-    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
-
-    // Redirect to payment.html
-    window.location.href = 'payment.html';
-}
-
-
-    // Add to cart logic
-    function addToCart(bookingDetails) {
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        cartItems.push(bookingDetails);
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-        updateCartIcon();
-    }
-
-    // Update cart icon
-    function updateCartIcon() {
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        document.getElementById('cartItemCount').textContent = cartItems.length;
-    }
-
-    // Initialize
-    updateCartIcon();
 </script>
 
 

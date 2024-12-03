@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="mn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,23 +33,34 @@
 
         .travel-nav {
             background: rgba(44, 82, 130, 0.95);
+            /* Semi-transparent background */
             position: fixed;
+            /* Ensures it stays at the top */
+            top: 0;
+            /* Aligns it to the top of the page */
             width: 100%;
+            /* Spans the full width */
             z-index: 1000;
+            /* Higher than the slider */
             backdrop-filter: blur(8px);
+            /* Adds a modern blur effect */
         }
 
+
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            position: fixed;
+            top: 0;
+            width: 100%;
+
             padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
         }
 
         .logo {
-            width: 100px;
+            width: 150px;
             height: auto;
         }
 
@@ -56,10 +68,11 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+
         }
 
         .nav-links a {
-            color: var(--light-text);
+            color: black;
             text-decoration: none;
             font-weight: 500;
             transition: color var(--transition-speed);
@@ -69,18 +82,86 @@
             color: var(--accent-color);
         }
 
-        .hero-section {
-            height: 80vh;
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* .hero-section {
+            position: relative;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: var(--light-text);
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/huwsgul.jpg');
+            color: white;
+            padding: 2rem;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            animation: slide-bg 0.5s ease-in-out;
+        } */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            overflow: hidden;
             background-size: cover;
             background-position: center;
         }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: -1;
+        }
+
+        /* Ensure main content remains visible */
+        .hero-section h1,
+        .hero-section .cta-button {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slide-bg {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+        }
+
 
         .hero-section h1 {
             font-size: 3.5rem;
@@ -89,46 +170,44 @@
         }
 
         .cta-button {
-            background: var(--accent-color);
-            color: var(--text-color);
+            display: inline-block;
             padding: 1rem 2rem;
-            border: none;
-            border-radius: 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform var(--transition-speed);
+            background-color: #ff4757;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 2rem;
+            transition: background-color 0.3s;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            background-color: #ff6b81;
         }
 
+        /* Destination Overview */
         .destination-overview {
-            background: white;
-            padding: 2rem;
-            margin-top: -4rem;
-            border-radius: 1rem;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: var(--card-shadow);
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
+        /* Highlights Section */
         .highlights-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .highlight-card {
             background: white;
             padding: 2rem;
-            border-radius: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform var(--transition-speed);
-            box-shadow: var(--card-shadow);
         }
 
         .highlight-card:hover {
@@ -183,38 +262,363 @@
             margin: 0 auto;
         }
 
-        .review-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: var(--card-shadow);
+        .slider-container {
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        footer {
-            background-color: var(--primary-color);
+        .day-cards {
+            display: flex;
+            overflow-x: auto;
+            /* Enables horizontal scrolling */
+            scroll-behavior: smooth;
+            gap: 20px;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
             color: white;
-            padding: 2rem 0;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .slider-btn.prev {
+            left: 10px;
+        }
+
+        .slider-btn.next {
+            right: 10px;
+        }
+
+        .day-card {
+            flex: 0 0 300px;
+            margin: 0 10px;
+        }
+
+
+        .package-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .package-column {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .package-list {
+            list-style: none;
+        }
+
+        .package-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .included-list li::before {
+            content: "✓";
+            color: #4CAF50;
+            position: absolute;
+            left: 0;
+        }
+
+        .not-included-list li::before {
+            content: "×";
+            color: #F44336;
+            position: absolute;
+            left: 0;
+        }
+
+        .map {
+            margin-top: 50px;
+            /* max-width: 400px; */
+            /* margin: 0 auto; */
+            background: white;
+            /* padding: 30px; */
+            border-radius: 10px;
+            /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+            max-height: 100%;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 4rem 2rem;
             text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-            }
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-            .highlights-grid,
-            .day-cards,
-            .reviews-grid {
-                grid-template-columns: 1fr;
+        .reviewer {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Save Tour Button */
+        .save-tour {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .save-tour:hover {
+            transform: scale(1.1);
+        }
+
+        .save-tour.saved svg {
+            fill: #ff4757;
+            stroke: #ff4757;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #333;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none
+        }
+
+        /* .booking-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+            margin-top: 20px;
+        } */
+
+        .booking-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 80vh;
+            /* Set the maximum height to 80% of the viewport */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .booking-section {
+            margin-bottom: 15px;
+            /* Reduce bottom margin for a more compact layout */
+            padding: 10px;
+            /* Add padding for better spacing */
+            background: #fff;
+            /* Ensure background contrasts nicely */
+            border: 1px solid #e0e0e0;
+            /* Add subtle border for separation */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+        .booking-section h2 {
+            font-size: 1.1rem;
+            /* Make section titles smaller */
+            margin-bottom: 10px;
+        }
+
+        .option-grid {
+            gap: 15px;
+        }
+
+        .option-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .option-card.selected {
+            border-color: var(--secondary-color);
+            background-color: #e6f2ff;
+        }
+
+        .option-cd {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-cd:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .option-cd.selected {
+            border-color: var(--secondary-color);
+            background-color: #e6f2ff;
+        }
+
+        .total-price {
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .booking-button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .booking-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        @media (max-width: 600px) {
+            .booking-container {
+                max-height: 60vh;
             }
+        }
+
+        .cart-icon {
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+        }
+        .booking-selection {
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  justify-content: center; /* Center images horizontally */
+  gap: 10px; /* Add space between images */
+  background-color: #f0f8ff; /* Soft blue background */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.booking-selection img {
+  width: 132px; /* Adjust width to fit multiple images side by side */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Rounded corners for images */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.booking-selection img:hover {
+  transform: scale(2); /* Enlarge image on hover */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+  z-index: 10; /* Ensure the image appears above others */
+}
+
+/* Add responsiveness */
+@media (max-width: 480px) {
+  .booking-selection {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+
+  .booking-selection img {
+    width: 45%; /* Adjust size for smaller screens */
+  }
+}
+
+        /* Cart modal styling */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
         }
     </style>
 </head>
+
 <body>
     <nav class="travel-nav">
         <div class="nav-container">
@@ -225,61 +629,255 @@
                 <li><a href="./destinations.html">Destinations</a></li>
                 <li><a href="./news.html">News</a></li>
             </ul>
+            <div class="cart-icon" id="cartIcon">
+                🛒 <span id="cartItemCount">0</span> items
+            </div>
         </div>
     </nav>
-
-    <header class="hero-section">
-        <h1>Хөвсгөл Нуур</h1>
-        <p class="hero-subtitle">Монголын байгалийн өв </p>
-
-        <li> <a class="cta-button" href="./zahialga.html">Аяллаа эхлэх </a></li>
-    </header>
+    <div id="cartModal" class="cart-modal">
+        <h2>Таны Сонголтууд</h2>
+        <div id="cartItemsList"></div>
+        <div class="total-price" id="cartTotalPrice">Нийт үнэ: 0₮</div>
+        <button onclick="proceedToPayment()">Төлбөр Хийгдэх</button>
+        <button onclick="closeCart()">Хаах</button>
+    </div>
+    <div class="hero-section" id="hero-section"
+        data-bg-images="assets/khustai1.jpg,assets/khustai2.jpg,assets/khustai3.jpg">
+        <h1>Хустайн Нуруу</h1>
+    </div>
 
     <section class="destination-overview">
-        <h2>Хөвсгөл Нуур</h2>
-        <p>Хөвсгөл нуур нь Монголын хамгийн том, цэвэр ус бүхий нуур юм. Энд та гайхамшигт байгаль, уламжлалт соёл, өвөрмөц аялал аждаг.</p>
+        <h2>Хустайн Нуруу</h2>
+        <p>Хустайн Нуруу нь Монголын төв хэсэгт орших байгалийн цогцолборт газар бөгөөд дэлхийд ховордсон тахийн сүргийг сэргээн нутагшуулсан газар юм. Энд та зэрлэг амьтад, үзэсгэлэнт байгаль, түүх соёлын дурсгалуудтай танилцах боломжтой.</p>
     </section>
 
     <section>
         <div class="highlights-grid">
             <div class="highlight-card">
                 <h3>Байгаль</h3>
-                <p>Цэнгэг усан дахь гайхамшигт байгаль</p>
+                <p>Тахийн сүрэг, зэрлэг амьтад, үзэсгэлэнт байгаль</p>
             </div>
             <div class="highlight-card">
                 <h3>Соёл</h3>
-                <p>Өвөрмөц өрхийн аж төрөл</p>
+                <p>Түүхэн дурсгалууд, археологийн олдворууд</p>
             </div>
-            <div class="highlight-card">
-                <h3>Адал явдал</h3>
-                <p>Хайлах боломжтой олон төрлийн үйл ажиллагаа</p>
+            <div class="highlight-cd">
+                <iframe width="100%" height="150"
+                    src="https://www.youtube.com/embed/YOUR_KHUSTAI_VIDEO_ID?controls=0&modestbranding=1&rel=0&autoplay=1"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
     </section>
 
     <section class="itinerary-section">
         <h2>Аяллын Хөтөлбөр</h2>
-        <div class="day-cards">
-            <div class="day-card">
-                <img src="assets/huwsgul.jpg" alt="1-р өдөр">
-                <div class="day-details">
-                    <h3>1-р өдөр - Хүрэлцэн ирэх</h3>
-                    <p>Хөвсгөл нуурт хүрэлцэн ирж, амрах байранд буудаллана.</p>
+        <div class="slider-container">
+            <button class="slider-btn prev">←</button>
+            <div class="day-cards">
+                <div class="day-card">
+                    <img src="assets/khustai1.jpg" alt="1-р өдөр">
+                    <div class="day-details">
+                        <h3>1-р өдөр - Хүрэлцэн ирэх</h3>
+                        <p>Хустайн нуруу руу хүрэлцэн ирж, гэр буудалд байрлана.</p>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <img src="assets/khustai2.jpg" alt="2-р өдөр">
+                    <div class="day-details">
+                        <h3>2-р өдөр - Тахийн аялал</h3>
+                        <p>Тахийн сүрэг, зэрлэг амьтдыг ажиглах аялал.</p>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <img src="assets/khustai3.jpg" alt="3-р өдөр">
+                    <div class="day-details">
+                        <h3>3-р өдөр - Соёлын өв</h3>
+                        <p>Түүхэн дурсгалт газруудтай танилцах.</p>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <img src="assets/khustai4.jpg" alt="4-р өдөр">
+                    <div class="day-details">
+                        <h3>4-р өдөр - Байгалийн аялал</h3>
+                        <p>Үзэсгэлэнт байгаль, уулын аялал.</p>
+                    </div>
+                </div>
+                <div class="day-card">
+                    <img src="assets/khustai5.jpg" alt="5-р өдөр">
+                    <div class="day-details">
+                        <h3>5-р өдөр - Буцах</h3>
+                        <p>Улаанбаатар хот руу буцах.</p>
+                    </div>
                 </div>
             </div>
-            <div class="day-card">
-                <img src="assets/hikHuwsgul.jpg" alt="2-р өдөр">
-                <div class="day-details">
-                    <h3>2-р өдөр - Нуурын аялал</h3>
-                    <p>Нуурын тойрон аялал, хөтөч гидтэй танилцах.</p>
-                </div>
+            <button class="slider-btn next">→</button>
+        </div>
+    </section>
+    <section class="package-details">
+        <div class="package-columns">
+            <div class="package-column">
+                <h3>Аяллын үнэд багтсан</h3>
+                <ul class="package-list included-list">
+                    <li>Гэр буудлын байрлах</li>
+                    <li>Өглөө, өдөр, оройн хоол</li>
+                    <li>Мэргэжлийн хөтөч</li>
+                    <li>Тээврийн үйлчилгээ</li>
+                    <li>Тахийн аялал</li>
+                    <li>Орон нутгийн соёлын хөтөлбөр</li>
+                    <li>Аяллын даатгал</li>
+                </ul>
             </div>
-            <div class="day-card">
-                <img src="assets/huwsg.png" alt="3-р өдөр">
-                <div class="day-details">
-                    <h3>3-р өдөр - Соёлын танилцуулга</h3>
-                    <p>Өрхийн уламжлалт амьдралтай танилцах.</p>
+            <div class="package-column">
+                <h3>Аяллын үнэд багтаагүй</h3>
+                <ul class="package-list not-included-list">
+                    <li>Онгоцны тийз</li>
+                    <li>Нэмэлт спорт төрлүүд</li>
+                    <li>Хувийн зардал</li>
+                    <li>Нэмэлт үйл ажиллагааны төлбөр</li>
+                    <li>Согтууруулах ундаа</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="package-details">
+        <div class="package-columns">
+            <div class="map ">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2213678.5450399895!2d100.74254077752268!3d51.30968531930048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d0e5d1ba6b92eab%3A0xd9305b7b011f9111!2sKhuvsgul%20Lake!5e0!3m2!1sen!2smn!4v1732012981500!5m2!1sen!2smn"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="booking-container">
+                <div class="booking-section">
+                    <h2>📅 Аяллын Хугацаа</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="duration" data-price="150000">
+                            <h3>3 өдөр 2 шөнө</h3>
+                            <p>Үндсэн хөтөлбөр</p>
+                            <p>Үнэ: 150,000₮</p>
+                        </div>
+                        <div class="option-card" data-type="duration" data-price="250000">
+                            <h3>5 өдөр 4 шөнө</h3>
+                            <p>Өргөтгөсөн хөтөлбөр</p>
+                            <p>Үнэ: 250,000₮</p>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="booking-section">
+                    <h2>🏨 Байрны Сонголт</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="hotel" data-price="50000">
+                            <h3>Стандарт Байр</h3>
+                            <p>Хамгийн бага өртөгтэй</p>
+                            <p>Үнэ: 50,000₮/шөнө</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="hotel" data-price="100000">
+                            <h3>Делюкс Байр</h3>
+                            <p>Тав тухтай өрөө</p>
+                            <p>Үнэ: 100,000₮/шөнө</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="hotel" data-price="150000">
+                            <h3>VIP Байр</h3>
+                            <p>Бүх төрлийн үйлчилгээтэй</p>
+                            <p>Үнэ: 150,000₮/шөнө</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h2>🍽️ Хоолны Сонголт</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="meal" data-price="25000">
+                            <h3>Стандарт Хоол</h3>
+                            <p>Өдөрт 3 удаа</p>
+                            <p>Үнэ: 25,000₮/өдөр</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="meal" data-price="50000">
+                            <h3>VIP Хоол</h3>
+                            <p>Тусгай цэс</p>
+                            <p>Үнэ: 50,000₮/өдөр</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-section">
+                    <h2>🚌 Тээврийн Хэрэгсэл</h2>
+                    <div class="option-grid">
+                        <div class="option-card" data-type="transport" data-price="50000">
+                            <h3>Автобус</h3>
+                            <p>Хамгийн бага өртөгтэй</p>
+                            <p>Үнэ: 50,000₮</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                        <div class="option-card" data-type="transport" data-price="100000">
+                            <h3>Хувийн Тээвэр</h3>
+                            <p>Тав тухтай</p>
+                            <p>Үнэ: 100,000₮</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                                <img src="assets/khustai1.jpg" alt="" class="booking image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-section">
+                    <h2>👨‍👩‍👧‍👦 Хүмүүсийн Тоо</h2>
+                    <div class="option-grid">
+                        <div class="option-cd" data-type="slot" data-price="100000">
+                            <h3>Насанд Хүрэгчид</h3>
+                            <input type="number" id="adult-count" value="0" min="0"
+                                style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"
+                                onchange="updatePeopleCount()">
+                        </div>
+                        <div class="option-cd" data-type="slot" data-price="50000">
+                            <h3>Хүүхэд</h3>
+                            <input type="number" id="child-count" value="0" min="0"
+                                style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"
+                                onchange="updatePeopleCount()">
+                        </div>
+                    </div>
+                </div>
+                <div class="total-price" id="totalPrice">
+                    Нийт үнэ: 0₮
+                </div>
+
+                <button class="booking-button" onclick="processBooking()">
+                    Захиалах
+                </button>
             </div>
         </div>
     </section>
@@ -288,27 +886,248 @@
         <h2 style="text-align: center; margin-bottom: 2rem;">Аяллын Сэтгэгдэл</h2>
         <div class="reviews-grid">
             <div class="review-card">
-                <p>"Хөвсгөл нуур бидний амьдралд мөнхөд үлдэх гайхамшиг болж өглөө."</p>
-                <p>- Б.Батхүү</p>
+                <p>"Тахийн сүрэг, байгалийн үзэсгэлэн үнэхээр гайхалтай байлаа."</p>
+                <p>- Ж.Батцэцэг</p>
             </div>
             <div class="review-card">
-                <p>"Байгалийн үзэсгэлэн, соёлын өв гайхалтай байлаа."</p>
-                <p>- С.Болд</p>
+                <p>"Хустайн нурууны түүхэн дурсгалууд сонирхолтой байлаа."</p>
+                <p>- С.Энхжаргал</p>
             </div>
             <div class="review-card">
-                <p>"Адал явдалт, сонирхолтой аялал байсан."</p>
-                <p>- Д.Оюун</p>
+                <p>"Мэргэжлийн хөтчийн удирдлага дор аюулгүй, сонирхолтой аялал боллоо."</p>
+                <p>- Г.Бат</p>
             </div>
+        </div>
+        <div class="comment-section">
+            <h3 style="text-align: center; margin-top: 2rem;">Сэтгэгдэл үлдээх</h3>
+            <form id="comment-form" style="max-width: 600px; margin: 0 auto;">
+                <input type="text" id="name-box" placeholder="Таны нэр" required
+                    style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;">
+                <textarea id="comment-box" rows="4" placeholder="Сэтгэгдэлээ энд бичнэ үү..." required
+                    style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;"></textarea>
+                <button type="submit"
+                    style="background-color: var(--accent-color); color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 8px; cursor: pointer;">Илгээх</button>
+            </form>
+            <div id="comment-error" style="color: red; text-align: center; margin-top: 1rem; display: none;">Нэр болон
+                сэтгэгдэл бичих шаардлагатай!</div>
         </div>
     </section>
 
     <footer>
-        <p>© 2024 Хөвсгөл Нуур Аялал. Бүх эрх хамгаалагдсан.</p>
+        <p>© 2024 Хустайн Нуруу Аялал. Бүх эрх хамгаалагдсан.</p>
         <div style="margin-top: 1rem;">
-            <a href="#" style="color: white; margin: 0 1rem;">Нүүр</a>
-            <a href="#" style="color: white; margin: 0 1rem;">Холбоо</a>
-            <a href="#" style="color: white; margin: 0 1rem;">Бидний тухай</a>
+            <a href="#" style="color: rgb(252, 249, 249); margin: 0 1rem;">Нүүр</a>
+            <a href="#" style="color: rgb(249, 250, 252); margin: 0 1rem;">Холбоо</a>
+            <a href="#" style="color: rgb(252, 250, 250); margin: 0 1rem;">Бидний тухай</a>
         </div>
     </footer>
+    <script>
+        const cardsContainer = document.querySelector('.day-cards');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+
+        nextBtn.addEventListener('click', () => {
+            cardsContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            cardsContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+
+    </script>
+    <script>
+        const commentForm = document.getElementById('comment-form');
+        const nameBox = document.getElementById('name-box'); // New name input field
+        const commentBox = document.getElementById('comment-box');
+        const commentError = document.getElementById('comment-error');
+        const reviewsGrid = document.querySelector('.reviews-grid');
+
+        commentForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page reload
+
+            const nameText = nameBox.value.trim(); // Get name value
+            const commentText = commentBox.value.trim();
+
+            // Check if both name and comment are filled out
+            if (nameText === '' || commentText === '') {
+                commentError.style.display = 'block'; // Show error message
+            } else {
+                commentError.style.display = 'none';
+
+                // Create a new review card
+                const newReview = document.createElement('div');
+                newReview.classList.add('review-card');
+                newReview.innerHTML = `
+            <p>"${commentText}"</p>
+            <p>- ${nameText}</p> <!-- Display the name of the guest -->
+        `;
+
+                // Append the new comment
+                reviewsGrid.appendChild(newReview);
+
+                // Clear the input fields
+                nameBox.value = '';
+                commentBox.value = '';
+            }
+        });
+
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.getElementById('hero-section');
+            const bgImages = heroSection.getAttribute('data-bg-images').split(',');
+            let currentIndex = 0;
+
+            // Apply the first image immediately
+            heroSection.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+
+            // Preload all images
+            bgImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+
+            // Change background image periodically
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % bgImages.length;
+                heroSection.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+
+                // Optional: Add and remove animation class
+                heroSection.classList.add('animate-bg');
+                setTimeout(() => {
+                    heroSection.classList.remove('animate-bg');
+                }, 500); // Match your CSS animation duration
+            }, 5000); // Change every 5 seconds
+        });
+    </script>
+
+<script>
+    let selectedOptions = {
+        duration: 0,
+        hotel: 0,
+        meal: 0,
+        transport: 0
+    };
+
+    let peopleCount = {
+        adults: 0,
+        children: 0
+    };
+
+    // Handle option card selections
+    document.querySelectorAll('.option-card').forEach(card => {
+        card.addEventListener('click', function () {
+            const type = this.getAttribute('data-type');
+            const price = parseInt(this.getAttribute('data-price')) || 0;
+
+            // Deselect other cards of the same type
+            document.querySelectorAll(`.option-card[data-type="${type}"]`).forEach(otherCard => {
+                otherCard.classList.remove('selected');
+            });
+
+            // Select this card
+            this.classList.add('selected');
+            selectedOptions[type] = price;
+
+            calculateTotalPrice();
+        });
+    });
+
+    // Update the people count
+    function updatePeopleCount() {
+        const adultCount = Math.max(parseInt(document.getElementById('adult-count').value) || 0, 0);
+        const childCount = Math.max(parseInt(document.getElementById('child-count').value) || 0, 0);
+
+        peopleCount.adults = adultCount;
+        peopleCount.children = childCount;
+
+        calculateTotalPrice();
+    }
+
+    // Calculate the total price
+    function calculateTotalPrice() {
+        const basePrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0);
+
+        // Compute total people count
+        const totalPeople = (peopleCount.adults || 0) + (peopleCount.children || 0);
+
+        // Multiply base price by the number of people
+        const totalPrice = basePrice * (totalPeople > 0 ? totalPeople : 1);
+
+        // Display total price
+        document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
+    }
+
+    // Add event listeners for people count inputs
+    document.getElementById('adult-count').addEventListener('input', updatePeopleCount);
+    document.getElementById('child-count').addEventListener('input', updatePeopleCount);
+
+    // Process booking
+   
+    function processBooking() {
+    // Ensure all required selections are made
+    if (!Object.values(selectedOptions).every(value => value > 0)) {
+        alert('Бүх сонголтоо хийнэ үү!');
+        return;
+    }
+
+    // Calculate total price
+    const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
+                       ((peopleCount.adults || 0) + (peopleCount.children || 0));
+
+    // Collect booking details
+    const bookingDetails = {
+        duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
+        hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
+        meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
+        transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
+        adults: peopleCount.adults || 0,
+        children: peopleCount.children || 0,
+        totalPrice
+    };
+
+    // Store booking details in localStorage
+    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+
+    // Redirect to payment.html
+    window.location.href = 'payment.html';
+}
+
+
+    // Add to cart logic
+    function addToCart(bookingDetails) {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        cartItems.push(bookingDetails);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        updateCartIcon();
+    }
+
+    // Update cart icon
+    function updateCartIcon() {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        document.getElementById('cartItemCount').textContent = cartItems.length;
+    }
+
+    // Initialize
+    updateCartIcon();
+</script>
+
+
+    <script>
+        // Select all option cards
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Toggle the visibility of the associated .apart-select
+                const imgSection = card.querySelector('.booking-selection');
+                if (imgSection) {
+                    const isVisible = imgSection.style.display === 'block';
+                    imgSection.style.display = isVisible ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

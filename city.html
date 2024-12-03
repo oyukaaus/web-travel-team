@@ -568,6 +568,48 @@
             right: 20px;
             font-size: 1.5rem;
         }
+        .booking-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f8ff; /* Soft blue background */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 300px; /* Adjust card width */
+  margin: 20px auto; /* Center card horizontally */
+}
+
+.booking-selection h1 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.booking-selection p {
+  margin: 5px 0;
+  color: #555;
+  text-align: center;
+}
+
+.booking-selection .adventure-logo {
+  margin: 10px 0;
+}
+
+.booking-selection img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px; /* Space between images */
+  border-radius: 5px; /* Rounded image corners */
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 480px) {
+  .booking-selection {
+    width: 90%; /* Adjust card width for smaller screens */
+    padding: 10px;
+  }
+}
 
         /* Cart modal styling */
         .cart-modal {
@@ -746,16 +788,18 @@
                             <h3>Стандарт Байр</h3>
                             <p>Хамгийн бага өртөгтэй</p>
                             <p>Үнэ: 50,000₮/шөнө</p>
-                            <div class="apart-select" style="display: none;">
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
                                 <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
                             </div>
                         </div>
                         <div class="option-card" data-type="hotel" data-price="100000">
                             <h3>Делюкс Байр</h3>
                             <p>Тав тухтай өрөө</p>
                             <p>Үнэ: 100,000₮/шөнө</p>
-                            <div class="apart-select" style="display: none;">
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
                                 <img src="assets/advent.png" alt="Adventure Logo" class="logo">
                                 <img src="assets/advent.png" alt="Adventure Logo" class="logo">
                             </div>
@@ -764,6 +808,11 @@
                             <h3>VIP Байр</h3>
                             <p>Бүх төрлийн үйлчилгээтэй</p>
                             <p>Үнэ: 150,000₮/шөнө</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -775,11 +824,21 @@
                             <h3>Стандарт Хоол</h3>
                             <p>Өдөрт 3 удаа</p>
                             <p>Үнэ: 25,000₮/өдөр</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                            </div>
                         </div>
                         <div class="option-card" data-type="meal" data-price="50000">
                             <h3>VIP Хоол</h3>
                             <p>Тусгай цэс</p>
                             <p>Үнэ: 50,000₮/өдөр</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -791,11 +850,21 @@
                             <h3>Автобус</h3>
                             <p>Хамгийн бага өртөгтэй</p>
                             <p>Үнэ: 50,000₮</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                            </div>
                         </div>
                         <div class="option-card" data-type="transport" data-price="100000">
                             <h3>Хувийн Тээвэр</h3>
                             <p>Тав тухтай</p>
                             <p>Үнэ: 100,000₮</p>
+                            <div class="booking-selection" style="display: none;">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1065,7 +1134,7 @@
         document.querySelectorAll('.option-card').forEach(card => {
             card.addEventListener('click', () => {
                 // Toggle the visibility of the associated .apart-select
-                const imgSection = card.querySelector('.apart-select');
+                const imgSection = card.querySelector('.booking-selection');
                 if (imgSection) {
                     const isVisible = imgSection.style.display === 'block';
                     imgSection.style.display = isVisible ? 'none' : 'block';

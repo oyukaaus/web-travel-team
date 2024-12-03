@@ -569,45 +569,36 @@
             font-size: 1.5rem;
         }
         .booking-selection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  justify-content: center; /* Center images horizontally */
+  gap: 10px; /* Add space between images */
   background-color: #f0f8ff; /* Soft blue background */
   padding: 20px;
   border-radius: 10px; /* Rounded corners */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  width: 300px; /* Adjust card width */
-  margin: 20px auto; /* Center card horizontally */
-}
-
-.booking-selection h1 {
-  font-size: 20px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.booking-selection p {
-  margin: 5px 0;
-  color: #555;
-  text-align: center;
-}
-
-.booking-selection .adventure-logo {
-  margin: 10px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .booking-selection img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px; /* Space between images */
-  border-radius: 5px; /* Rounded image corners */
+  width: 132px; /* Adjust width to fit multiple images side by side */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Rounded corners for images */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.booking-selection img:hover {
+  transform: scale(2); /* Enlarge image on hover */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+  z-index: 10; /* Ensure the image appears above others */
 }
 
-/* Add media queries for responsiveness */
+/* Add responsiveness */
 @media (max-width: 480px) {
   .booking-selection {
-    width: 90%; /* Adjust card width for smaller screens */
-    padding: 10px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+
+  .booking-selection img {
+    width: 45%; /* Adjust size for smaller screens */
   }
 }
 
@@ -789,9 +780,9 @@
                             <p>Хамгийн бага өртөгтэй</p>
                             <p>Үнэ: 50,000₮/шөнө</p>
                             <div class="booking-selection" style="display: none;">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
                             </div>
                         </div>
                         <div class="option-card" data-type="hotel" data-price="100000">
@@ -799,9 +790,9 @@
                             <p>Тав тухтай өрөө</p>
                             <p>Үнэ: 100,000₮/шөнө</p>
                             <div class="booking-selection" style="display: none;">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
                             </div>
                         </div>
                         <div class="option-card" data-type="hotel" data-price="150000">
@@ -809,9 +800,9 @@
                             <p>Бүх төрлийн үйлчилгээтэй</p>
                             <p>Үнэ: 150,000₮/шөнө</p>
                             <div class="booking-selection" style="display: none;">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
                             </div>
                         </div>
                     </div>
@@ -825,9 +816,9 @@
                             <p>Өдөрт 3 удаа</p>
                             <p>Үнэ: 25,000₮/өдөр</p>
                             <div class="booking-selection" style="display: none;">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
                             </div>
                         </div>
                         <div class="option-card" data-type="meal" data-price="50000">
@@ -835,9 +826,9 @@
                             <p>Тусгай цэс</p>
                             <p>Үнэ: 50,000₮/өдөр</p>
                             <div class="booking-selection" style="display: none;">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
                             </div>
                         </div>
                     </div>
@@ -851,9 +842,9 @@
                             <p>Хамгийн бага өртөгтэй</p>
                             <p>Үнэ: 50,000₮</p>
                             <div class="booking-selection" style="display: none;">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
                             </div>
                         </div>
                         <div class="option-card" data-type="transport" data-price="100000">
@@ -861,9 +852,9 @@
                             <p>Тав тухтай</p>
                             <p>Үнэ: 100,000₮</p>
                             <div class="booking-selection" style="display: none;">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
-                                <img src="assets/advent.png" alt="Adventure Logo" class="logo">
-                                <img src="assets/huwsgul.jpg" alt="Adventure Logo" class="logo">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
+                                <img src="assets/huwsgul.jpg" alt="" class="booking image">
                             </div>
                         </div>
                     </div>

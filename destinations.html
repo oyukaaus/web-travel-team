@@ -40,6 +40,14 @@
             <label for="sort-Gobi">Gobi</label>
             <input type="radio" id="sort-Steppe" name="sort" value="Steppe">
             <label for="sort-Steppe">Steppe</label>
+            <input type="radio" id="price-0-150000" name="price" value="0-150000">
+            <label for="price-0-150000">0-150000</label>
+            <input type="radio" id="price-150000-250000" name="price" value="150000-250000">
+            <label for="price-150000-250000">150000-250000</label>
+            <input type="radio" id="price-250000-350000" name="price" value="250000-350000">
+            <label for="price-250000-350000">250000-350000</label>
+            <input type="radio" id="price-350000" name="price" value="350000+">
+            <label for="price-350000">350000+</label>
         </div>   
         <main>
             <section class="city-grid"></section>
@@ -193,72 +201,97 @@
 
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const cityGrid = document.querySelector('.city-grid');
-            const radioButtons = document.querySelectorAll('input[name="sort"]');
-            const searchInput = document.getElementById('searchPlaces');
-    
-            // Fetch JSON data
-            fetch('destinations.json')
-                .then(response => response.json())
-                .then(data => {
-                    // Function to render articles
-                    function renderArticles(filterRegion = 'All', searchTerm = '') {
-                        cityGrid.innerHTML = '';
-    
-                        const filteredData = data.filter(item => {
-                            const matchesRegion = filterRegion === 'All' || item.region === filterRegion;
-                            const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-                            return matchesRegion && matchesSearch;
-                        });
-    
-                        filteredData.forEach(item => {
-                            const article = document.createElement('article');
-                            article.setAttribute('data-region', item.region);
-                            
-                            const stars = '★'.repeat(item.rating) + '☆'.repeat(5 - item.rating);
-                            
-                            article.innerHTML = `
-                                <div class="flip-card">
-                                    <div class="flip-card-front">
-                                        <img src="${item.image}" alt="${item.name}">
-                                        <h4>${item.name}</h4>
-                                        <div class="rating" title="${item.rating} out of 5 stars">
-                                            <span class="stars">${stars}</span>
-                                        </div>
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <h4>${item.name}</h4>
-                                        <p>${item.description}</p>
-                                        <p>Region: ${item.region}</p>
-                                        <a href="${item.link}" class="learn-more">Learn More</a>
-                                    </div>
-                                </div>
-                            `;
-                            cityGrid.appendChild(article);
-                        });
-                    }
-    
-                    // Initialize with default filters
-                    const initialRegion = document.querySelector('input[name="sort"]:checked').value;
-                    renderArticles(initialRegion);
-    
-                    // Event listeners for region filtering
-                    radioButtons.forEach(radioButton => {
-                        radioButton.addEventListener('change', () => {
-                            renderArticles(radioButton.value, searchInput.value);
-                        });
-                    });
-    
-                    // Event listener for search
-                    searchInput.addEventListener('input', () => {
-                        const selectedRegion = document.querySelector('input[name="sort"]:checked').value;
-                        renderArticles(selectedRegion, searchInput.value);
-                    });
-                })
-                .catch(error => console.error('Error fetching JSON data:', error));
-        });
-    </script>
-    
+    const cityGrid = document.querySelector('.city-grid');
+    const radioButtons = document.querySelectorAll('input[name="sort"]');
+    const priceRadioButtons = document.querySelectorAll('input[name="price"]');
+    const searchInput = document.getElementById('searchPlaces');
 
+    // Fetch JSON data
+    fetch('destinations.json')
+        .then(response => response.json())
+        .then(data => {
+            // Function to render articles
+            function renderArticles(filterRegion = 'All', searchTerm = '', filterPrice = '') {
+                cityGrid.innerHTML = '';
+
+                // Price ranges
+                const priceRanges = {
+                    '0-150000': [0, 150000],
+                    '150000-250000': [150000, 250000],
+                    '250000-350000': [250000, 350000],
+                    '350000+': [350000, Infinity],
+                };
+
+                const filteredData = data.filter(item => {
+                    const matchesRegion = filterRegion === 'All' || item.region === filterRegion;
+                    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+                    const matchesPrice = filterPrice
+                        ? item.price >= priceRanges[filterPrice][0] && item.price <= priceRanges[filterPrice][1]
+                        : true;
+                    return matchesRegion && matchesSearch && matchesPrice;
+                });
+
+                filteredData.forEach(item => {
+                    const article = document.createElement('article');
+                    article.setAttribute('data-region', item.region);
+
+                    const stars = '★'.repeat(item.rating) + '☆'.repeat(5 - item.rating);
+
+                    article.innerHTML = `
+                        <div class="flip-card">
+                            <div class="flip-card-front">
+                                <img src="${item.image}" alt="${item.name}">
+                                <h4>${item.name}</h4>
+                                <div class="rating" title="${item.rating} out of 5 stars">
+                                    <span class="stars">${stars}</span>
+                                </div>
+                                <p>Price: <span class="price">${item.price}</span></p>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>${item.name}</h4>
+                                <p>${item.description}</p>
+                                <p>Region: ${item.region}</p>
+                                <a href="${item.link}" class="learn-more">Learn More</a>
+                            </div>
+                        </div>
+                    `;
+                    cityGrid.appendChild(article);
+                });
+            }
+
+            // Initialize with default filters
+            const initialRegion = document.querySelector('input[name="sort"]:checked').value;
+            const initialPrice = document.querySelector('input[name="price"]:checked')?.value || '';
+            renderArticles(initialRegion, '', initialPrice);
+
+            // Event listeners for region filtering
+            radioButtons.forEach(radioButton => {
+                radioButton.addEventListener('change', () => {
+                    const selectedRegion = radioButton.value;
+                    const selectedPrice = document.querySelector('input[name="price"]:checked')?.value || '';
+                    renderArticles(selectedRegion, searchInput.value, selectedPrice);
+                });
+            });
+
+            // Event listeners for price filtering
+            priceRadioButtons.forEach(radioButton => {
+                radioButton.addEventListener('change', () => {
+                    const selectedPrice = radioButton.value;
+                    const selectedRegion = document.querySelector('input[name="sort"]:checked').value;
+                    renderArticles(selectedRegion, searchInput.value, selectedPrice);
+                });
+            });
+
+            // Event listener for search
+            searchInput.addEventListener('input', () => {
+                const selectedRegion = document.querySelector('input[name="sort"]:checked').value;
+                const selectedPrice = document.querySelector('input[name="price"]:checked')?.value || '';
+                renderArticles(selectedRegion, searchInput.value, selectedPrice);
+            });
+        })
+        .catch(error => console.error('Error fetching JSON data:', error));
+});
+
+    </script>
 </body>
 </html>

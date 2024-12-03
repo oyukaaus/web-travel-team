@@ -408,9 +408,17 @@ footer {
 
 .rating {
     margin-top: 5px;
+    display: inline-block;
 }
 
 .stars {
     color: #51504c;  /* Golden color for stars */
     font-size: 1.2em;
+}
+.price {
+    position: absolute;
+    top: 210px;
+    right: 10px; /* Adjust the position as needed */
+    font-weight: bold;
+    color: black;
 }

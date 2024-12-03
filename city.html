@@ -356,77 +356,81 @@
 
         /* Reviews Section */
         .reviews-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
+    padding: 4rem 2rem;
+    text-align: center;
+}
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.reviews-section h2,
+.reviews-section h3 {
+    margin-bottom: 2rem;
+}
 
-        .review-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .reviewer {
-            margin-top: 1rem;
-            font-weight: bold;
-        }
+.review-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-        /* Save Tour Button */
-        .save-tour {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+.reviewer {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: black;
+}
+.reviewer.new {
+    font-weight: bold;
+    color: black;
+}
+.comment-section {
+    margin-top: 3rem;
+}
 
-        .save-tour:hover {
-            transform: scale(1.1);
-        }
+#comment-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
 
-        .save-tour.saved svg {
-            fill: #ff4757;
-            stroke: #ff4757;
-        }
+#comment-form input,
+#comment-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
 
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background-color: #333;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
+#comment-form button {
+    background-color: var(--accent-color, #007BFF);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
+#comment-form button:hover {
+    background-color: var(--accent-hover-color, #0056b3);
+}
+
+#comment-error {
+    color: orange;
+    text-align: center;
+    margin-top: 1rem;
+    display: none;
+}
+
 
         /* Footer */
         footer {
@@ -890,35 +894,33 @@
     </section>
 
     <section class="reviews-section">
-        <h2 style="text-align: center; margin-bottom: 2rem;">Аяллын Сэтгэгдэл</h2>
+        <h2>Аяллын Сэтгэгдэл</h2>
         <div class="reviews-grid">
             <div class="review-card">
                 <p>"Хөвсгөл нуур бидний амьдралд мөнхөд үлдэх гайхамшиг болж өглөө."</p>
-                <p>- Б.Батхүү</p>
+                <p class="reviewer">- Б.Батхүү</p>
             </div>
             <div class="review-card">
                 <p>"Байгалийн үзэсгэлэн, соёлын өв гайхалтай байлаа."</p>
-                <p>- С.Болд</p>
+                <p class="reviewer">- С.Болд</p>
             </div>
             <div class="review-card">
                 <p>"Адал явдалт, сонирхолтой аялал байсан."</p>
-                <p>- Д.Оюун</p>
+                <p class="reviewer">- Д.Оюун</p>
             </div>
         </div>
         <div class="comment-section">
-            <h3 style="text-align: center; margin-top: 2rem;">Сэтгэгдэл үлдээх</h3>
-            <form id="comment-form" style="max-width: 600px; margin: 0 auto;">
-                <input type="text" id="name-box" placeholder="Таны нэр" required
-                    style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;">
-                <textarea id="comment-box" rows="4" placeholder="Сэтгэгдэлээ энд бичнэ үү..." required
-                    style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1rem;"></textarea>
-                <button type="submit"
-                    style="background-color: var(--accent-color); color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 8px; cursor: pointer;">Илгээх</button>
+            <h3>Сэтгэгдэл үлдээх</h3>
+            <form id="comment-form">
+                <input type="text" id="name-box" placeholder="Таны нэр" required>
+                <textarea id="comment-box" rows="4" placeholder="Сэтгэгдэлээ энд бичнэ үү..." required></textarea>
+                <button type="submit">Илгээх</button>
             </form>
-            <div id="comment-error" style="color: red; text-align: center; margin-top: 1rem; display: none;">Нэр болон
-                сэтгэгдэл бичих шаардлагатай!</div>
+            <div id="comment-error">Нэр болон сэтгэгдэл бичих шаардлагатай!</div>
         </div>
     </section>
+    
+    
 
     <footer>
         <p>© 2024 Хөвсгөл Нуур Аялал. Бүх эрх хамгаалагдсан.</p>
@@ -941,43 +943,74 @@
             cardsContainer.scrollBy({ left: -300, behavior: 'smooth' });
         });
 
-    </script>
+    </script>c
     <script>
         const commentForm = document.getElementById('comment-form');
-        const nameBox = document.getElementById('name-box'); // New name input field
-        const commentBox = document.getElementById('comment-box');
-        const commentError = document.getElementById('comment-error');
-        const reviewsGrid = document.querySelector('.reviews-grid');
+const nameBox = document.getElementById('name-box');
+const commentBox = document.getElementById('comment-box');
+const commentError = document.getElementById('comment-error');
+const reviewsGrid = document.querySelector('.reviews-grid');
 
-        commentForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent page reload
+// Load comments from localStorage
+function loadComments() {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.forEach(comment => addCommentToGrid(comment.name, comment.text));
+}
 
-            const nameText = nameBox.value.trim(); // Get name value
-            const commentText = commentBox.value.trim();
+// Save comments to localStorage
+function saveComment(name, text) {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.push({ name, text });
+    localStorage.setItem('comments', JSON.stringify(comments));
+}
 
-            // Check if both name and comment are filled out
-            if (nameText === '' || commentText === '') {
-                commentError.style.display = 'block'; // Show error message
-            } else {
-                commentError.style.display = 'none';
+// Remove a comment from localStorage
+function removeComment(name, text) {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    const updatedComments = comments.filter(comment => comment.name !== name || comment.text !== text);
+    localStorage.setItem('comments', JSON.stringify(updatedComments));
+}
 
-                // Create a new review card
-                const newReview = document.createElement('div');
-                newReview.classList.add('review-card');
-                newReview.innerHTML = `
-            <p>"${commentText}"</p>
-            <p>- ${nameText}</p> <!-- Display the name of the guest -->
-        `;
+// Add a comment to the grid
+function addCommentToGrid(name, text) {
+    const newReview = document.createElement('div');
+    newReview.classList.add('review-card');
+    newReview.innerHTML = `
+        <p>"${text}"</p>
+        <p class="reviewer new">- ${name}</p>
+        <button class="remove-btn" style="background-color: orange; color: white; border: none; padding: 0.5rem; cursor: pointer; border-radius: 4px;">Устгах</button>
+    `;
 
-                // Append the new comment
-                reviewsGrid.appendChild(newReview);
+    const removeBtn = newReview.querySelector('.remove-btn');
+    removeBtn.addEventListener('click', () => {
+        reviewsGrid.removeChild(newReview);
+        removeComment(name, text);
+    });
 
-                // Clear the input fields
-                nameBox.value = '';
-                commentBox.value = '';
-            }
-        });
+    reviewsGrid.appendChild(newReview);
+}
 
+// Handle form submission
+commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nameText = nameBox.value.trim();
+    const commentText = commentBox.value.trim();
+
+    if (nameText === '' || commentText === '') {
+        commentError.style.display = 'block';
+    } else {
+        commentError.style.display = 'none';
+        addCommentToGrid(nameText, commentText);
+        saveComment(nameText, commentText);
+
+        nameBox.value = '';
+        commentBox.value = '';
+    }
+});
+
+// Load comments when the page loads
+document.addEventListener('DOMContentLoaded', loadComments);
 
     </script>
     <script>

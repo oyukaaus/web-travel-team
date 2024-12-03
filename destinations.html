@@ -145,37 +145,39 @@
         document.addEventListener('DOMContentLoaded', function () {
             var radioButtons = document.querySelectorAll('input[name="sort"]');
             var articles = document.querySelectorAll('.city-grid article');
-        
+            var searchInput = document.getElementById('searchPlaces');
+            
             var urlParams = new URLSearchParams(window.location.search);
             var initialSort = urlParams.get('sort');
             var initialSearch = urlParams.get('search');
-        
-            // Set initial radio button selection
+            
+            // Set initial sort based on URL params
             radioButtons.forEach(function (radioButton) {
                 if (radioButton.value === initialSort) {
                     radioButton.checked = true;
                 }
             });
         
+            // Function to update URL parameters
             function updateUrlParams() {
                 var selectedSort = document.querySelector('input[name="sort"]:checked').value;
-                var searchTerm = document.getElementById('searchPlaces').value;
                 var url = new URL(window.location.href);
                 url.searchParams.set('sort', selectedSort);
-                url.searchParams.set('search', searchTerm);
+                url.searchParams.set('search', searchInput.value);  // Update search term in URL
                 history.pushState({}, '', url);
             }
         
-            function filterArticlesByRegion(selectedRegion) {
+            // Function to filter articles by region
+            function filterArticlesByRegionAndSearch(selectedRegion) {
+                var searchTerm = searchInput.value.toLowerCase(); // Get lowercase search term
+        
                 articles.forEach(function (article) {
                     var articleRegion = article.dataset.region;
-                    var articleTitle = article.querySelector('h2').textContent.toLowerCase(); // Adjust selector based on your HTML structure
-                    var searchTerm = document.getElementById('searchPlaces').value.toLowerCase();
-        
-                    var matchesSearch = articleTitle.includes(searchTerm);
-                    var matchesRegion = selectedRegion === 'All' || articleRegion === selectedRegion;
-        
-                    if (matchesRegion && matchesSearch) {
+                    var articleTitle = article.querySelector('.title').textContent.toLowerCase(); // Assuming the title is in a .title element
+                    
+                    // Check if article matches the region and search term
+                    if ((selectedRegion === 'All' || articleRegion === selectedRegion) && 
+                        articleTitle.includes(searchTerm)) {
                         article.style.display = 'block';
                     } else {
                         article.style.display = 'none';
@@ -183,29 +185,29 @@
                 });
             }
         
+            // Add event listener for sorting radio buttons
             radioButtons.forEach(function (radioButton) {
                 radioButton.addEventListener('change', function () {
                     updateUrlParams();
                     var selectedRegion = this.value;
-                    filterArticlesByRegion(selectedRegion);
+                    filterArticlesByRegionAndSearch(selectedRegion);
                 });
             });
         
-            // Apply initial filtering based on sort and search term
-            filterArticlesByRegion(initialSort);
-        
-            // Apply search term if available
-            var searchInput = document.getElementById('searchPlaces');
-            if (initialSearch) {
-                searchInput.value = initialSearch;
-            }
-        
-            // Listen for search term input change
+            // Add event listener for search input
             searchInput.addEventListener('input', function () {
                 updateUrlParams();
                 var selectedRegion = document.querySelector('input[name="sort"]:checked').value;
-                filterArticlesByRegion(selectedRegion);
+                filterArticlesByRegionAndSearch(selectedRegion);
             });
+        
+            // Initial filtering based on selected region and search term
+            filterArticlesByRegionAndSearch(initialSort);
+        
+            // Apply search term if available in the URL
+            if (initialSearch) {
+                searchInput.value = initialSearch;
+            }
         
             // Trigger change event after setting initial values
             var selectedRadioButton = document.querySelector('input[name="sort"]:checked');
@@ -213,9 +215,8 @@
                 selectedRadioButton.dispatchEvent(new Event('change'));
             }
         });
-    </script>
-
-    
+        </script>
+        
     
 <script>
     document.addEventListener('DOMContentLoaded', function () {

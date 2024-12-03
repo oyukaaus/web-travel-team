@@ -914,7 +914,7 @@
     </section>
 
     <footer>
-        <p>© 2024 Алтай Таван Богд Аялал. Бүх эрх хамга��лагдсан.</p>
+        <p>© 2024 Алтай Таван Богд Аялал. Бүх эрх хамгалагдсан.</p>
         <div style="margin-top: 1rem;">
             <a href="#" style="color: rgb(252, 249, 249); margin: 0 1rem;">Нүүр</a>
             <a href="#" style="color: rgb(249, 250, 252); margin: 0 1rem;">Холбоо</a>
@@ -1036,7 +1036,7 @@
 
     // Update the people count
     function updatePeopleCount() {
-        const adultCount = Math.max(parseInt(document.getElementById('adult-count').value) || 0;
+        const adultCount = Math.max(parseInt(document.getElementById('adult-count').value) || 0, 0);
         const childCount = Math.max(parseInt(document.getElementById('child-count').value) || 0, 0);
 
         peopleCount.adults = adultCount;
@@ -1059,41 +1059,35 @@
         document.getElementById('totalPrice').textContent = `Нийт үнэ: ${totalPrice.toLocaleString()}₮`;
     }
 
-    // Add event listeners for people count inputs
-    document.getElementById('adult-count').addEventListener('input', updatePeopleCount);
-    document.getElementById('child-count').addEventListener('input', updatePeopleCount);
-
     // Process booking
-   
     function processBooking() {
-    // Ensure all required selections are made
-    if (!Object.values(selectedOptions).every(value => value > 0)) {
-        alert('Бүх сонголтоо хийнэ үү!');
-        return;
+        // Ensure all required selections are made
+        if (!Object.values(selectedOptions).every(value => value > 0)) {
+            alert('Бүх сонголтоо хийнэ үү!');
+            return;
+        }
+
+        // Calculate total price
+        const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
+                        ((peopleCount.adults || 0) + (peopleCount.children || 0));
+
+        // Collect booking details
+        const bookingDetails = {
+            duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
+            hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
+            meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
+            transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
+            adults: peopleCount.adults || 0,
+            children: peopleCount.children || 0,
+            totalPrice
+        };
+
+        // Store booking details in localStorage
+        localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+
+        // Redirect to payment.html
+        window.location.href = 'payment.html';
     }
-
-    // Calculate total price
-    const totalPrice = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0) * 
-                       ((peopleCount.adults || 0) + (peopleCount.children || 0));
-
-    // Collect booking details
-    const bookingDetails = {
-        duration: document.querySelector('.option-card[data-type="duration"].selected')?.textContent.trim() || "",
-        hotel: document.querySelector('.option-card[data-type="hotel"].selected')?.textContent.trim() || "",
-        meal: document.querySelector('.option-card[data-type="meal"].selected')?.textContent.trim() || "",
-        transport: document.querySelector('.option-card[data-type="transport"].selected')?.textContent.trim() || "",
-        adults: peopleCount.adults || 0,
-        children: peopleCount.children || 0,
-        totalPrice
-    };
-
-    // Store booking details in localStorage
-    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
-
-    // Redirect to payment.html
-    window.location.href = 'payment.html';
-}
-
 
     // Add to cart logic
     function addToCart(bookingDetails) {

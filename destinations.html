@@ -40,6 +40,8 @@
             <label for="sort-Gobi">Gobi</label>
             <input type="radio" id="sort-Steppe" name="sort" value="Steppe">
             <label for="sort-Steppe">Steppe</label>
+            <input type="radio" id="price-all" name="price" value="All" >
+            <label for="price-all">All price</label>
             <input type="radio" id="price-0-150000" name="price" value="0-150000">
             <label for="price-0-150000">0-150000</label>
             <input type="radio" id="price-150000-250000" name="price" value="150000-250000">
@@ -143,28 +145,28 @@
         document.addEventListener('DOMContentLoaded', function () {
             var radioButtons = document.querySelectorAll('input[name="sort"]');
             var articles = document.querySelectorAll('.city-grid article');
-    
+        
             var urlParams = new URLSearchParams(window.location.search);
             var initialSort = urlParams.get('sort');
             var initialSearch = urlParams.get('search');
-    
+        
             radioButtons.forEach(function (radioButton) {
                 if (radioButton.value === initialSort) {
                     radioButton.checked = true;
                 }
             });
-    
+        
             function updateUrlParams() {
                 var selectedSort = document.querySelector('input[name="sort"]:checked').value;
                 var url = new URL(window.location.href);
                 url.searchParams.set('sort', selectedSort);
                 history.pushState({}, '', url);
             }
-    
+        
             function filterArticlesByRegion(selectedRegion) {
                 articles.forEach(function (article) {
                     var articleRegion = article.dataset.region;
-    
+        
                     if (selectedRegion === 'All' || articleRegion === selectedRegion) {
                         article.style.display = 'block';
                     } else {
@@ -172,7 +174,7 @@
                     }
                 });
             }
-    
+        
             radioButtons.forEach(function (radioButton) {
                 radioButton.addEventListener('change', function () {
                     updateUrlParams();
@@ -180,27 +182,25 @@
                     filterArticlesByRegion(selectedRegion);
                 });
             });
-    
+        
             // Initial filtering based on the selected region and search term
             filterArticlesByRegion(initialSort);
-    
+        
             // Apply search term if available
             var searchInput = document.getElementById('searchPlaces');
             if (initialSearch) {
                 searchInput.value = initialSearch;
             }
-    
+        
             // Trigger change event after setting initial values
             var selectedRadioButton = document.querySelector('input[name="sort"]:checked');
             if (selectedRadioButton) {
                 selectedRadioButton.dispatchEvent(new Event('change'));
             }
         });
-    </script>
-     
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
     const cityGrid = document.querySelector('.city-grid');
     const radioButtons = document.querySelectorAll('input[name="sort"]');
     const priceRadioButtons = document.querySelectorAll('input[name="price"]');
@@ -211,8 +211,8 @@
         .then(response => response.json())
         .then(data => {
             // Function to render articles
-            function renderArticles(filterRegion = 'All', searchTerm = '', filterPrice = '') {
-                cityGrid.innerHTML = '';
+            function renderArticles(filterRegion = 'All', searchTerm = '', filterPrice = 'All') {
+                cityGrid.innerHTML = ''; // Clear previous articles
 
                 // Price ranges
                 const priceRanges = {
@@ -222,15 +222,17 @@
                     '350000+': [350000, Infinity],
                 };
 
+                // Filter the data
                 const filteredData = data.filter(item => {
                     const matchesRegion = filterRegion === 'All' || item.region === filterRegion;
                     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-                    const matchesPrice = filterPrice
-                        ? item.price >= priceRanges[filterPrice][0] && item.price <= priceRanges[filterPrice][1]
-                        : true;
+                    const matchesPrice = filterPrice === 'All' || 
+                        (item.price >= priceRanges[filterPrice][0] && item.price <= priceRanges[filterPrice][1]);
+
                     return matchesRegion && matchesSearch && matchesPrice;
                 });
 
+                // Render filtered data
                 filteredData.forEach(item => {
                     const article = document.createElement('article');
                     article.setAttribute('data-region', item.region);
@@ -259,39 +261,30 @@
                 });
             }
 
-            // Initialize with default filters
-            const initialRegion = document.querySelector('input[name="sort"]:checked').value;
-            const initialPrice = document.querySelector('input[name="price"]:checked')?.value || '';
-            renderArticles(initialRegion, '', initialPrice);
+            // Initial render
+            renderArticles();
 
-            // Event listeners for region filtering
-            radioButtons.forEach(radioButton => {
-                radioButton.addEventListener('change', () => {
-                    const selectedRegion = radioButton.value;
-                    const selectedPrice = document.querySelector('input[name="price"]:checked')?.value || '';
-                    renderArticles(selectedRegion, searchInput.value, selectedPrice);
+            // Add event listeners for filters
+            radioButtons.forEach(button => {
+                button.addEventListener('change', () => {
+                    renderArticles(button.value, searchInput.value, document.querySelector('input[name="price"]:checked').value);
                 });
             });
 
-            // Event listeners for price filtering
-            priceRadioButtons.forEach(radioButton => {
-                radioButton.addEventListener('change', () => {
-                    const selectedPrice = radioButton.value;
-                    const selectedRegion = document.querySelector('input[name="sort"]:checked').value;
-                    renderArticles(selectedRegion, searchInput.value, selectedPrice);
+            priceRadioButtons.forEach(button => {
+                button.addEventListener('change', () => {
+                    renderArticles(document.querySelector('input[name="sort"]:checked').value, searchInput.value, button.value);
                 });
             });
 
-            // Event listener for search
             searchInput.addEventListener('input', () => {
-                const selectedRegion = document.querySelector('input[name="sort"]:checked').value;
-                const selectedPrice = document.querySelector('input[name="price"]:checked')?.value || '';
-                renderArticles(selectedRegion, searchInput.value, selectedPrice);
+                renderArticles(document.querySelector('input[name="sort"]:checked').value, searchInput.value, document.querySelector('input[name="price"]:checked').value);
             });
         })
-        .catch(error => console.error('Error fetching JSON data:', error));
+        .catch(error => console.error('Error fetching data:', error));
 });
-
-    </script>
+                    </script>
+            
+    
 </body>
 </html>

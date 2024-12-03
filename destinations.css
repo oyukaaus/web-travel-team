@@ -291,7 +291,7 @@ main {
     }
     
     .flip-card-back {
-        background-color: #5f605f;
+        background-color: #a5bba5;
         color: white;
         transform: rotateY(180deg);
         padding: 20px;

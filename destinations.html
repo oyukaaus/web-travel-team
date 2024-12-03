@@ -225,6 +225,16 @@
     const priceRadioButtons = document.querySelectorAll('input[name="price"]');
     const searchInput = document.getElementById('searchPlaces');
 
+    // Set default 'All' region and 'All' price filter to checked
+    const defaultRegionRadio = document.querySelector('input[name="sort"][value="All"]');
+    const defaultPriceRadio = document.querySelector('input[name="price"][value="All"]');
+    if (defaultRegionRadio) {
+        defaultRegionRadio.checked = true;
+    }
+    if (defaultPriceRadio) {
+        defaultPriceRadio.checked = true;
+    }
+
     // Fetch JSON data
     fetch('destinations.json')
         .then(response => response.json())
@@ -258,7 +268,7 @@
 
                     const stars = '★'.repeat(item.rating) + '☆'.repeat(5 - item.rating);
 
-                    article.innerHTML = `
+                    article.innerHTML = ` 
                         <div class="flip-card">
                             <div class="flip-card-front">
                                 <img src="${item.image}" alt="${item.name}">
@@ -280,8 +290,8 @@
                 });
             }
 
-            // Initial render
-            renderArticles();
+            // Initial render with default filters
+            renderArticles('All', '', 'All');
 
             // Add event listeners for filters
             radioButtons.forEach(button => {
@@ -302,6 +312,7 @@
         })
         .catch(error => console.error('Error fetching data:', error));
 });
+
                     </script>
             
     

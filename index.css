@@ -192,52 +192,63 @@ main article {
     box-sizing: border-box;
 }
 
-/* Container for the icon items */
-.icon-container {
+.statistics {
+    background: white;
+    padding-bottom: 0;
+}
+.stat-container,
+.carousel {
+    margin: 0;
+    padding-bottom: 0;
+}
+.stat-container {
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
+}
+.stat {
+    grid-column-gap: 45px;
+    grid-row-gap: 16px;
+    border: 2px solid #8e4cb9;
+    border-radius: 12px;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
     display: flex;
-    margin-left: 400px;
-    gap: 10px; /* Distribute evenly, no extra space between items */
-    align-items: center; /* Align items vertically in the center */
-    padding: 10px; /* Less padding around the container */
 }
-
-/* Styling for each article */
-.icon-container article {
-    text-align: center;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px; /* Less padding in each article */
-    width: 100px; /* Adjust width to reduce the space between icons */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.stat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #800ecc21;
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    padding: 12px;
 }
-
-/* Hover effect */
-.icon-container article:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.stat-icon img {
+    height: 36px;
+    width: 36px;
 }
-
-/* Image styling */
-.icon-container img {
-    width: 40px; /* Smaller icon size */
-    height: 40px;
-    margin-bottom: 10px;
-    object-fit: contain;
+.stat-text h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 100%;
 }
-
-/* Header styling */
-.icon-container h4 {
-    font-size: 1rem; /* Smaller text size */
-    color: #333;
-    margin-bottom: 5px;
+.stat-text p {
+    margin-bottom: 0;
+    font-size: 0.975rem;
 }
-
-/* Span styling for the numbers */
-.icon-container span {
-    font-size: 2rem;
-    font-weight: bold;
-    color: black;
+.stat-text {
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+    display: flex;
 }
 
 
@@ -323,61 +334,138 @@ h2 {
     color: #999;
     margin: 10px;
 }
-footer {
-    color: var(--text-color);
-    padding: 1.25rem;
-    text-align: left;
-    margin-left: 10%;
+.container {
+    margin: auto;
+    padding: 0 200px; /* Simplified padding */
+    max-width: 1200px; /* Ensures content doesn't stretch too wide */
+}
 
-    & .footer-columns {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('your-image.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(8px) opacity(0.7); /* Blur and opacity */
+    z-index: -1; /* Behind the content */
+}
 
-        & .column {
-            flex: 1;
-            padding: 0 1.25rem;
+.content {
+    position: relative;
+    z-index: 1; /* Above the background */
+    color: #fff; /* Adjust text color for visibility */
+    text-align: center;
+    padding: 20px;
+}
 
-            & .links {
-                list-style: none;
-                padding: 0;
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-                & li {
-                    margin-bottom: 0.625rem;
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; /* Remove default styles */
+}
 
-                    & a {
-                        text-decoration: none;
-                        color: var(--link-color);
-                    }
-                }
+.footer {
+    background-image: url('assets/hyrgas.jpg');
+    padding: 100px 0;
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: space-between; /* Spread content evenly */
+    text-align: left; /* Align text to the left */
+    white-space: normal; /* Allow text to wrap naturally */
+}
 
-                & .social a {
-                    margin-right: 0.3125rem;
-                    display: inline-block;
-                }
-            }
-        }
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 20px; /* Adjusted spacing */
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    width: 50px;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+    line-height: 1.5; /* Improved readability */
+}
+
+.footer-col ul li a {
+    font-size: 16px;
+    color: #bbbbbb;
+    text-decoration: none;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 8px;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: #ffffff;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 767px) {
+    .footer {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
     }
 }
 
-
-  .copyright {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #ccc;
-  }
-  
-
-
+@media (max-width: 574px) {
+    .footer-col {
+        width: 100%;
+    }
+}
 
 #hero-section {
     transition: background-image 0.5s ease-in-out;
 }
 
 #hero-section.animate-bg {
-    opacity: 0.9; /* Optional: зөөлөн эффект нэмэх */
+    opacity: 0.9; /* Subtle effect */
 }
 
 .rating {
@@ -385,7 +473,7 @@ footer {
 }
 
 .stars {
-    color: #5a5a57;  /* Golden color for stars */
+    color: #5a5a57; /* Neutral star color */
     font-size: 1.2em;
 }
 
@@ -400,6 +488,7 @@ footer {
 .destination-grid article h4 {
     margin: 10px 0 5px 0;
 }
+
 
 
 

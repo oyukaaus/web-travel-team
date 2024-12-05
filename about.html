@@ -1,83 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="mn">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Adventure</title>
+    <title>Бидний тухай</title>
     <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <header class ="home-main">
-        <nav class="navbar">
-            <a href="./">
-                <img src="assets/advent.png" alt="Adventure Image" class="small-image">
-            </a>
-            <ul class="nav-links">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About us</a></li>
-                <li><a href="./destinations.html">Destinations</a></li>
-                <li><a href="./news.html">News</a></li>
-            </ul>
-        </nav>
-        <h1>About us</h1>
-    </header>
-    <main>
-        <article class="about-us">
-            <p>We believe that travel is for everyone. It helps us learn about ourselves and the world around us.</p>
-            <p>Our goal is to help more people from more backgrounds experience the joy of exploration. Because we
-                believe this builds a kinder, more inclusive, more open-minded world.</p>
-            <p>Like you, travel is in our DNA. At Adventure, we believe travel opens the door to the greatest, most
-                unforgettable experiences life can offer. And we have learned that the best travel is about putting
-                yourself out there, about leaving behind the everyday, about immersing yourself, rather than just seeing
-                the sights.</p>
-            <p>As travelers, you're on a journey, and at Adventure, we're on one, too. Over the last two years, travel has
-                transformed. We're thinking deeply not just about how we travel but why we travel and how to best serve
-                travelers on their journey – and we approach our 50th year with a passion and commitment to helping
-                others do it, too.</p>
-        </article>
-        <section>
-            <h2>At Adventure, our core values guide our evolution:</h2>
-            <article class="values">
-                <p>We pursue a vision of the world in which all are welcome. We believe travel can help foster the
-                    connection and understanding that makes meaningful moments possible.</p>
-                <p>We think everyone deserves to experience the joy of travel. Whatever your background or needs and no
-                    matter where you want to go: we are here to empower your journey.</p>
-                <p>We believe travel is ultimately about joy and delight. And the g process should be enjoyable,
-                    too, filled with serendipity and connection wherever the path leads us.</p>
-            </article>
-        </section>
-    </main>
-    <hr>
-    <footer>
-        <ul class="footer-columns">
-            <li class="column">
-                <ul class="links">
-                    <li class="ehlel"><a href="">Эхлэл</a></li>
-                    <li class="contact"><a href="">Холбоо барих</a></li>
-                    <li class="privacy"><a href="">Нууцлалын бодлого</a></li>
-                    <li class="terms"><a href="">Үйлчилгээний журам болон нөхцөл</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li class="faq"><a href="">Үйлчилгээний журам болон нөхцөл</a></li>
-                    <li class="help"><a href="">Тусламж</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li class="social"><a href="">Биднийг дагаарай</a></li>
-                        <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="assets/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="assets/linkedin.png" alt="LinkedIn"></a>
-                    </li>
-                </ul>
-            </li>
+    <!-- Header хэсэг -->
+    <div class="nav-container">
+        <ul class="nav-links">
+            <li><a href="index.html">Нүүр</a></li>
+            <li><a href="destinations.html">Аялалууд</a></li>
+            <li><a href="news.html">Мэдээ</a></li>
+            <li><a href="about.html">Бидний тухай</a></li>
         </ul>
-    </footer>  
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Монголын үзэсгэлэнт газруудаар аялах таны хамгийн сайн хөтөч</h1>
+        <p>2010 оноос хойш таны итгэлт түнш</p>
+    </div>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="about-grid">
+            <div class="about-card">
+                <img src="assets/experience.jpg" alt="Туршлага">
+                <h3>10+ жилийн туршлага</h3>
+                <p>Бид 10 гаруй жилийн турш аялал жуулчлалын салбарт үйл ажиллагаа явуулж байна.</p>
+            </div>
+            <div class="about-card">
+                <img src="assets/guide.jpg" alt="Мэргэжлийн хөтөч">
+                <h3>Мэргэжлийн хөтөч тайлбарлагч</h3>
+                <p>Манай баг нь мэргэжлийн, туршлагатай хөтөч тайлбарлагч нараас бүрдэнэ.</p>
+            </div>
+            <div class="about-card">
+                <img src="assets/service.jpg" alt="Үйлчилгээ">
+                <h3>Чанартай үйлчилгээ</h3>
+                <p>Бид аялагч бүрт хамгийн чанартай, найдвартай үйлчилгээг үзүүлэхийг эрхэм зорилгоо болгодог.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h2>1000+</h2>
+                <p>Сэтгэл ханамжтай аялагчид</p>
+            </div>
+            <div class="stat-item">
+                <h2>50+</h2>
+                <p>Аялалын чиглэл</p>
+            </div>
+            <div class="stat-item">
+                <h2>15+</h2>
+                <p>Мэргэжлийн хөтөч</p>
+            </div>
+            <div class="stat-item">
+                <h2>24/7</h2>
+                <p>Үйлчилгээний цаг</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2>Манай баг</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="assets/team1.jpg" alt="Багийн гишүүн">
+                <h3>Б. Болд</h3>
+                <p>Гүйцэтгэх захирал</p>
+            </div>
+            <div class="team-member">
+                <img src="assets/team2.jpg" alt="Багийн гишүүн">
+                <h3>Д. Сарнай</h3>
+                <p>Аялалын менежер</p>
+            </div>
+            <div class="team-member">
+                <img src="assets/team3.jpg" alt="Багийн гишүүн">
+                <h3>Г. Төгөлдөр</h3>
+                <p>Ахлах хөтөч</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer хэсэг -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Холбоо барих</h3>
+                <p>Утас: (976) 99887766</p>
+                <p>Имэйл: info@travel.mn</p>
+                <p>Хаяг: Улаанбаатар, Монгол</p>
+            </div>
+            <div class="footer-section">
+                <h3>Цэс</h3>
+                <ul>
+                    <li><a href="index.html">Нүүр</a></li>
+                    <li><a href="destinations.html">Аялалууд</a></li>
+                    <li><a href="news.html">Мэдээ</a></li>
+                    <li><a href="about.html">Бидний тухай</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Сошиал</h3>
+                <div class="social-links">
+                    <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/twitter.png" alt="Twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Аялал Жуулчлал. Бүх эрх хуулиар хамгаалагдсан.</p>
+        </div>
+    </footer>
 </body>
 </html>

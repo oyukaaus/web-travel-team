@@ -1,164 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="mn">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News - Adventure</title>
+    <title>Аялалын Мэдээ</title>
     <link rel="stylesheet" href="news.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <header class ="home-main">
-        <nav class="navbar">
-            <a href="./">
-                <img src="assets/advent.png" alt="Adventure Image" class="small-image">
-            </a>
-            <ul class="nav-links">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About us</a></li>
-                <li><a href="./destinations.html">Destinations</a></li>
-                <li><a href="./news.html">News</a></li>
-            </ul>
-        </nav>
-        <h1>Travel News</h1>
-    </header>
-    <main>
-        <form class="search-news">
-            <i class="fa fa-search"></i>
-            <input type="text" id="searchNews" placeholder="Search news">
-        </form>
-        <div class="filter-sort-container">
-            <label for="filter">Filter:</label>
-            <select id="filter">
-                <option value="All">All</option>
-                <option value="road-trip">Road Trip</option>
-                <option value="travel-stories">Travel Stories</option>
-                <option value="tips-advice">Tips and Advice</option>
-            </select>
-            <label for="sort">Sort:</label>
-            <select id="sort">
-                <option value="Category">Category</option>
-                <option value="Date">Date</option>
-            </select>
-        </div>        
-        <section class="news-grid">
-            <article>
-                <img src="assets/travelstory.jpg" alt="News1">
-                <h6 category="travel-stories">Travel Stories</h6>
-                <a href="temdeglel.html">
-                    <h4>Aylaliin temdeglel</h4>
-                </a>
-                <p>Think the Midwest is a cornfield you fly over between coasts? Think again. This first-timer’s guide
-                    details everything you need to know about the Midwest.</p>
-                <div>Sep 26, 2023 -7 min read</div>
-            </article>
-            <article>
-                <img src="assets/day_trip1.jpg" alt="News2">
-                <h6 category="road-trip">Road trip</h6>
-                <a href="lake medicine.html">
-                    <h4>nuurlu aylahiin ach tus</h4>
-                </a>
-                <p>Beyond Bogota you’ll find a wide variety of easy day trips that get you out into nature with hiking,
-                    rock climbing and a surprising theme park.</p>
-                <div>Sep 25, 2023 -10 min read</div>
-            </article>
-            <article>
-                <img src="assets/day_trip2.jpg" alt="News3">
-                <h6 category="road-trip">Road trip</h6>
-                <a href="events.html">
-                    <h4>The 5 events in summer</h4>
-                </a>
-                <p>There’s no better way to explore the wildly beautiful landscapes of Maine than on a road trip. Here
-                    are five of our favorites.</p>
-                <div>Sep 19, 2023 -10 min read</div>
-            </article>
-            <article>
-                <img src="assets/family_travel.jpg" alt="News4">
-                <h6 category="tips-advice">Tips and Advice</h6>
-                <a href="kids.html">
-                    <h4>The best things to do with kids in Mongolia</h4>
-                </a>
-                <p>With its tropical climate, top-notch infrastructure, abundant green spaces and awesome child-friendly
-                    attractions, Singapore is a top destination for kids. </p>
-                <div>Sep 6, 2023 -5 min read</div>
-            </article>
-        </section>        
-        <h2>Traveling on a budget</h2>
-        <section class="budget-travel-grid">
-            <article>
-                <a href="considerations.html">
-                <img src="assets/infomongolia.jpg" alt="Budget1">
-                <h3>travel considerations</h3>
-            </article>
-            <article>
-                <a href="explore.html">
-                <img src="assets/zovlogoo.jpg" alt="Budget2">
-                <h3>10 tips for exploring the Mongolia on a budget</h3>
-            </article>
-            <article>
-                <a href="spendmoney.html">
-                <img src="assets/Hiking_Gobi.jpg" alt="Budget3">
-                <h3>Appropriate use of money</h3>
-            </article>
-        </section>
-    </main>
-    <hr>
-    <footer>
-        <ul class="footer-columns">
-            <li class="column">
-                <ul class="links">
-                    <li class="ehlel"><a href="">Эхлэл</a></li>
-                    <li class="contact"><a href="">Холбоо барих</a></li>
-                    <li class="privacy"><a href="">Нууцлалын бодлого</a></li>
-                    <li class="terms"><a href="">Үйлчилгээний журам болон нөхцөл</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li class="faq"><a href="">Үйлчилгээний журам болон нөхцөл</a></li>
-                    <li class="help"><a href="">Тусламж</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li class="social"><a href="">Биднийг дагаарай</a></li>
-                        <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="assets/twitter.png" alt="Twitter"></a>
-                        <a href="#"><img src="assets/linkedin.png" alt="LinkedIn"></a>
-                    </li>
-                </ul>
-            </li>
+    <!-- Navigation -->
+    <div class="nav-container">
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="destinations.html">Destination</a></li>
+            <li><a href="news.html">News</a></li>
+            
         </ul>
+    </div>
+
+    <!-- Hero section -->
+    <div class="hero-section" style="background-image: url('assets/news.jpg')">
+        <h1>Аялал жуулчлалын мэдээ мэдээлэл</h1>
+    </div>
+
+    <section class="news-section">
+        <h2 class="section-title">Аялал жуулчлалын мэдээ</h2>
+        <div class="news-grid">
+            <article class="news-card">
+                <img src="assets/travelstory.jpg" alt="dotood">
+                <div class="news-content">
+                    <span class="news-date">2024.03.20</span>
+                    <h3>Дотоодын аялал жуулчлал 30%-иар өсчээ</h3>
+                    <p>2024 оны эхний улиралд дотоодын аялал жуулчлалын үзүүлэлт өмнөх оны мөн үеэс 30 хувиар өссөн байна.</p>
+                    <a href="#" class="read-more">Дэлгэрэнгүй</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="assets/huvsgulWINTER.jpg" alt="Хөвсгөлийн мөсний баяр">
+                <div class="news-content">
+                    <span class="news-date">2024.03.18</span>
+                    <h3>Хөвсгөл нуурын мөсний баяр амжилттай зохион байгуулагдлаа</h3>
+                    <p>Жил бүр уламжлал болон зохиогддог Хөвсгөл нуурын мөсний баяр амжилттай болж өндөрлөлөө.</p>
+                    <a href="#" class="read-more">Дэлгэрэнгүй</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="assets/medeeback.jpg" alt="Говийн бүс">
+                <div class="news-content">
+                    <span class="news-date">2024.03.15</span>
+                    <h3>Говийн бүсэд эко аялал жуулчлал хөгжүүлнэ</h3>
+                    <p>Өмнөговь аймагт байгаль орчинд ээлтэй аялал жуулчлалыг хөгжүүлэх төсөл хэрэгжиж эхэллээ.</p>
+                    <a href="#" class="read-more">Дэлгэрэнгүй</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="assets/Orhonii-hundii-940x520.jpg" alt="Орхоны хөндий">
+                <div class="news-content">
+                    <span class="news-date">2024.03.12</span>
+                    <h3>Орхоны хөндийн аялалын бүс шинэчлэгдэж байна</h3>
+                    <p>ЮНЕСКО-гийн дэлхийн өвд бүртгэгдсэн Орхоны хөндийн аялалын дэд бүтцийг сайжруулж байна.</p>
+                    <a href="#" class="read-more">Дэлгэрэнгүй</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Холбоо барих</h3>
+                <p>Утас: (976) 99887766</p>
+                <p>Имэйл: info@travel.mn</p>
+                <p>Хаяг: Улаанбаатар, Монгол</p>
+            </div>
+            <div class="footer-section">
+                <h3>Цэс</h3>
+                <ul>
+                    <li><a href="index.html">Нүүр</a></li>
+                    <li><a href="destinations.html">Аялалууд</a></li>
+                    <li><a href="news.html">Мэдээ</a></li>
+                    <li><a href="about.html">Бидний тухай</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Сошиал</h3>
+                <div class="social-links">
+                    <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/twitter.png" alt="Twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Аялал Жуулчлал. Бүх эрх хуулиар хамгаалагдсан.</p>
+        </div>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var filterSelect = document.getElementById('filter');
-            var newsGrid = document.getElementById('newsGrid');
-            var budgetTravelGrid = document.getElementById('budgetTravelGrid');
-
-            filterSelect.addEventListener('change', function () {
-                var selectedCategory = filterSelect.value;
-                filterNews(selectedCategory);
-            });
-
-            filterNews('All');
-
-            function filterNews(category) {
-                var articles = document.querySelectorAll('.news-grid article');
-
-                articles.forEach(function (article) {
-                    var articleCategory = article.querySelector('h6').getAttribute('category');
-                    if (category === 'All' || articleCategory === category) {
-                        article.style.display = 'block';
-                    } else {
-                        article.style.display = 'none';
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>

@@ -94,88 +94,52 @@ body {
     color: var(--secondary-color);
 }
 
-.footer {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 3rem 0 1rem 0;
-    margin-top: 4rem;
+footer {
+    color: var(--text-color);
+    padding: 1.25rem;
+    text-align: left;
+    margin-left: 10%;
+
+    & .footer-columns {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        & .column {
+            flex: 1;
+            padding: 0 1.25rem;
+
+            & .links {
+                list-style: none;
+                padding: 0;
+
+                & li {
+                    margin-bottom: 0.625rem;
+
+                    & a {
+                        text-decoration: none;
+                        color: var(--link-color);
+                    }
+                }
+
+                & .social a {
+                    margin-right: 0.3125rem;
+                    display: inline-block;
+                }
+            }
+        }
+    }
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 0 2rem;
-}
 
-.footer-section h3 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-section a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-    color: var(--accent-color);
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-links img {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-}
-
-.social-links img:hover {
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
+  .copyright {
     text-align: center;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-}
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
 
 .hero-section {
     height: 50vh;
@@ -244,12 +208,3 @@ body {
     color: var(--accent-color);
 }
 
-/* Remove logo-related styles since we're not using it */
-.logo {
-    display: none;
-}
-
-/* Remove old nav styles */
-.travel-nav {
-    display: none;
-}

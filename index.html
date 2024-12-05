@@ -26,36 +26,46 @@
     </header>
     
     <main>
-        <div class="icon-container">
-            <article>
-                <a href="./">
-                    <img src="assets/trending.png" alt="Trending">
-                    <h4>Rating</h4>
-                    <span>1</span>
-                </a>
-            </article>
-            <article>
-                <a href="./">
-                    <img src="assets/iconic.png" alt="Iconic">
-                    <h4>People</h4>
-                    <span>2</span>
-                </a>
-            </article>
-            <article>
-                <a href="./">
-                    <img src="assets/island.png" alt="Islands">
-                    <h4>Travels</h4>
-                    <span>3</span>
-                </a>
-            </article>
-            <article>
-                <a href="./">
-                    <img src="assets/countryside.png" alt="Countryside">
-                    <h4>Budget average</h4>
-                    <span>4</span>
-                </a>
-            </article>
-        </div>        
+        <section class="statistics">
+            <div class="stat-container">
+                <article class="stat">
+                    <div class="stat-icon">
+                        <img src="assets/trending.png" alt="Trending">
+                    </div>
+                    <div class="stat-text">
+                        <h4>Rating</h4>
+                        <p>Нийт хичээлийн цаг</p>
+                    </div>
+                </article>
+                <article class="stat">
+                    <div class="stat-icon">
+                        <img src="assets/iconic.png" alt="Iconic">
+                    </div>
+                    <div class="stat-text">
+                        <h4>24 хичээл</h4>
+                        <p>Сургалт явуулдаг</p>
+                    </div>
+                </article>
+                <article class="stat">
+                    <div class="stat-icon">
+                        <img src="assets/island.png" alt="Islands">
+                    </div>
+                    <div class="stat-text">
+                        <h4>98%</h4>
+                        <p>Сэтгэл ханамж</p>
+                    </div>
+                </article>
+                <article class="stat">
+                    <div class="stat-icon">
+                        <img src="assets/countryside.png" alt="Countryside">
+                    </div>
+                    <div class="stat-text">
+                        <h4>30+</h4>
+                        <p>Багш ажилчид</p>
+                    </div>
+                </article>
+            </div>
+        </section>
         <section class="destination-grid">
             <article class="dhuvsgul">
                 <a href="huvsgul.html">
@@ -97,44 +107,74 @@
             
             
         </section>  
-         
+        
     </main>
     <hr>
-    <footer>
-        <ul class="footer-columns">
-            <li class="column">
-                <ul class="links">
-                    <li class="ehlel"><a href="">Эхлэл</a></li>
-                    <li class="contact"><a href="">Холбоо барих</a></li>
-                    <li class="privacy"><a href="">Нууцлалын бодлого</a></li>
-                    <li class="terms"><a href="">Үйлчилгээний журам болон нөхцөл</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li class="faq"><a href="">Үйлчилгээний журам болон нөхцөл</a></li>
-                    <li class="help"><a href="">Тусламж</a></li>
-                </ul>
-            </li>
-            <li class="column">
-                <ul class="links">
-                    <li class="social"><a href="">Биднийг дагаарай</a></li>
+    <footer class="footer">
+        <div class="container">
+            <div class="background"></div>
+            <div class="content">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>1234.mn</h4>
+                    <ul>
+                        <li><a href="#">Бидний тухай</a></li>
+                        <li><a href="#">багшаар элсэх</a></li>
+                        <li><a href="#">Нууцлалын бодлого</a></li>
+                        <li><a href="#">Үйлчилгээний нөхцөл</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Тусламж</h4>
+                    <ul>
+                        <li><a href="#">Түгээмэл асуулт</a></li>
+                        <li><a href="#">Төлбөрийн нөхцөл</a></li>
+                        <li><a href="#">Тусламж үйлчилгээ</a></li>
+                        <li><a href="#">Оператортой холбогдох</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Холбоо барих</h4>
+                    <ul>
+                        <li>
+                            <p>Утас:</p>
+                            <a href="tel:+97680404239">+976 8040 4239</a>
+                        </li>
+                        <li>
+                            <p>Мэйл:</p>
+                            <a href="mailto:bulganerdene021@gmail.com">bulganerdene021@gmail.com</a>
+                        </li>
+                        <li>
+                            <p>Хаяг:</p>
+                            <a href="#">Монгол Улсын Их Сургууль
+                                Их сургуулийн гудамж - 1, бага тойруу , Сүхбаатар дүүрэг, Улаанбаатар хот</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Цахим хуудас</h4>
+                    <div class="social-links">
                         <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
                         <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
                         <a href="#"><img src="assets/twitter.png" alt="Twitter"></a>
                         <a href="#"><img src="assets/linkedin.png" alt="LinkedIn"></a>
-                    </li>
-                </ul>
-            </li>
-        </ul><!-- Footer Bottom -->
-        <div class="copyright">
-            <p>© 2024 Adventure Travel. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+        </div>
+   </footer>
 
         
       
     <script src="main.js"></script>
-   
+    <script>
+        window.addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 500);
+})
+    
+
+</script>
 </body>
 </html>

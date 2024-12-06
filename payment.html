@@ -44,18 +44,11 @@
             background-color: #f4f4f4;
         }
 
-        .edit-button {
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-        }
-
-        .edit-button:hover {
-            background-color: #0056b3;
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
         }
 
         .payment-button {
@@ -93,64 +86,45 @@
             background-color: #0069d9;
         }
 
-        .button-container {
+        .booking-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-item p {
+            margin: 5px 0;
+        }
+
+        .input-group {
             display: flex;
-            flex-direction: row;
-            justify-content: center;
             align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .input-group label {
+            font-size: 1rem;
+        }
+
+        .input-group input {
+            width: 50px;
+            padding: 5px;
+            font-size: 1rem;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Захиалга баталгаажуулах</h1>
+        <h1>Захиалга Баталгаажуулах</h1>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Сонголт</th>
-                    <th>Мэдээлэл</th>
-                    <th>Үйлдэл</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Аяллын Хугацаа:</td>
-                    <td id="duration"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Байрны Сонголт:</td>
-                    <td id="hotel"></td>
-                    <td><button class="edit-button" onclick="editItem('hotel')">Өөрчлөх</button></td>
-                </tr>
-                <tr>
-                    <td>Хоолны Сонголт:</td>
-                    <td id="meal"></td>
-                    <td><button class="edit-button" onclick="editItem('meal')">Өөрчлөх</button></td>
-                </tr>
-                <tr>
-                    <td>Тээврийн Хэрэгсэл:</td>
-                    <td id="transport"></td>
-                    <td><button class="edit-button" onclick="editItem('transport')">Өөрчлөх</button></td>
-                </tr>
-                <tr>
-                    <td>Хүмүүсийн Тоо:</td>
-                    <td id="people-count"></td>
-                    <td>
-                        <div>
-                            <label for="adult-count">Насанд Хүрэгчид:</label>
-                            <input type="number" id="adult-count" min="0" onchange="updatePeopleCount()">
-                            <label for="child-count">Хүүхэд:</label>
-                            <input type="number" id="child-count" min="0" onchange="updatePeopleCount()">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Booking list section -->
+        <div id="booking-list"></div>
 
-        <div class="total-price" id="totalPrice"></div>
         <div class="button-container">
             <button class="payment-button" onclick="processPayment()">Баталгаажуулах</button>
             <button class="back-button" onclick="window.history.back()">Буцах</button>
@@ -158,75 +132,74 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+        window.onload = function () {
+            // Retrieve the bookingList from localStorage
+            const bookingList = JSON.parse(localStorage.getItem('bookingList')) || [];
 
-            if (!bookingDetails) {
-                alert('Захиалгын мэдээлэл олдсонгүй!');
+            // If there are no bookings, display a message
+            if (bookingList.length === 0) {
+                document.getElementById('booking-list').innerHTML = '<p>Захиалга байхгүй байна.</p>';
                 return;
             }
 
-            // Display booking details
-            document.getElementById('duration').textContent = bookingDetails.duration;
-            document.getElementById('hotel').textContent = bookingDetails.hotel;
-            document.getElementById('meal').textContent = bookingDetails.meal;
-            document.getElementById('transport').textContent = bookingDetails.transport;
-            document.getElementById('people-count').textContent = `Насанд Хүрэгчид: ${bookingDetails.adults}, Хүүхэд: ${bookingDetails.children}`;
+            // Display each booking in the list
+            const bookingListContainer = document.getElementById('booking-list');
+            bookingList.forEach((booking, index) => {
+                const bookingElement = document.createElement('div');
+                bookingElement.classList.add('booking-item');
+                bookingElement.innerHTML = `
+                    <h3>Аялал ${index + 1}</h3>
+                    <p><strong>Хугацаа:</strong> ${booking.duration}</p>
+                    <p><strong>Зочид буудал:</strong> ${booking.hotel}</p>
+                    <p><strong>Хоол:</strong> ${booking.meal}</p>
+                    <p><strong>Тээвэр:</strong> ${booking.transport}</p>
+                    <div class="input-group">
+                        <label for="adults-${index}">Насанд хүрэгчид:</label>
+                        <input type="number" id="adults-${index}" value="${booking.adults}" min="0" onchange="updateBooking(${index})">
+                        <label for="children-${index}">Хүүхэд:</label>
+                        <input type="number" id="children-${index}" value="${booking.children}" min="0" onchange="updateBooking(${index})">
+                    </div>
+                    <p><strong>Нийт хүн:</strong> Насанд хүрэгчид: <span id="adults-count-${index}">${booking.adults}</span>, Хүүхэд: <span id="children-count-${index}">${booking.children}</span></p>
+                    <p><strong>Нийт үнэ:</strong> <span id="total-price-${index}">${booking.totalPrice.toLocaleString()}</span>₮</p>
+                `;
+                bookingListContainer.appendChild(bookingElement);
+            });
+        };
 
-            // Display total price
-            document.getElementById('totalPrice').textContent = `Нийт үнэ: ${bookingDetails.totalPrice.toLocaleString()}₮`;
+        // Function to update the booking details
+        function updateBooking(index) {
+            const bookingList = JSON.parse(localStorage.getItem('bookingList')) || [];
+            const adults = parseInt(document.getElementById(`adults-${index}`).value) || 0;
+            const children = parseInt(document.getElementById(`children-${index}`).value) || 0;
+            const sumPrice = bookingList[index].sumPrice || 0;
 
-            // Set initial values for counts
-            document.getElementById('adult-count').value = bookingDetails.adults;
-            document.getElementById('child-count').value = bookingDetails.children;
-        });
+            // Update the booking list with new values
+            bookingList[index].adults = adults;
+            bookingList[index].children = children;
 
-        function updatePeopleCount() {
-            const adults = parseInt(document.getElementById('adult-count').value) || 0;
-            const children = parseInt(document.getElementById('child-count').value) || 0;
-
-            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
-            bookingDetails.adults = adults;
-            bookingDetails.children = children;
+            // Update the display counts
+            document.getElementById(`adults-count-${index}`).textContent = adults;
+            document.getElementById(`children-count-${index}`).textContent = children;
 
             // Recalculate the total price
+            const totalPrice = calculateTotalPrice(bookingList[index]);
+            document.getElementById(`total-price-${index}`).textContent = totalPrice.toLocaleString();
 
-            // Update localStorage and the displayed price
-            localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
-            document.getElementById('totalPrice').textContent = `Нийт үнэ: ${bookingDetails.totalPrice.toLocaleString()}₮`;
+            // Save the updated booking list to localStorage
+            localStorage.setItem('bookingList', JSON.stringify(bookingList));
         }
 
-        function editItem(itemType) {
-            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
+        // Function to calculate the total price
+        function calculateTotalPrice(booking) {
+            const totalPrice = (booking.adults * booking.sumPrice) + (booking.children/2 * booking.sumPrice);
+            booking.totalPrice = totalPrice;
 
-            // Edit the selected item
-            if (bookingDetails) {
-                let newValue = prompt(`Сонголтыг шинэчлэх: ${itemType}`, bookingDetails[itemType]);
-
-                if (newValue !== null && newValue.trim() !== '') {
-                    bookingDetails[itemType] = newValue;
-                    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
-
-                    // Update the UI
-                    document.getElementById(itemType).textContent = newValue;
-                    updateTotalPrice();
-                }
-            }
+            return totalPrice;
         }
 
-        function updateTotalPrice() {
-            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails'));
-            if (bookingDetails) {
-                localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
-                document.getElementById('totalPrice').textContent = `Нийт үнэ: ${bookingDetails.totalPrice.toLocaleString()}₮`;
-            }
-        }
-
+        // Function to handle the payment process (mocked)
         function processPayment() {
-            alert('Төлбөр амжилттай хийгдлээ!');
-            // Clear booking details after payment
-            localStorage.removeItem('bookingDetails');
-            window.location.href = 'index.html'; // Redirect to home or another page
+            alert("Төлбөр амжилттай хийгдлээ!");
         }
     </script>
 </body>
